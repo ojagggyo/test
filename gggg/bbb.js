@@ -1,21 +1,33 @@
-
+/*
+//--------------------
+//CommonJS
+//--------------------
 //関数
-module.exports.funcB = function() {
+export function funcB() {
   return 'module.exports.funcB !!!';
-};
-
+}
 //オブジェクト
 module.exports.person = {
   age: 40,
   name: 'Steemit',
   title: 'Manager'
 }
-
-
-/*
-// export文を使ってhello関数を定義する。
-export function funcB() {
-  return 'module.exports.funcB !!!';
-}
 */
 
+//--------------------
+//ES6
+//--------------------
+function funcB() {
+  return 'module.exports.funcB !!!';
+}
+function funcBB() {
+  return 'module.exports.funcBB !!!';
+}
+
+const person = {
+  age: 30,
+  name: 'Yasu',
+  title: 'Leader'
+}
+
+export { funcB, funcBB, person };
