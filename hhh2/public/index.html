@@ -2,13 +2,18 @@
     <head>
         <title>Get posts using filters & tags</title>
         <script src="bundle.js"></script>
+		<script>
+			window.onload = function() {
+				getPosts();
+			}
+		</script>
     </head>
     <body>
     
     Hello!!!!!
 			<div class="row">
-				<div class="col-md-4 mt-3">
-					<button class="btn btn-primary" onclick="getPosts()">Get Posts</button>
+				<div>
+					<button onclick="getPosts()">Get Posts</button>
 				</div>
 			</div>
 			<div class="row">
