@@ -36,7 +36,7 @@ getPosts = async () => {
                 //return authorList.join(",");
 
                
-                body = body.replace(/!\[.*\](.*)/, '*********');
+                body = body.replace(/!\[[^\]]([[^)]*)/, '*********');
 
 
                 log(author+" "+title+" "+created+" "+body+body.length) ; 
