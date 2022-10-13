@@ -30,7 +30,6 @@ window.getPosts = async () => {
         .then(result => {
             console.log('Response received:', result);
 
-
             if (result) {
                 var posts = [];
                 
@@ -43,7 +42,19 @@ window.getPosts = async () => {
                 console.log(yesterday);
                 //yesterday = new Date(yesterday.toISOString()  + "z")
                 //console.log(yesterday);
+
+
+                const active_votes = post.active_votes;
         
+
+                var ret = active_votes.some( function( value ) {
+                
+                    return value.voter ===  'yasu';
+  
+                });
+                console.log(ret);
+
+
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
 
