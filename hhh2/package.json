@@ -1,11 +1,11 @@
 {
-  "name": "hhh1",
+  "name": "hhh2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "git pull && webpack && cp ./dist/main.js ./public/bundle.js"
+    "build": "git pull && webpack && cp ./dist/main.js ./public/bundle.js",
     "start": "git pull && webpack && cp ./dist/main.js ./public/bundle.js && node index.js"
   },
   "author": "",
