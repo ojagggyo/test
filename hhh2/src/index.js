@@ -47,7 +47,7 @@ window.getPosts = async () => {
                     const image = json.image ? json.image[0] : '';
                     const title = post.title;
                     const author = post.author;
-                    const created = new Date(post.created.timestamp + "z")
+                    const created = new Date(post.created + "z")
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(author)){
