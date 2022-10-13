@@ -1,9 +1,5 @@
-function log(msg) { 
-    console.log(new Date().toString() + ' - ' + msg); 
-}
-
 function startProcess() {  
-    log("Hello!!!");
+    console.log(new Date().toString() + ' - ' + msg); 
 }
 
 setInterval(startProcess, 10 * 1000);//ミリ秒

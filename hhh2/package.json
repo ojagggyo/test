@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "git pull && webpack && cp ./dist/main.js ./public/bundle.js",
-    "start": "git pull && webpack && cp ./dist/main.js ./public/bundle.js && node index.js"
+    "build": "git pull && webpack --mode none && cp ./dist/main.js ./public/bundle.js",
+    "start": "git pull && webpack --mode none && cp ./dist/main.js ./public/bundle.js && node index.js"
   },
   "author": "",
   "license": "ISC",
