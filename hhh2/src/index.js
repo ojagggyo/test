@@ -35,12 +35,12 @@ window.getPosts = async () => {
                 var posts = [];
                 
                 var today = new Date();
-                today = new Date(today.timestamp + "z")
+                today = new Date(today.toUTCString() + "z")
 
                 posts.push(`<p>${today}</p>`);
                 
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
-                yesterday = new Date(yesterday.timestamp + "z")
+                yesterday = new Date(yesterday.toString() + "z")
 
                 posts.push(`<p>${yesterday}</p>`);
          
