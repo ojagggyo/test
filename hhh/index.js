@@ -26,15 +26,16 @@ getPosts = async () => {
                 //const image = json.image ? json.image[0] : '';
                 //const title = post.title;
                 const author = post.author;
-                authorList.push(author);
+                //authorList.push(author);
                 //return authorList.join(",");
-                return Promise.resolve(authorList.join(","));
+                log(author) ; 
             });
+            //return Promise.resolve(authorList.join(","));
         })
         .catch(err => {
             //console.log(err);
             //return err;
-            reject(err);
+            //reject(err);
         });
 };
 
@@ -45,10 +46,16 @@ function log(msg) {
 }
 
 
-async function startProcess() {  
+function startProcess() {  
 
-  log(await getPosts()) ;
-
+    getPosts();
+    /*
+    getPosts();
+    getPosts().then(
+        //value => console.log(1 + value)
+        log(value)
+    ) 
+*/
 }
 
 getPosts();
