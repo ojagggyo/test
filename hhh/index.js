@@ -48,7 +48,7 @@ getPosts = async () => {
             //return Promise.resolve(authorList.join(","));
         })
         .catch(err => {
-            //console.log(err);
+            console.log(err);
             //return err;
             //reject(err);
         });
