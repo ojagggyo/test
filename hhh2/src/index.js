@@ -34,7 +34,7 @@ window.getPosts = async () => {
                     const image = json.image ? json.image[0] : '';
                     const title = post.title;
                     const author = post.author;
-                    const created = new Date(post.created).toDateString();
+                    const created = new Date(post.created)
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(author)){
@@ -54,7 +54,7 @@ window.getPosts = async () => {
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
-`<tr><td>${title}</td><td>${author}</td><td>${created}</td><td>${body.length}</td></tr>`
+`<tr><td>${title}</td><td>${author}</td><td>${created.toDateString()}</td><td>${body.length}</td></tr>`
   
                     );
                 });
