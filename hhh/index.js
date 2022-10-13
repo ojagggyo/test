@@ -28,7 +28,9 @@ getPosts = async () => {
                 const author = post.author;
                 //authorList.push(author);
                 //return authorList.join(",");
-                log(author) ; 
+
+
+                log(json) ; 
             });
             //return Promise.resolve(authorList.join(","));
         })
