@@ -25,13 +25,17 @@ getPosts = async () => {
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
                 //const image = json.image ? json.image[0] : '';
-                //const title = post.title;
+                
                 const author = post.author;
+                const title = post.title;
+                const body = post.body.substring( 4, 50 );
+                const created = post.created;
+
                 //authorList.push(author);
                 //return authorList.join(",");
 
 
-                log(post.json_metadata) ; 
+                log(author,title,created,body) ; 
             });
 
             //return Promise.resolve(authorList.join(","));
