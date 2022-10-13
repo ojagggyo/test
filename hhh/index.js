@@ -6,35 +6,23 @@ const client = new dsteem.Client('https://api.steemit.com');
 //filter change selection function
 getPosts = async () => {
 
-    const filter = "Created";
-    const query = {
-        tag: 'japanese',
-        limit: 1,
-    };
-
-    console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
-
-    client.database
-        .getDiscussions(filter, query)
-        .then(result => {
-            console.log('Response received:', result);
-            if (result) {
-                var posts = [];
-                result.forEach(post => {
-                    //const json = JSON.parse(post.json_metadata);
-                    //const image = json.image ? json.image[0] : '';
-                    //const title = post.title;
-                    //const author = post.author;
-                    //const created = new Date(post.created).toDateString();
-                    return post.author;
-                });
-            } else {
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            alert(`Error:${err}, try again`);
-        });
+  //filter change selection function
+  const filter = 'created';
+  const query = {
+          tag: 'japanese',
+          limit: 1,
+  };
+  
+  console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
+  
+  client.database
+      .getDiscussions(filter, query)
+      .then(result => {
+          console.log('Response received:', result);
+      })
+      .catch(err => {
+          console.log(err);
+      });
 };
 
 
@@ -50,5 +38,5 @@ function startProcess() {
 
 }
 
-
+getPosts();
 setInterval(startProcess, 10 * 1000);//ミリ秒
