@@ -87,7 +87,7 @@ window.getPosts = async () => {
 <td>${getDateString(created)}</td>\
 <td>${body.length}(${post.body.length})</td>\
 <td>${image != ''?"〇":"✕"}</td>\
-<td>${yasu_voted ?"〇":"✕"}</td></tr>\
+<td>${yasu_voted ?"〇":"✕"}</td>\
 <td>${yasuwitness_voted ?"〇":"✕"}</td></tr>`  
                     );
                 });
