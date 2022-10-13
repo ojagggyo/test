@@ -28,14 +28,14 @@ getPosts = async () => {
                 const author = post.author;
                 authorList.push(author);
                 return authorList.join(",");
-            })
-
+            });
+        })
         .catch(err => {
             //console.log(err);
             return err;
         });
-    }
-}
+};
+
 
 
 function log(msg) { 
