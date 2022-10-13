@@ -7,9 +7,9 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 //filter change selection function
 window.getPosts = async () => {
-    const filter = document.getElementById('filters').value;
+    const filter = "created";
     const query = {
-        tag: document.getElementById('tag').value,
+        tag: 'japanese',
         limit: 5,
     };
 
