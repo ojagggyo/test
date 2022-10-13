@@ -36,13 +36,13 @@ window.getPosts = async () => {
                 
                 var today = new Date();
                 console.log(today);
-                today = new Date(today.toISOString()  + "z")
-                console.log(today);
+                //today = new Date(today.toISOString()  + "z")
+                //console.log(today);
                 
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
                 console.log(yesterday);
-                yesterday = new Date(yesterday.toISOString()  + "z")
-                console.log(yesterday);
+                //yesterday = new Date(yesterday.toISOString()  + "z")
+                //console.log(yesterday);
         
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
