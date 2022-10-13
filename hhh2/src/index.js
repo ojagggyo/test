@@ -35,24 +35,10 @@ window.getPosts = async () => {
                 
                 var today = new Date();
                 console.log(today);
-                //today = new Date(today.toISOString()  + "z")
-                //console.log(today);
-                
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
                 console.log(yesterday);
-                //yesterday = new Date(yesterday.toISOString()  + "z")
-                //console.log(yesterday);
 
 
-                const active_votes = post.active_votes;
-        
-
-                var ret = active_votes.some( function( value ) {
-                
-                    return value.voter ===  'yasu';
-  
-                });
-                console.log(ret);
 
 
 
@@ -76,6 +62,16 @@ window.getPosts = async () => {
                         return;
                     }
 
+
+                    const active_votes = post.active_votes;
+
+                    var ret = active_votes.some( function( value ) {
+                    
+                        return value.voter ===  'yasu';
+   
+                    });
+                    console.log(ret);
+    
 
                      
                     var body = post.body;
