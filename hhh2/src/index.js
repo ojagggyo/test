@@ -33,7 +33,7 @@ window.getPosts = async () => {
                     body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
 
                     posts.push(
-                        `<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 450px"/></center><p>${created}</p></div>`
+                        `<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
                     );
                 });
 
