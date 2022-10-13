@@ -13,12 +13,13 @@ getPosts = async () => {
             limit: 1,
     };
 
-    //console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
-
     client.database
         .getDiscussions(filter, query)
         .then(result => {
-            //console.log('Response received:', result);
+            console.log('******************');
+            console.log('Response received:', result);
+            console.log('******************');
+
 
             var authorList = [];
             result.forEach(post => {
