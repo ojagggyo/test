@@ -13,4 +13,4 @@ function startProcess() {
 
 
 //startProcess();
-setInterval(startProcess, config.interval * 10 * 1000);
+setInterval(startProcess, 10 * 1000);
