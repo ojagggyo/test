@@ -8,7 +8,7 @@ function startProcess() {
 
   log('Hello!!!') 
   
-  setTimeout(startProcess, 30 * 1000);
+  setTimeout(startProcess, 10 * 1000);
 }
 
 
