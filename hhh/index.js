@@ -8,12 +8,7 @@ function startProcess() {
 
   log('Hello!!!') 
   
-  setTimeout(function() {
-    if (prices.length == 0) {
-      log("no prices found.");
-      return;
-    }   
-  }, 30 * 1000);
+  setTimeout(startProcess, 30 * 1000);
 }
 
 
