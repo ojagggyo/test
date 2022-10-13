@@ -33,10 +33,12 @@ window.getPosts = async () => {
 
             if (result) {
                 var posts = [];
+                
                 var today = new Date();
-                today = today.setTime(today.getTime() + 9 * 60 * 60); 
+                //today = today.setTime(today.getTime() + 9 * 60 * 60); 
+                
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
-                yesterday = yesterday.setTime(yesterday.getTime() + 9 * 60 * 60); 
+                //yesterday = yesterday.setTime(yesterday.getTime() + 9 * 60 * 60); 
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
 
