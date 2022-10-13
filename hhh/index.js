@@ -35,7 +35,7 @@ getPosts = async () => {
                 //return authorList.join(",");
 
 
-                log(author,title,created,body) ; 
+                log(author+" "+title+" "+created+" "+body) ; 
             });
 
             //return Promise.resolve(authorList.join(","));
