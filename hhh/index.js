@@ -27,12 +27,14 @@ getPosts = async () => {
                 //const title = post.title;
                 const author = post.author;
                 authorList.push(author);
-                return authorList.join(",");
+                //return authorList.join(",");
+                return Promise.resolve(authorList.join(","));
             });
         })
         .catch(err => {
             //console.log(err);
-            return err;
+            //return err;
+            reject(err);
         });
 };
 
@@ -43,9 +45,9 @@ function log(msg) {
 }
 
 
-function startProcess() {  
+async function startProcess() {  
 
-  log(getPosts()) ;
+  log(await getPosts()) ;
 
 }
 
