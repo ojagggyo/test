@@ -42,7 +42,7 @@ window.getPosts = async () => {
 
 
 
-                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>`);
+                posts.push(`<table><tr><td>タイトル</td><td>著者2</td><td>作成日時</td><td>文の長さ</td><td>写真</td><td>yasu</td></tr>`);
 
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
