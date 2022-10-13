@@ -42,7 +42,7 @@ window.getPosts = async () => {
 
 
 
-                posts.push(`<table><tr><td>タイトル</td><td>著者2</td><td>作成日時</td><td>文の長さ</td><td>写真</td><td>yasu</td></tr>`);
+                posts.push(`<table><tr><td>タイトル</td><td>著者2</td><td>作成日時</td><td>文の長さ</td><td>写真</td><td>yasu</td><td>yasu.witness</td></tr>`);
 
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
@@ -65,12 +65,13 @@ window.getPosts = async () => {
 
                     const active_votes = post.active_votes;
 
-                    var voted = active_votes.some( function( value ) {
-                    
-                        return value.voter ===  'yasu';
-   
+                    var yasu_voted = active_votes.some( function( value ) {
+                        return value.voter ===  'yasu'; 
                     });
-                    console.log(voted);
+
+                    var yasuwitness_voted = active_votes.some( function( value ) {
+                        return value.voter ===  'yasu.witness'; 
+                    });
  
 
                      
@@ -86,8 +87,8 @@ window.getPosts = async () => {
 <td>${getDateString(created)}</td>\
 <td>${body.length}(${post.body.length})</td>\
 <td>${image != ''?"〇":"✕"}</td>\
-<td>${voted ?"〇":"✕"}</td></tr>`
-  
+<td>${yasu_voted ?"〇":"✕"}</td></tr>\
+<td>${yasuwitness_voted ?"〇":"✕"}</td></tr>`  
                     );
                 });
                 posts.push(`</table>`);
