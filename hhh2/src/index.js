@@ -40,7 +40,7 @@ window.getPosts = async () => {
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
                 //yesterday = yesterday.setTime(yesterday.getTime() + 9 * 60 * 60); 
 
-                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
+                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
 
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
@@ -67,7 +67,7 @@ window.getPosts = async () => {
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
-`<tr><td>${title}</td><td>${author}</td><td>${getDateString(created)}</td><td>${body.length}(${post.body.length})</td></tr>`
+`<tr><td>${title}</td><td>${author}</td><td>${getDateString(created)}</td><td>${body.length}(${post.body.length})</td>${image != ''?"〇":"✕"}<td></td></tr>`
   
                     );
                 });
