@@ -33,8 +33,8 @@ window.getPosts = async () => {
 
             if (result) {
                 var posts = [];
-                const today = new Date();
-                const yesterday = new Date(today.setDate(today.getDate() - 1));
+                const today = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
+                const yesterday = new Date(today.setDate(today.getDate() - 1) ).toLocaleString({ timeZone: 'Asia/Tokyo' });
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
 
