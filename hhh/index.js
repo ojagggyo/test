@@ -28,7 +28,7 @@ getPosts = async () => {
                 
                 const author = post.author;
                 const title = post.title;
-                const body = post.body.substring( 4, 50 );
+                const body = post.body.substring( 0, 40 );
                 const created = post.created;
 
                 //authorList.push(author);
