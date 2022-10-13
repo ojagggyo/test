@@ -20,8 +20,13 @@ window.getPosts = async () => {
         .getDiscussions(filter, query)
         .then(result => {
             console.log('Response received:', result);
+
+
+
             if (result) {
                 var posts = [];
+                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
+
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
                     const image = json.image ? json.image[0] : '';
@@ -42,10 +47,11 @@ window.getPosts = async () => {
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
-`<div><h4>${title}</h4><p>by ${author}</p><center></center><p>${created}</p><p>${body.length}</p></div>`
+`<tr><td>${title}</td><td>${author}</td><td>${created}</td><td>${body.length}</td></tr>`
   
                     );
                 });
+                posts.push(`</table>`);
 
                 document.getElementById('postList').innerHTML = posts.join('');
             } else {
