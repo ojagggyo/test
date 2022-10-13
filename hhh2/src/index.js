@@ -42,7 +42,7 @@ window.getPosts = async () => {
 
 
 
-                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
+                posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>`);
 
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
@@ -65,13 +65,13 @@ window.getPosts = async () => {
 
                     const active_votes = post.active_votes;
 
-                    var ret = active_votes.some( function( value ) {
+                    var voted = active_votes.some( function( value ) {
                     
                         return value.voter ===  'yasu';
    
                     });
-                    console.log(ret);
-    
+                    console.log(voted);
+ 
 
                      
                     var body = post.body;
@@ -85,7 +85,8 @@ window.getPosts = async () => {
 <td>${author}</td>\
 <td>${getDateString(created)}</td>\
 <td>${body.length}(${post.body.length})</td>\
-<td>${image != ''?"〇":"✕"}</td></tr>`
+<td>${image != ''?"〇":"✕"}</td>\
+<td>${voted ?"〇":"✕"}</td></tr>`
   
                     );
                 });
