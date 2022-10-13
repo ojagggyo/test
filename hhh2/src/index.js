@@ -38,7 +38,7 @@ window.getPosts = async () => {
                 today = new Date(today.timestamp + "z")
                 
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
-                yesterday = new Date(yesterday.timestamp + "z")
+                //yesterday = new Date(yesterday.timestamp + "z")
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
 
