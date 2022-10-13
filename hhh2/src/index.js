@@ -36,9 +36,14 @@ window.getPosts = async () => {
                 
                 var today = new Date();
                 today = new Date(today.timestamp + "z")
+
+                posts.push(`<p>${today}</p>`);
                 
                 var yesterday = new Date(today.setDate(today.getDate() - 1) );
                 yesterday = new Date(yesterday.timestamp + "z")
+
+                posts.push(`<p>${yesterday}</p>`);
+         
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>`);
 
@@ -64,6 +69,7 @@ window.getPosts = async () => {
                     var body = post.body;
                     body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
                     body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
+
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
