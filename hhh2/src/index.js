@@ -11,7 +11,7 @@ window.getPosts = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
-        limit: 5,
+        limit: 20,
     };
 
     console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
@@ -22,9 +22,9 @@ window.getPosts = async () => {
             console.log('Response received:', result);
 
 
-
             if (result) {
                 var posts = [];
+                const yesterday = new Date().setDate(this.getDate() - 1 );
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
 
                 result.forEach(post => {
@@ -34,12 +34,17 @@ window.getPosts = async () => {
                     const author = post.author;
                     const created = new Date(post.created).toDateString();
 
-                    console.log(author);
-                    console.log(muteList);
-                    console.log(author in muteList);
+                    //アカウント対象外
                     if(-1 < muteList.indexOf(author)){
                         return;
-                    }//スキップ
+                    }
+
+                    //24時間以上前
+                    if(yesterday.getTime() > created.getTime()){
+                        return;
+                    }
+
+
                     
                     var body = post.body;
                     body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
