@@ -25,7 +25,7 @@ window.getPosts = async () => {
              const author = post.author;
              const title = post.title;
              //const body = post.body.substring( 0, 40 );
-             const created = post.created;
+             //const created = post.created;
 
              var body = post.body;
              body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
