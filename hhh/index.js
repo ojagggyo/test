@@ -30,8 +30,9 @@ getPosts = async () => {
                 //return authorList.join(",");
 
 
-                log(json) ; 
+                //log(json) ; 
             });
+            log(result) ; 
             //return Promise.resolve(authorList.join(","));
         })
         .catch(err => {
