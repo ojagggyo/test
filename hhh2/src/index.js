@@ -3,6 +3,7 @@ const dsteem = require('dsteem');
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
+const muteList = ["bukitcantik"];
 
 
 //filter change selection function
@@ -28,6 +29,10 @@ window.getPosts = async () => {
                     const author = post.author;
                     const created = new Date(post.created).toDateString();
 
+                    if(author in muteList){
+                        return;
+                    }//スキップ
+                    
                     var body = post.body;
                     body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
                     body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
