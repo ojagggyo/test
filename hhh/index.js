@@ -30,9 +30,9 @@ getPosts = async () => {
                 //return authorList.join(",");
 
 
-                //log(json) ; 
+                log(post.json_metadata) ; 
             });
-            log(result) ; 
+
             //return Promise.resolve(authorList.join(","));
         })
         .catch(err => {
