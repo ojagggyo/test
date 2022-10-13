@@ -3,17 +3,12 @@ const dsteem = require('dsteem');
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
-
-
 function getDateString(date){
     return `${date.getMonth()+1}/${date.getDay()} ${"00",date.getHours()}:${"00",date.getMinutes()}`;
 }
- 
 
-
-
+//ミュートしたいアカウント
 const muteList = ["bukitcantik"];
-
 
 //filter change selection function
 window.getPosts = async () => {
