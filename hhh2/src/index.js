@@ -54,7 +54,7 @@ window.getPosts = async () => {
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
-`<tr><td>${title}</td><td>${author}</td><td>${created.toDateString()}</td><td>${body.length}(${post.body.length})</td></tr>`
+`<tr><td>${title}</td><td>${author}</td><td>${created.ToString("MM/dd HH:mm")}</td><td>${body.length}(${post.body.length})</td></tr>`
   
                     );
                 });
