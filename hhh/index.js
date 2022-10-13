@@ -13,15 +13,25 @@ getPosts = async () => {
           limit: 1,
   };
   
-  console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
+  //console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
   
   client.database
       .getDiscussions(filter, query)
       .then(result => {
-          console.log('Response received:', result);
+          //console.log('Response received:', result);
+
+          var authorList = [];
+          result.forEach(post => {
+              const json = JSON.parse(post.json_metadata);
+              //const image = json.image ? json.image[0] : '';
+              //const title = post.title;
+              const author = post.author;
+              authorList.push(author);
+          return authorList.join(",");
       })
       .catch(err => {
-          console.log(err);
+          //console.log(err);
+          return err;
       });
 };
 
