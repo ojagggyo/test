@@ -35,6 +35,8 @@ getPosts = async () => {
                 //authorList.push(author);
                 //return authorList.join(",");
 
+                log("aaaa");
+
                 body = "![ED907F9F-90FF-440A-9AED-65BEC853F756.jpeg](https://cdn.steemitimages.com/DQmeAXmt5ceLXjHHXHweDQsDPggkofskai3Uoy1oa4XuiWq/ED907F9F-90FF-440A-9AED-65BEC853F756.jpeg)\nこんにちはゆんです。"
                 body = body.replace(/!\[.*\]\(.*\)/g, 'XXXXXXXX');
 
