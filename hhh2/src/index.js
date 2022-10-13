@@ -32,7 +32,7 @@ window.getPosts = async () => {
                     console.log(author);
                     console.log(muteList);
                     console.log(author in muteList);
-                    if(author in muteList){
+                    if(-1 < muteList.indexOf(author)){
                         return;
                     }//スキップ
                     
