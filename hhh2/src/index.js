@@ -52,7 +52,8 @@ window.getPosts = async () => {
                     const image = json.image ? json.image[0] : '';
                     const title = post.title;
                     const author = post.author;
-                    const created = new Date(post.created + "z")
+                    const created = new Date(post.created + "z");
+                    const url = post.url;
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(author)){
@@ -73,7 +74,7 @@ window.getPosts = async () => {
 
                     posts.push(
 //`<div><h4>${title}</h4><p>by ${author}</p><center><img src="${image}" style="max-width: 200px"/></center><p>${created}</p></div>`
-`<tr><td>${title}</td>\
+`<tr><td><a href=https://steemit.com${url}>${title}</a></td>\
 <td>${author}</td>\
 <td>${getDateString(created)}</td>\
 <td>${body.length}(${post.body.length})</td>\
