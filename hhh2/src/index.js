@@ -29,7 +29,8 @@ window.getPosts = async () => {
                     const author = post.author;
                     const created = new Date(post.created).toDateString();
 
-
+                    console.log(author);
+                    console.log(muteList);
                     console.log(author in muteList);
                     if(author in muteList){
                         return;
