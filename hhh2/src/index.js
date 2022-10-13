@@ -25,7 +25,7 @@ window.getPosts = async () => {
             if (result) {
                 var posts = [];
                 const today = new Date();
-                const yesterday = today.setDate(today.getDate() - 1 );
+                const yesterday = new Date(today.setDate(today.getDate() - 1));
 
                 posts.push(`<table><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>`);
 
