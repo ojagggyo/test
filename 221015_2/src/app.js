@@ -2,9 +2,9 @@
 
 const dsteem = require('dsteem');
 
-
 //connect to server which is connected to the network/production
-const client = new Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.steemit.com');
+
 
 //filter change selection function
 window.hello = async () => {
