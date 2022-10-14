@@ -6,11 +6,11 @@ function log(msg) {
 }
 
 async function loglog(msg){
-    return await log(msg).
+    return log(msg)
 }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = loglog('Hello!');  
+    document.getElementById('aaa').innerHTML = log('Hello!');  
 };
 
 // window.hello = () => {
