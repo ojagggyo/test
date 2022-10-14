@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime'
 
-import { Client } from 'dsteem'
+const dsteem = require('dsteem');
 
 
 //connect to server which is connected to the network/production
