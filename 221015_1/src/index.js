@@ -2,7 +2,7 @@ function log(msg) {
     const s = new Date().toString() + ' - ' + msg; 
     console.log(s); 
     //return s;
-    Promise.resolve(s)
+    return Promise.resolve(s)
 }
 
 function loglog(msg){
