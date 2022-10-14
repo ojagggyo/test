@@ -1,4 +1,7 @@
-import { Client } from 'dsteem';
+import 'regenerator-runtime/runtime'
+
+import { Client } from 'dsteem'
+
 
 //connect to server which is connected to the network/production
 const client = new Client('https://api.steemit.com');
