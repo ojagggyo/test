@@ -6,7 +6,7 @@ function log(msg) {
 }
 
 function loglog(msg){
-    log().then(function (value) {
+    log(msg).then(function (value) {
         return value;
     }).catch(function (error) {
         return error;
