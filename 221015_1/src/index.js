@@ -14,7 +14,7 @@ function loglog(msg){
 }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = loglog('Hello!');  
+    document.getElementById('aaa').innerHTML = log('Hello!');  
 };
 
 // window.hello = () => {
