@@ -4,6 +4,10 @@ function log(msg) {
     return s;    
 }
 
+
+//
+// Hello関数
+//
 window.hello = () => {
     document.getElementById('aaa').innerHTML = log('Hello!');  
 };

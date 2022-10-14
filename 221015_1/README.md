@@ -1,5 +1,6 @@
 #ウェブサーバーを起動して、ドキュメントを表示する。
 
+javascript関数を使用
 
 
 function log(msg) {
