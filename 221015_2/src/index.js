@@ -4,7 +4,7 @@ const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
 //filter change selection function
-window.getPosts = async () => {
+window.hello = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
