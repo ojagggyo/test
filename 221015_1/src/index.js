@@ -2,7 +2,7 @@ function log(msg) {
     console.log(new Date().toString() + ' - ' + msg); 
 }
 
-window.getPosts = async () => {
+window.hello = async () => {
     document.getElementById('aaa').innerHTML = log('Hello!');  
 };
 
