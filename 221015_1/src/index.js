@@ -1,14 +1,9 @@
 function log(msg) {
     const s = new Date().toString() + ' - ' + msg; 
     console.log(s); 
-    //return s;
-    return Promise.resolve(s)
+    return s;    
 }
 
-// window.hello = async () => {
-//     document.getElementById('aaa').innerHTML = await log('Hello!');  
-// };
-
-window.hello =  () => {
+window.hello = () => {
     document.getElementById('aaa').innerHTML = log('Hello!');  
 };
