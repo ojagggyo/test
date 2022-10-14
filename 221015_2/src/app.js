@@ -27,7 +27,7 @@ window.hello = async () => {
 
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
-                const image = json.image ? "https://steemitimages.com/200x0"+json.image[0] : '';
+                const image = json.image ? "https://steemitimages.com/200x0/"+json.image[0] : '';
                 const title = post.title;
                 const author = post.author;
                 const created = new Date(post.created + "z");
