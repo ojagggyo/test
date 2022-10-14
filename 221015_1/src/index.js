@@ -4,10 +4,10 @@ function log(msg) {
     return s;
 }
 
-// window.hello = async () => {
-//     document.getElementById('aaa').innerHTML = log('Hello!');  
-// };
-
-window.hello = () => {
+window.hello = async () => {
     document.getElementById('aaa').innerHTML = log('Hello!');  
 };
+
+// window.hello = () => {
+//     document.getElementById('aaa').innerHTML = log('Hello!');  
+// };
