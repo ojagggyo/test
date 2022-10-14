@@ -7,14 +7,16 @@ function log(msg) {
 
 function loglog(msg){
     log(msg).then(function (value) {
+        console.log('then ' + s); 
         return value;
     }).catch(function (error) {
+        console.log('catch ' + s); 
         return error;
     });
 }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = log('Hello!');  
+    document.getElementById('aaa').innerHTML = loglog('Hello!');  
 };
 
 // window.hello = () => {
