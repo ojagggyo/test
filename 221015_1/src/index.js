@@ -5,8 +5,12 @@ function log(msg) {
     Promise.resolve(s)
 }
 
-async function loglog(msg){
-    return log(msg)
+function loglog(msg){
+    log().then(function (value) {
+        return value;
+    }).catch(function (error) {
+        return error;
+    });
 }
 
 // window.hello = async () => {
