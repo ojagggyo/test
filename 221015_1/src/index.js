@@ -10,7 +10,7 @@ async function loglog(msg){
 }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = log('Hello!');  
+    document.getElementById('aaa').innerHTML = loglog('Hello!');  
 };
 
 // window.hello = () => {
