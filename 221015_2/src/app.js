@@ -5,6 +5,9 @@ const dsteem = require('dsteem');
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
+function getDateString(date){
+    return `${date.getMonth()+1}/${date.getDay()} ${date.getHours()}:${date.getMinutes()}`;
+}
 
 //filter change selection function
 window.hello = async () => {
