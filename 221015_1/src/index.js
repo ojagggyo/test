@@ -6,6 +6,7 @@ function log(msg) {
 }
 
 function loglog(msg){
+    console.log('loglog '); 
     log(msg).then(function (value) {
         console.log('then ' + s); 
         return value;
