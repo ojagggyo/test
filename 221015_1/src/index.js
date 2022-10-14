@@ -17,7 +17,7 @@ function log(msg) {
 // }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = await loglog('Hello!');  
+    document.getElementById('aaa').innerHTML = await log('Hello!');  
 };
 
 // window.hello = () => {
