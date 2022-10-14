@@ -36,7 +36,7 @@ window.hello = async () => {
                 const url = post.url;
 
                 var body = post.body;
-                body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
+                body = body.replace(/!\[.*\]\(.*\)/g, '');//画像削除
                 body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
 
                 posts.push(
