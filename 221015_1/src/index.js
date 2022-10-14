@@ -5,19 +5,19 @@ function log(msg) {
     return Promise.resolve(s)
 }
 
-function loglog(msg){
-    console.log('loglog '); 
-    log(msg).then(function (value) {
-        console.log('then ' + s); 
-        return value;
-    }).catch(function (error) {
-        console.log('catch ' + s); 
-        return error;
-    });
-}
+// function loglog(msg){
+//     console.log('loglog '); 
+//     log(msg).then(function (value) {
+//         console.log('then ' + s); 
+//         return value;
+//     }).catch(function (error) {
+//         console.log('catch ' + s); 
+//         return error;
+//     });
+// }
 
 window.hello = async () => {
-    document.getElementById('aaa').innerHTML = loglog('Hello!');  
+    document.getElementById('aaa').innerHTML = await loglog('Hello!');  
 };
 
 // window.hello = () => {
