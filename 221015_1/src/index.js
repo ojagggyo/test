@@ -1,11 +1,13 @@
-function log(msg) { 
-    console.log(new Date().toString() + ' - ' + msg); 
+function log(msg) {
+    const s = new Date().toString() + ' - ' + msg; 
+    console.log(s); 
+    return s;
 }
 
-window.hello = async () => {
-    document.getElementById('aaa').innerHTML = log('Hello!');  
-};
-
-// window.hello = () => {
+// window.hello = async () => {
 //     document.getElementById('aaa').innerHTML = log('Hello!');  
 // };
+
+window.hello = () => {
+    document.getElementById('aaa').innerHTML = log('Hello!');  
+};
