@@ -12,14 +12,41 @@ window.hello = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
-        limit: 1,
+        limit: 5,
     };
 
     client.database
         .getDiscussions(filter, query)
         .then(result => {
             console.log('Response received:', result);
-            document.getElementById('aaa').innerHTML = 'OK';
+
+            var posts = [];
+
+            posts.push(`<table>`);
+            posts.push(`<tr><th>タイトル</th><th>著者</th><th>作成日</th><th>本文</th></tr>`);
+            result.forEach(post => {
+                const json = JSON.parse(post.json_metadata);
+                const image = json.image ? json.image[0] : '';
+                const title = post.title;
+                const author = post.author;
+                const created = new Date(post.created + "z");
+                const url = post.url;
+
+                var body = post.body;
+                body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
+                body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
+
+                posts.push(
+`<tr><td><a href=https://steemit.com${url}>${title}</a></td>\
+<td>${author}</td>\
+<td>${getDateString(created)}</td>\
+<td>${body}</td></tr>`
+                );
+            });
+            posts.push(`</table>`);
+
+
+            document.getElementById('aaa').innerHTML = osts.join('');
         })
         .catch(err => {
             console.log(err);
