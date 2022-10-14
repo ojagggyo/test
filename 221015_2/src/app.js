@@ -25,7 +25,7 @@ window.hello = async () => {
 
             var posts = [];
 
-            posts.push(`<table>`);
+            posts.push(`<table border="1" width="100%">`);
             //posts.push(`<tr><th>タイトル</th><th>著者</th><th>作成日</th><th>本文</th></tr>`);
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
