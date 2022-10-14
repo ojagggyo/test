@@ -14,5 +14,5 @@ module.exports = {
         path: path.join(__dirname, 'public')
     },
     // Uncaught (in promise) ReferenceError: regeneratorRuntime is not defined
-    //entry: ['regenerator-runtime/runtime.js', './public/bundle.js']
+    entry: ['regenerator-runtime/runtime.js', './public/bundle.js']
 };
