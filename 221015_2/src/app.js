@@ -41,8 +41,9 @@ window.hello = async () => {
 
                 posts.push(
 `<h2><a href=https://steemit.com${url}>${title}</a></h2>\
+<b>${author}${getDateString(created)}</b>\
 <img src="${image}" style="max-width: 200px" align="right" />\
-${author}${getDateString(created)}<br />${body}<hr/>`);
+<br />${body}<hr/>`);
             });
             posts.push(`</table>`);
 
