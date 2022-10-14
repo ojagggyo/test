@@ -6,6 +6,6 @@ function log(msg) {
 //     document.getElementById('aaa').innerHTML = log('Hello!');  
 // };
 
-window.getPosts = () => {
+window.hello = () => {
     document.getElementById('aaa').innerHTML = log('Hello!');  
 };
