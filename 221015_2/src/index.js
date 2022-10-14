@@ -16,8 +16,10 @@ window.hello = async () => {
         .getDiscussions(filter, query)
         .then(result => {
             console.log('Response received:', result);
+            document.getElementById('aaa').innerHTML = 'OK';
         })
         .catch(err => {
             console.log(err);
+            document.getElementById('aaa').innerHTML = 'NG';
         });
 };
