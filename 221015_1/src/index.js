@@ -6,7 +6,7 @@ function log(msg) {
 }
 
 async function loglog(msg){
-    return await log(msg)
+    return log(msg)
 }
 
 // window.hello = async () => {
