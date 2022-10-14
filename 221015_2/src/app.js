@@ -40,9 +40,9 @@ window.hello = async () => {
                 body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
 
                 posts.push(
-`<img src="${image}" style="max-width: 200px"/>\
-<div class="text-right"><a href=https://steemit.com${url}>${title}</a>\
-${author}${getDateString(created)}<br />${body}</div><hr/>`);
+`<img src="${image}" style="max-width: 200px" align="left">/>\
+<a href=https://steemit.com${url}>${title}</a>\
+${author}${getDateString(created)}<br />${body}<hr/>`);
             });
             posts.push(`</table>`);
 
