@@ -49,7 +49,7 @@ window.hello = async () => {
             posts.push(`</table>`);
 
 
-            document.getElementById('aaa').innerHTML = osts.join('');
+            document.getElementById('aaa').innerHTML = posts.join('');
         })
         .catch(err => {
             console.log(err);
