@@ -1,3 +1,3 @@
 module.exports = {
-    entry: ['regenerator-runtime/runtime.js', './bundle.js']
+    entry: ['regenerator-runtime/runtime.js', './public/bundle.js']
     };
