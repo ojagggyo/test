@@ -9,6 +9,6 @@ function log(msg) {
 //     document.getElementById('aaa').innerHTML = log('Hello!');  
 // };
 
-window.hello = () => {
-    document.getElementById('aaa').innerHTML = log('Hello!');  
+window.hello = async () => {
+    document.getElementById('aaa').innerHTML = await log('Hello!');  
 };
