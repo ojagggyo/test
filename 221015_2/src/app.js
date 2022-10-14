@@ -26,7 +26,7 @@ window.hello = async () => {
             var posts = [];
 
             posts.push(`<table>`);
-            posts.push(`<tr><th>タイトル</th><th>著者</th><th>作成日</th><th>本文</th></tr>`);
+            //posts.push(`<tr><th>タイトル</th><th>著者</th><th>作成日</th><th>本文</th></tr>`);
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
                 const image = json.image ? json.image[0] : '';
@@ -40,11 +40,9 @@ window.hello = async () => {
                 body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
 
                 posts.push(
-`<tr><td><a href=https://steemit.com${url}>${title}</a></td>\
-<td>${author}</td>\
-<td>${getDateString(created)}</td>\
-<td>${body}</td></tr>`
-                );
+`<tr><td><img src="${image}" style="max-width: 200px"/></td>\
+<td><a href=https://steemit.com${url}>${title}</a><br />\
+${author}<br /></br>${getDateString(created)}<br />${body}</td></tr>`);
             });
             posts.push(`</table>`);
 
