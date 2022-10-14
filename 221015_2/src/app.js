@@ -25,11 +25,9 @@ window.hello = async () => {
 
             var posts = [];
 
-            //posts.push(`<table border="1" width="100%">`);
-            //posts.push(`<tr><th>タイトル</th><th>著者</th><th>作成日</th><th>本文</th></tr>`);
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
-                const image = json.image ? json.image[0] : '';
+                const image = json.image ? "https://steemitimages.com/200x0"+json.image[0] : '';
                 const title = post.title;
                 const author = post.author;
                 const created = new Date(post.created + "z");
@@ -43,7 +41,7 @@ window.hello = async () => {
                 posts.push(
 `<h2><a href=https://steemit.com${url}>${title}</a></h2>\
 <b>${author}${getDateString(created)}</b>\
-<img src="${image}" style="max-width: 200px" align="right" />\
+<img src="${image}" align="right" />\
 <br />${body}<hr/>`);
             });
             posts.push(`</table>`);
