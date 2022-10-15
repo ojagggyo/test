@@ -1,4 +1,4 @@
-//import 'regenerator-runtime/runtime'
+// Uncaught (in promise) ReferenceError: regeneratorRuntime is not defined
 require("regenerator-runtime/runtime");
 
 const dsteem = require('dsteem');
@@ -28,7 +28,7 @@ window.hello = async () => {
 
             result.forEach(post => {
                 const json = JSON.parse(post.json_metadata);
-                const image = json.image ? json.image[0] : '';
+                const image = json.image ? "https://steemitimages.com/200x0/"+json.image[0] : '';
                 const title = post.title;
                 const author = post.author;
                 const created = new Date(post.created + "z");
@@ -42,7 +42,7 @@ window.hello = async () => {
                 posts.push(
 `<h2><a href=https://steemit.com${url}>${title}</a></h2>\
 <b>${author}${getDateString(created)}</b>\
-<img src="https://steemitimages.com/200x0/${image}" align="right" />\
+<img src="${image}" align="right" />\
 <br />${body}<hr/>`);
             });
             posts.push(`</table>`);
