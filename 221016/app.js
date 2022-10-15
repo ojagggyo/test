@@ -22,7 +22,6 @@ client.database
     });
 
 
-    
 //
 const acountName = function() {
     return "yasu.pal"
@@ -30,6 +29,7 @@ const acountName = function() {
 const privateKey = function() {
     return "5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL"
 };
+
 
 
 createPost = async () => {
@@ -77,3 +77,7 @@ createPost = async () => {
                 }
             );
 };
+
+
+
+createPost();
