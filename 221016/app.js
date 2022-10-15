@@ -1,37 +1,14 @@
 const dsteem = require('dsteem');
+const fs = require("fs");
+
+var config = JSON.parse(fs.readFileSync("config.json"));
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
-//filter change selection function
-const filter = 'created';
-const query = {
-        tag: 'japanese',
-        limit: 1,
-};
-
-console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
-
-client.database
-    .getDiscussions(filter, query)
-    .then(result => {
-        console.log('Response received:', result);
-    })
-    .catch(err => {
-        console.log(err);
-    });
-
-
-//
-// const acountName = function() {
-//     return Promise.resolve("yasu.pal")
-// };
-// const privateKey = function() {
-//     return Promise.resolve("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
-// };
 const authorAcount = {
-    acountName:　"yasu.pal",
-    privateKey: dsteem.PrivateKey.fromString("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
+    acountName: config.acount_name,
+    privateKey: dsteem.PrivateKey.fromString(config.posting_key)
 };
 
 createPost = async () => {
