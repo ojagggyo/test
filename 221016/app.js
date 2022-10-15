@@ -29,16 +29,16 @@ client.database
 // const privateKey = function() {
 //     return Promise.resolve("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
 // };
-const acount = {
+const authorAcount = {
     acountName:　"yasu.pal",
     privateKey: "5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL"
 };
 
 createPost = async () => {
         //get private key
-        const privateKey = acount.privateKey;
+        const privateKey = authorAcount.privateKey;
         //get account name
-        const account = acount.acountName;
+        const account = authorAcount.acountName;
         //for content
         const time = new Date().getTime();
         //get title
