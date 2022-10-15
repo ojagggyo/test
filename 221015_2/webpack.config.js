@@ -6,6 +6,7 @@ module.exports = {
     mode: 'development',
     // エントリーポイントの設定
     //entry: './src/app.js',
+    // Uncaught (in promise) ReferenceError: regeneratorRuntime is not defined
     entry: ['regenerator-runtime/runtime.js', './src/app.js'],
     // 出力の設定
     output: {
@@ -14,6 +15,4 @@ module.exports = {
         // 出力先のパス（絶対パスを指定する必要がある）
         path: path.join(__dirname, 'public')
     },
-    // Uncaught (in promise) ReferenceError: regeneratorRuntime is not defined
-    //entry: ['regenerator-runtime/runtime.js', './public/bundle.js']
 };
