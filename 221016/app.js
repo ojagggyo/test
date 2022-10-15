@@ -1,4 +1,5 @@
 const dsteem = require('dsteem');
+import { Client, PrivateKey } from 'dsteem';
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
@@ -31,7 +32,7 @@ client.database
 // };
 const authorAcount = {
     acountName:　"yasu.pal",
-    privateKey: PrivateKey.fromString("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
+    privateKey: dsteem.PrivateKey.fromString("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
 };
 
 createPost = async () => {
