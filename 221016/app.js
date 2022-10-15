@@ -24,19 +24,19 @@ client.database
 
 //
 const acountName = function() {
-    return "yasu.pal"
+    return Promise.resolve("yasu.pal")
 };
 const privateKey = function() {
-    return "5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL"
+    return Promise.resolve("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
 };
 
 
 
 createPost = async () => {
         //get private key
-        const privateKey = privateKey();
+        const privateKey = await privateKey();
         //get account name
-        const account = acountName();
+        const account = await acountName();
         //for content
         const time = new Date().getTime();
         //get title
