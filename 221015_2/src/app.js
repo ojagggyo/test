@@ -1,4 +1,5 @@
-import 'regenerator-runtime/runtime'
+//import 'regenerator-runtime/runtime'
+require("regenerator-runtime/runtime");
 
 const dsteem = require('dsteem');
 
