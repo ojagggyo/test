@@ -24,7 +24,6 @@ const targetPost = {
 
 submitVote = async () => {
     
-    //get all values from the UI//
     //get account name of voter
     const voter = voterAcount.acountName;
     //get private posting key
