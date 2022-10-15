@@ -31,7 +31,7 @@ client.database
 // };
 const authorAcount = {
     acountName:　"yasu.pal",
-    privateKey: "5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL"
+    privateKey: PrivateKey.fromString("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
 };
 
 createPost = async () => {
