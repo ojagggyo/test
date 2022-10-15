@@ -1,5 +1,4 @@
 const dsteem = require('dsteem');
-import { Client, PrivateKey } from 'dsteem';
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
