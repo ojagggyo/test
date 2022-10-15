@@ -23,20 +23,22 @@ client.database
 
 
 //
-const acountName = function() {
-    return Promise.resolve("yasu.pal")
+// const acountName = function() {
+//     return Promise.resolve("yasu.pal")
+// };
+// const privateKey = function() {
+//     return Promise.resolve("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
+// };
+const acount = {
+    acountName:　"yasu.pal",
+    privateKey: "5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL"
 };
-const privateKey = function() {
-    return Promise.resolve("5JokxJUr1iG4tXQASbLdaV251WqhWpKmK2cFPyLFzmTqyQ2qKAL")
-};
-
-
 
 createPost = async () => {
         //get private key
-        const privateKey = await privateKey();
+        const privateKey = acount.privateKey;
         //get account name
-        const account = await acountName();
+        const account = acount.acountName;
         //for content
         const time = new Date().getTime();
         //get title
