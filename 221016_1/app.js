@@ -17,7 +17,7 @@ const voterAcount = {
 };
 
 const targetPost = {
-    permlink: "4mgktspmmns",
+    permlink: "srgovmdw7m",
     author: "yasu.pal"
 };
 
