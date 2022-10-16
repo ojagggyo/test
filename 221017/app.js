@@ -37,7 +37,7 @@ const targetPost = {
 };
 
 //submit post function
-edit_content = async (author, permlink, body) => {
+edit_content = async (author, permlink, body, tags) => {
     //get private key
     const privateKey = authorAcount.privateKey;
     //get account name
@@ -58,8 +58,7 @@ edit_content = async (author, permlink, body) => {
     }
 
     //get tags and convert to array list
-    const tags = document.getElementById('tags').value;
-    const taglist = tags.split(' ');
+    const taglist = tags.split(',');
     //make simple json metadata including only tags
     const json_metadata = JSON.stringify({ tags: taglist });
     //generate random permanent link for post
@@ -103,9 +102,13 @@ async function getLatestPost() {
         .then(result => {
             result.forEach(post => {
                 console.log(post);
+                const json = JSON.parse(post.json_metadata);
 
-                console.log(`${post.author},${post.permlink}`);
-                edit_content(post.author, post.permlink, post.body);
+
+                
+
+                console.log(`author=${post.author},permlink=${post.permlink},tags=${json.tags}`);
+                edit_content(post.author, post.permlink, post.body, json.tags);
             });
         })
         .catch(err => {

@@ -33,8 +33,6 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
 
-               
-
                 console.log(`${author},${permlink},${json.tags}`);
                 get_content(author, permlink);
             });
