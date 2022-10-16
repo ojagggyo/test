@@ -14,7 +14,6 @@ get_content_replies = async (author, permlink) => {
     client.database
         .call('get_content_replies', [author, permlink])
         .then(result => {
-            const comments = [];
             for (var i = 0; i < result.length; i++) {
                 console.log(result[i].author);
                 console.log(result[i].created);
