@@ -3,8 +3,8 @@ const r = require('remarkable');
 
 
 //import Remarkable from 'remarkable';
-import linkify from 'remarkable/linkify';
-
+//import linkify from 'remarkable/linkify';
+const linkify = require('remarkable/linkify');
 
 
 //connect to server which is connected to the network/production
