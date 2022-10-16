@@ -25,11 +25,12 @@ async function main() {
     client.database
         .getDiscussions('created', query)
         .then(result => {
-            console.log(`${result}`);
+            
 
             var posts = [];
             result.forEach(post => {
-                //console.log(post);
+                console.log(post);
+                
                 const json = JSON.parse(post.json_metadata);
                 const image = json.image ? json.image[0] : '';
                 const title = post.title;
@@ -37,7 +38,7 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
                 
-                console.log(`${author},${permlink},${post.active_votes.join(':')}`);
+                console.log(`${author},${permlink}`);
 
                 //非同期であることに注意！
                 get_content(author, permlink);
