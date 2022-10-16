@@ -1,4 +1,5 @@
 const dsteem = require('dsteem');
+const dsteem = require('./app1.js');
 // const fs = require("fs");
 
 // var config = JSON.parse(fs.readFileSync("config.json"));
@@ -31,7 +32,10 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
 
+                console.log(`*****`);
                 console.log(`${author},${permlink}`);
+                console.log(get_content(author, permlink));
+                console.log(`*****`);
             });
         })
         .catch(err => {
