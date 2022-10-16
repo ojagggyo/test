@@ -104,8 +104,17 @@ async function getLatestPost() {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
 
-                a = json.tags.split(",");
-                tags = a.json(" ");
+                console.log(json.tags);
+                
+                a = json.tags;
+                
+                console.log(a.split(","));
+
+                b = a.split(",");
+                
+                console.log(b.json(" "));
+
+                tags = b.json(" ");
 
                 console.log(`author=${post.author},permlink=${post.permlink},tags=${tags}`);
                 edit_content(post.author, post.permlink, post.body, json.tags.split(","));
