@@ -58,7 +58,7 @@ edit_content = async (author, permlink, body, tags) => {
     }
 
     //get tags and convert to array list
-    const taglist = tags.split(',');
+    const taglist = tags;
     //make simple json metadata including only tags
     const json_metadata = JSON.stringify({ tags: taglist });
     //generate random permanent link for post
@@ -105,10 +105,8 @@ async function getLatestPost() {
                 const json = JSON.parse(post.json_metadata);
 
 
-                
-
-                console.log(`author=${post.author},permlink=${post.permlink},tags=${json.tags}`);
-                edit_content(post.author, post.permlink, post.body, json.tags);
+                console.log(`author=${post.author},permlink=${post.permlink},tags=${json.tags.split(",").json(" ")}`);
+                edit_content(post.author, post.permlink, post.body, json.tags.split(","));
             });
         })
         .catch(err => {
