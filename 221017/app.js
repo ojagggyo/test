@@ -5,14 +5,15 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 //submitTab function from html input
 const max = 100;
-const tagSearch = "";
+const tagSearch = "japanese";
 
 submitTag = async () => {
 
     console.log('tagSearch: ', tagSearch);
 
     //get list of tags from blockchain
-    const _tags = await client.database.call('get_trending_tags', [
+    //const _tags = await client.database.call('get_trending_tags', [
+    const _tags = await client.database.call('get_created_tags', [
         tagSearch,
         max,
     ]);
