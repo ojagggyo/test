@@ -14,11 +14,12 @@ async function getLatestPost() {
     client.database
         .call('get_discussions_by_blog', [query])
         .then(result => {
-            console.log(`${result[0].title} ${result[0].body} ${JSON.parse(result[0].json_metadata).tags.join(' ')}`) ;
-          
-
-            //o_body = result[0].body;
-            //o_permlink = result[0].permlink;
+        
+            var posts = [];
+            result.forEach(post => {
+                console.log(post);
+                //console.log(`${post.title} ${post.author} ${post.permlink} ${post.auther} ${post.parse}${post.body} ${JSON.parse(post.json_metadata).tags.join(' ')}`) ;
+            });
         })
         .catch(err => {
             console.log(err);
