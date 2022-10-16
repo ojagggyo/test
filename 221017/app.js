@@ -43,9 +43,9 @@ edit_content = async (author, permlink, body, tags) => {
     //get account name
     const account = authorAcount.acountName;
     //get title
-    const title = "変更後titleの変更";
+    const title = "変更後titleの変更の変更";
     //get body
-    const edited_body = "変更後bodyの変更";
+    const edited_body = "変更後bodyの変更の変更";
 
     //computes a list of patches to turn o_body to edited_body
     const patch = createPatch(body, edited_body);
