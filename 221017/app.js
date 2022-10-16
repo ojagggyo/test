@@ -1,8 +1,8 @@
 const dsteem = require('dsteem');
-//const r = require('remarkable');
+const r = require('remarkable');
 
 
-import Remarkable from 'remarkable';
+//import Remarkable from 'remarkable';
 import linkify from 'remarkable/linkify';
 
 
