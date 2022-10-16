@@ -110,7 +110,7 @@ async function getLatestPost() {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
                
-                console.log(`json=${json}`);
+                console.log(json);
 
                 console.log(json.tags);
                 tags = ('tags' in json.tags) ? json.tags : [];
