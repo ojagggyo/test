@@ -11,7 +11,7 @@ get_content = async (author, permlink) => {
         const body = md.render(result.body);
         //result.title
         //body
-        console.log(`title=${result.title} author}=${author} permlink}=${permlink} body=${body}`);
+        console.log(`title=${result.title} author=${author} permlink=${permlink} body=${body}`);
     });
 };
 
@@ -37,7 +37,7 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
                 
-                console.log(`${author},${permlink}`);
+                console.log(`${author},${permlink},${post.active_votes}`);
 
                 //非同期であることに注意！
                 get_content(author, permlink);
