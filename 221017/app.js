@@ -13,6 +13,19 @@ const client = new dsteem.Client('https://api.steemit.com');
 //     privateKey: dsteem.PrivateKey.fromString(config.posting_key)
 // };
 
+
+//get_content of the post
+get_content = async (author, permlink) => {
+    client.database.call('get_content', [author, permlink]).then(result => {
+        const md = new Remarkable({ html: true, linkify: true });
+        const body = md.render(result.body);
+        //result.title
+        //body
+        console(`body=${result}`);
+    });
+};
+
+
 //fetch list of trending posts
 async function main() {
     const query = {
@@ -50,13 +63,3 @@ main().catch(console.error);
 
 
 
-//get_content of the post
-get_content = async (author, permlink) => {
-    client.database.call('get_content', [author, permlink]).then(result => {
-        const md = new Remarkable({ html: true, linkify: true });
-        const body = md.render(result.body);
-        //result.title
-        //body
-        console(`body=${result}`);
-    });
-};
