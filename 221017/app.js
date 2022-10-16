@@ -18,7 +18,7 @@ async function main() {
     const query = {
         tag: 'japanese',
         limit: 1,
-        truncate_body: 0,
+        truncate_body: 1,
     };
     client.database
         .getDiscussions('created', query)
