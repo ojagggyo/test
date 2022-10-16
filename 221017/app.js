@@ -7,11 +7,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 //get_content of the post
 get_content = async (author, permlink) => {
     client.database.call('get_content', [author, permlink]).then(result => {
-        const md = new r.Remarkable({ html: true, linkify: true });
-        
+        const md = new r.Remarkable({ html: true, linkify: true });       
         const body = md.render(result.body);
-        //result.title
-        //body
         console.log(`title=${result.title} author=${author} permlink=${permlink} body=${body}`);
     });
 };
@@ -21,26 +18,21 @@ async function main() {
     const query = {
         tag: 'japanese',
         limit: 1,
-        truncate_body: 1,
+        truncate_body: 2,
     };
     client.database
         .getDiscussions('created', query)
         .then(result => {
-            
-
             var posts = [];
             result.forEach(post => {
                 console.log(post);
-                
                 const json = JSON.parse(post.json_metadata);
                 const image = json.image ? json.image[0] : '';
                 const title = post.title;
                 const author = post.author;
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
-                
                 console.log(`${author},${permlink}`);
-
                 //非同期であることに注意！
                 get_content(author, permlink);
             });
