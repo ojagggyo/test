@@ -5,7 +5,7 @@ require('./app1.js');
 // var config = JSON.parse(fs.readFileSync("config.json"));
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+export const client = new dsteem.Client('https://api.steemit.com');
 
 // const authorAcount = {
 //     acountName: config.acount_name,
