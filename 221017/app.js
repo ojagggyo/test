@@ -4,8 +4,6 @@ const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
 
-
-
 const fs = require("fs");
 var config = JSON.parse(fs.readFileSync("config.json"));
 const authorAcount = {
@@ -15,16 +13,14 @@ const authorAcount = {
 };
 
 
-
-//submit post function
 edit_content = async (author, permlink, parent_permlink, tags, body) => {
 
-    console.log(" *** edit_content ***");
-    console.log(author);
-    console.log(permlink);
-    console.log(parent_permlink);
-    console.log(tags);
-    console.log(body);
+    //console.log(" *** edit_content ***");
+    //console.log(author);
+    //console.log(permlink);
+    //console.log(parent_permlink);
+    //console.log(tags);
+    //console.log(body);
 
     //get private key
     const privateKey = authorAcount.privateKey;
@@ -41,7 +37,7 @@ edit_content = async (author, permlink, parent_permlink, tags, body) => {
     client.broadcast
         .comment(
             {
-                author: account,
+                author: author,
                 body: body,
                 json_metadata: json_metadata,
                 parent_author: '',
@@ -62,27 +58,26 @@ edit_content = async (author, permlink, parent_permlink, tags, body) => {
 };
 
 
-
-
-//fetch list of comments for certain account
+// 最新の記事を取得する。
 async function getLatestPost() {
+    
     const query = {
         tag: 'yasu.pal',
         limit: '1',
-        truncate_body: 10
+        truncate_body: 1//本文を1文字だけ取得
     };
+
     client.database
         .call('get_discussions_by_blog', [query])
         .then(result => {
             result.forEach(post => {
-                console.log(post);
+                //console.log(post);
                 const body = post.body + " " + new Date().getTime();
                 const json = JSON.parse(post.json_metadata);
-                console.log(json);
+                //console.log(json);
                 tags = ('tags' in json) ? json.tags : [];
-                console.log(tags);
-
-                console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
+                //console.log(tags);
+                //console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
                 edit_content(post.author, post.permlink, post.parent_permlink, tags, body);
             });
         })
