@@ -80,16 +80,13 @@ async function getLatestPost() {
             result.forEach(post => {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
-               
-                console.log(json);
 
                 tags = ('tags' in json) ? json.tags : [];
-                console.log(tags);
 
                 const body = post.body + " " + new Date().getTime();
 
                 console.log(`author=${post.author},permlink=${post.permlink},tags=${tags.join(".")}`);
-                edit_content(post.author, post.permlink, post.body, tags);
+                edit_content(post.author, post.permlink, body, tags);
             });
         })
         .catch(err => {
