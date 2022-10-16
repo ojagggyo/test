@@ -14,17 +14,15 @@ const authorAcount = {
     
 };
 
-const targetPost = {
-    permlink: "bn5uqie0rej",
-    author: "yasu.pal"
-};
+
 
 //submit post function
-edit_content = async (author, permlink, body, tags) => {
+edit_content = async (author, permlink, parent_permlink, body, tags) => {
 
     console.log(" *** edit_content ***");
     console.log(author);
     console.log(permlink);
+    console.log(parent_permlink);
     console.log(body);
     console.log(tags);
 
@@ -48,7 +46,7 @@ edit_content = async (author, permlink, body, tags) => {
                 body: body,
                 json_metadata: json_metadata,
                 parent_author: '',
-                parent_permlink: taglist[0],
+                parent_permlink: parent_permlink,
                 permlink: permlink,
                 title: title,
             },
@@ -79,14 +77,14 @@ async function getLatestPost() {
         .then(result => {
             result.forEach(post => {
                 console.log(post);
-                const json = JSON.parse(post.json_metadata);
-
-                tags = ('tags' in json) ? json.tags : [];
-
                 const body = post.body + " " + new Date().getTime();
+                const json = JSON.parse(post.json_metadata);
+                console.log(json);
+                tags = ('tags' in json) ? json.tags : [];
+                console.log(tags);
 
-                console.log(`author=${post.author},permlink=${post.permlink},tags=${tags.join(".")}`);
-                edit_content(post.author, post.permlink, body, tags);
+                console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
+                edit_content(post.author, post.permlink, post.parent_permlink, body, tags);
             });
         })
         .catch(err => {
