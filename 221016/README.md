@@ -1,7 +1,9 @@
-#新しく投稿する。
+# [broadcast.comment 関数で投稿してみる](https://steemit.com/hive-161179/@yasu/broadcast-comment)
 
-初期化
-npm init
+[JS: Submit Post](https://developers.steem.io/tutorials-javascript/submit_post)
 
-実行
-node app.js
+## 実行方法
+
+npm install dsteem
+
+node 作成したjsファイル
