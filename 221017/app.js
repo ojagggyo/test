@@ -17,15 +17,14 @@ const authorAcount = {
 
 
 //submit post function
-edit_content = async (author, permlink, parent_permlink, body, tags) => {
+edit_content = async (author, permlink, parent_permlink, tags, body) => {
 
     console.log(" *** edit_content ***");
     console.log(author);
     console.log(permlink);
     console.log(parent_permlink);
-    console.log(body);
     console.log(tags);
-
+    console.log(body);
 
     //get private key
     const privateKey = authorAcount.privateKey;
@@ -84,7 +83,7 @@ async function getLatestPost() {
                 console.log(tags);
 
                 console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
-                edit_content(post.author, post.permlink, post.parent_permlink, body, tags);
+                edit_content(post.author, post.permlink, post.parent_permlink, tags, body);
             });
         })
         .catch(err => {
