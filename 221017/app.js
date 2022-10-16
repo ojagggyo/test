@@ -43,12 +43,14 @@ edit_content = async (author, permlink, body, tags) => {
     //get account name
     const account = authorAcount.acountName;
     //get title
-    const title = "変更後title";
+    const title = "変更後titleの変更";
     //get body
-    const edited_body = "変更後body";
+    const edited_body = "変更後bodyの変更";
 
     //computes a list of patches to turn o_body to edited_body
     const patch = createPatch(body, edited_body);
+
+    console.log(`patch=${patch}`);
 
     //check if patch size is smaller than edited content itself
     if (patch && patch.length < new Buffer(edited_body, 'utf-8').length) {
@@ -103,9 +105,11 @@ async function getLatestPost() {
             result.forEach(post => {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
+                const tags = json.tags;//list
 
-                console.log(`author=${post.author},permlink=${post.permlink},tags=${json.tags.join(".")}`);
-                edit_content(post.author, post.permlink, post.body, json.tags);
+
+                console.log(`author=${post.author},permlink=${post.permlink},tags=${tags.join(".")}`);
+                edit_content(post.author, post.permlink, post.body, tags);
             });
         })
         .catch(err => {
