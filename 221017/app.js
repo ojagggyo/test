@@ -19,12 +19,14 @@ get_content = async (author, permlink) => {
 async function main() {
     const query = {
         tag: 'japanese',
-        limit: 5,
+        limit: 1,
         truncate_body: 1,
     };
     client.database
         .getDiscussions('created', query)
         .then(result => {
+            console.log(`${result}`);
+
             var posts = [];
             result.forEach(post => {
                 //console.log(post);
@@ -34,7 +36,7 @@ async function main() {
                 const author = post.author;
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
-
+                
                 console.log(`${author},${permlink}`);
 
                 //非同期であることに注意！
