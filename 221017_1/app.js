@@ -64,12 +64,12 @@ async function getLatestPost() {
         .call('get_discussions_by_blog', [query])
         .then(result => {
             result.forEach(post => {
-                //console.log(post);
+                console.log(post);
                 const body = post.body + " " + new Date().getTime();
                 const json = JSON.parse(post.json_metadata);
-                //console.log(json);
+                console.log(json);
                 tags = ('tags' in json) ? json.tags : [];
-                //console.log(tags);
+                console.log(tags);
                 submitComment(post.author, post.permlink, tags);
             });
         })

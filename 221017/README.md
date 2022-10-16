@@ -1,4 +1,4 @@
-# 
+# 記事を修正してみる。
 
 [JS: Edit Content Patching](https://developers.steem.io/tutorials-javascript/edit_content_patching)
 

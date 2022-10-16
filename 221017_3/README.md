@@ -1,4 +1,4 @@
-#UPVOTEする。
+# UPVOTEする。
 
 期化
 npm init
