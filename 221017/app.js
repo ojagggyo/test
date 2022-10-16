@@ -1,11 +1,12 @@
 const dsteem = require('dsteem');
-require('./app1.js');
+const Remarkable = require('remarkable');
+
 // const fs = require("fs");
 
 // var config = JSON.parse(fs.readFileSync("config.json"));
 
 //connect to server which is connected to the network/production
-export const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.steemit.com');
 
 // const authorAcount = {
 //     acountName: config.acount_name,
@@ -45,3 +46,17 @@ async function main() {
 }
 //catch error messages
 main().catch(console.error);
+
+
+
+
+//get_content of the post
+get_content = async (author, permlink) => {
+    client.database.call('get_content', [author, permlink]).then(result => {
+        const md = new Remarkable({ html: true, linkify: true });
+        const body = md.render(result.body);
+        //result.title
+        //body
+        console(`body=${result}`);
+    });
+};
