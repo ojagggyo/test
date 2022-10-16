@@ -23,7 +23,7 @@ async function main() {
         .then(result => {
             var posts = [];
             result.forEach(post => {
-                console.log(post);
+                //console.log(post);
                 const json = JSON.parse(post.json_metadata);
                 const image = json.image ? json.image[0] : '';
                 const title = post.title;
