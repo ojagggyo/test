@@ -1,5 +1,6 @@
 const dsteem = require('dsteem');
-const Remarkable = require('remarkable');
+//const Remarkable = require('remarkable');
+const {default: Remarkable} = require('remarkable');
 
 // const fs = require("fs");
 
