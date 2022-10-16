@@ -6,23 +6,6 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 
 
-
-
-
-
-const diff_match_patch = require('diff-match-patch');
-const dmp = new diff_match_patch();
-
-function createPatch(text, out) {
-    if (!text && text === '') return undefined;
-    const patch_make = dmp.patch_make(text, out);
-    const patch = dmp.patch_toText(patch_make);
-    return patch;
-}
-
-
-
-
 const fs = require("fs");
 var config = JSON.parse(fs.readFileSync("config.json"));
 const authorAcount = {
@@ -32,12 +15,20 @@ const authorAcount = {
 };
 
 const targetPost = {
-    permlink: "srgovmdw7m",
+    permlink: "bn5uqie0rej",
     author: "yasu.pal"
 };
 
 //submit post function
 edit_content = async (author, permlink, body, tags) => {
+
+    console.log(" *** edit_content ***");
+    console.log(author);
+    console.log(permlink);
+    console.log(body);
+    console.log(tags);
+
+
     //get private key
     const privateKey = authorAcount.privateKey;
     //get account name
@@ -47,28 +38,10 @@ edit_content = async (author, permlink, body, tags) => {
     //get body
     const edited_body = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890A";
 
-    //computes a list of patches to turn o_body to edited_body
-    const patch = createPatch(body, edited_body);
-
-    console.log(`patch=${patch}`);
-
-    //check if patch size is smaller than edited content itself
-    if (patch && patch.length < new Buffer(edited_body, 'utf-8').length) {
-        body = patch;
-
-        console.log(`*** patch ***`);
-    } else {
-        body = edited_body;
-
-        console.log(`*** new body ***`);
-    }
-
     //get tags and convert to array list
     const taglist = tags;
     //make simple json metadata including only tags
     const json_metadata = JSON.stringify({ tags: taglist });
-    //generate random permanent link for post
-    //const permlink = permlink;
 
     client.broadcast
         .comment(
