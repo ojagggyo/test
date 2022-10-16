@@ -3,28 +3,26 @@ const dsteem = require('dsteem');
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
-//submitTab function from html input
-const max = 100;
-const tagSearch = "japanese";
 
-submitTag = async () => {
+//fetch list of comments for certain account
+async function getLatestPost() {
+    const query = {
+        tag: 'yasu',
+        limit: '1',
+    };
+    client.database
+        .call('get_discussions_by_blog', [query])
+        .then(result => {
+            console.log(`${result[0].title} ${result[0].body} ${JSON.parse(result[0].json_metadata).tags.join(' ')}`) ;
+          
 
-    console.log('tagSearch: ', tagSearch);
+            //o_body = result[0].body;
+            //o_permlink = result[0].permlink;
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
 
-    //get list of tags from blockchain
-    const _tags = await client.database.call('get_trending_tags', [
-        tagSearch,
-        max,
-    ]);
 
-    console.log('tags: ', _tags);
-    var posts = [];
-    _tags.forEach(post => {
-
-        console.log(`${post.name}`);
-        
-    });
-    //disply list of tags with line breaks
-};
-
-submitTag();
+getLatestPost();

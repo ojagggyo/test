@@ -1,7 +1,6 @@
 # 
 
-JS: Search Tags](https://developers.steem.io/tutorials-javascript/search_tags)
-
+[JS: Edit Content Patching](https://developers.steem.io/tutorials-javascript/edit_content_patching)
 
 ## 実行方法
 
