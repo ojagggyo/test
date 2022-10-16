@@ -1,5 +1,5 @@
 const dsteem = require('dsteem');
-const dsteem = require('./app1.js');
+require('./app1.js');
 // const fs = require("fs");
 
 // var config = JSON.parse(fs.readFileSync("config.json"));
