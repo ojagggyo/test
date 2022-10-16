@@ -12,8 +12,7 @@ submitTag = async () => {
     console.log('tagSearch: ', tagSearch);
 
     //get list of tags from blockchain
-    //const _tags = await client.database.call('get_trending_tags', [
-    const _tags = await client.database.call('get_created_tags', [
+    const _tags = await client.database.call('get_trending_tags', [
         tagSearch,
         max,
     ]);
