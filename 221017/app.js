@@ -85,9 +85,8 @@ async function getLatestPost() {
 
                 tags = ('tags' in json) ? json.tags : [];
                 console.log(tags);
-                //const tags = json.tags;//list
 
-                const body = post.body + "あ";
+                const body = post.body + " " + new Date().getTime();
 
                 console.log(`author=${post.author},permlink=${post.permlink},tags=${tags.join(".")}`);
                 edit_content(post.author, post.permlink, post.body, tags);
