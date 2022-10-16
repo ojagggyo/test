@@ -55,8 +55,12 @@ edit_content = async (author, permlink, body, tags) => {
     //check if patch size is smaller than edited content itself
     if (patch && patch.length < new Buffer(edited_body, 'utf-8').length) {
         body = patch;
+
+        console.log(`*** patch ***`);
     } else {
         body = edited_body;
+
+        console.log(`*** new body ***`);
     }
 
     //get tags and convert to array list
