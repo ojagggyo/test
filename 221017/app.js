@@ -32,8 +32,8 @@ async function main() {
                 const author = post.author;
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
+                
                 console.log(`${author},${permlink}`);
-                //非同期であることに注意！
                 get_content(author, permlink);
             });
         })
