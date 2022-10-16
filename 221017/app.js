@@ -18,7 +18,7 @@ const client = new dsteem.Client('https://api.steemit.com');
 //get_content of the post
 get_content = async (author, permlink) => {
     client.database.call('get_content', [author, permlink]).then(result => {
-        const md = r.Remarkable({ html: true, linkify: true });
+        const md = new r.Remarkable({ html: true, linkify: true });
         const body = md.render(result.body);
         //result.title
         //body
