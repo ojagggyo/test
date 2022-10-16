@@ -22,7 +22,7 @@ get_content = async (author, permlink) => {
         const body = md.render(result.body);
         //result.title
         //body
-        console(`body=${body}`);
+        console.log(`body=${body}`);
     });
 };
 
