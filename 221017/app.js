@@ -1,19 +1,8 @@
 const dsteem = require('dsteem');
-//const Remarkable = require('remarkable');
 const r = require('remarkable');
-
-// const fs = require("fs");
-
-// var config = JSON.parse(fs.readFileSync("config.json"));
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
-
-// const authorAcount = {
-//     acountName: config.acount_name,
-//     privateKey: dsteem.PrivateKey.fromString(config.posting_key)
-// };
-
 
 //get_content of the post
 get_content = async (author, permlink) => {
@@ -22,10 +11,9 @@ get_content = async (author, permlink) => {
         const body = md.render(result.body);
         //result.title
         //body
-        console.log(`body=${body}`);
+        console.log(`title=${result.title} author}=${author} permlink}=${permlink} body=${body}`);
     });
 };
-
 
 //fetch list of trending posts
 async function main() {
@@ -47,20 +35,15 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
 
-                console.log(`*****`);
                 console.log(`${author},${permlink}`);
+
+                //非同期であることに注意！
                 get_content(author, permlink);
-                console.log(`*****`);
             });
         })
         .catch(err => {
             console.log(err);
-            // alert('Error occured, please reload the page');
         });
 }
 //catch error messages
 main().catch(console.error);
-
-
-
-
