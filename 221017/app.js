@@ -37,7 +37,7 @@ async function main() {
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
                 
-                console.log(`${author},${permlink},${post.active_votes}`);
+                console.log(`${author},${permlink},${post.active_votes.join(':')}`);
 
                 //非同期であることに注意！
                 get_content(author, permlink);
