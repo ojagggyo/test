@@ -104,20 +104,8 @@ async function getLatestPost() {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
 
-                console.log(json.tags);
-                
-                a = json.tags;
-                
-                console.log(a.split(","));
-
-                b = a.split(",");
-                
-                console.log(b.json(" "));
-
-                tags = b.json(" ");
-
-                console.log(`author=${post.author},permlink=${post.permlink},tags=${tags}`);
-                edit_content(post.author, post.permlink, post.body, json.tags.split(","));
+                console.log(`author=${post.author},permlink=${post.permlink},tags=${tags.join(".")}`);
+                edit_content(post.author, post.permlink, post.body, json.tags);
             });
         })
         .catch(err => {
