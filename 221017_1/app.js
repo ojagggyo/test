@@ -20,7 +20,7 @@ submitComment = async (parent_author, parent_permlink, tags) => {
     console.log(parent_permlink);
     console.log(tags);
 
-    const body = "本文";
+    const body = "コメント";
 
     //generate random permanent link for post
     const permlink = Math.random()
