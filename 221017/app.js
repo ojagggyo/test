@@ -18,7 +18,7 @@ async function main() {
     const query = {
         tag: 'japanese',
         limit: 1,
-        truncate_body: 1,
+        truncate_body: 10,
     };
     client.database
         .getDiscussions('created', query)
@@ -32,7 +32,7 @@ async function main() {
                 const author = post.author;
                 const permlink = post.permlink;
                 const created = new Date(post.created).toDateString();
-                
+
                 console.log(`${author},${permlink}`);
                 get_content(author, permlink);
             });
