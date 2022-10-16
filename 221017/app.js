@@ -111,7 +111,7 @@ async function getLatestPost() {
                 const json = JSON.parse(post.json_metadata);
                 
                 console.log(json.tags);
-                tags = ('tags' in user) ? json.tags : [];
+                tags = ('tags' in json.tags) ? json.tags : [];
                 console.log(tags);
                 //const tags = json.tags;//list
 
