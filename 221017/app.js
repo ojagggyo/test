@@ -35,7 +35,7 @@ async function main() {
 
                 console.log(`*****`);
                 console.log(`${author},${permlink}`);
-                console.log(get_content(author, permlink));
+                get_content(author, permlink);
                 console.log(`*****`);
             });
         })
