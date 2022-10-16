@@ -5,7 +5,7 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 //submitTab function from html input
 const max = 10;
-const tagSearch = "japan";
+const tagSearch = "japanese";
 
 submitTag = async () => {
 
