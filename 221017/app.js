@@ -109,6 +109,8 @@ async function getLatestPost() {
             result.forEach(post => {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
+
+                console.log(json.tags);
                 //const tags = json.tags;//list
 
                 console.log(`author=${post.author},permlink=${post.permlink},tags=${json.tags.join(".")}`);
