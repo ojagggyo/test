@@ -23,7 +23,6 @@ async function main() {
     client.database
         .getDiscussions('created', query)
         .then(result => {
-            var posts = [];
             result.forEach(post => {
                 console.log(post);
                 const json = JSON.parse(post.json_metadata);
