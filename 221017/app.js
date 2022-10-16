@@ -112,8 +112,7 @@ async function getLatestPost() {
                
                 console.log(json);
 
-                console.log(json.tags);
-                tags = ('tags' in json.tags) ? json.tags : [];
+                tags = ('tags' in json) ? json.tags : [];
                 console.log(tags);
                 //const tags = json.tags;//list
 
