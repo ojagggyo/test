@@ -1,20 +1,13 @@
 const dsteem = require('dsteem');
 const r = require('remarkable');
 
-
-//import Remarkable from 'remarkable';
-//import linkify from 'remarkable/linkify';
-const linkify = require('remarkable/linkify');
-
-
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
 //get_content of the post
 get_content = async (author, permlink) => {
     client.database.call('get_content', [author, permlink]).then(result => {
-        //const md = new r.Remarkable({ html: true, linkify: true });
-        const md = new r.Remarkable({ html: true }).use(linkify);
+        const md = new r.Remarkable({ html: true, linkify: true });
         
         const body = md.render(result.body);
         //result.title
