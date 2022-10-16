@@ -2,7 +2,8 @@ const dsteem = require('dsteem');
 const r = require('remarkable');
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+//const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.steemwow.com');
 
 //get_content of the post
 get_content = async (author, permlink) => {
