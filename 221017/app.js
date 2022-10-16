@@ -8,7 +8,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 async function getLatestPost() {
     const query = {
         tag: 'yasu',
-        limit: '1',
+        limit: '2',
+        truncate_body: 10
     };
     client.database
         .call('get_discussions_by_blog', [query])
