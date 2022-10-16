@@ -35,7 +35,7 @@ async function main() {
 
                
 
-                console.log(`${author},${permlink},${json.tag}`);
+                console.log(`${author},${permlink},${json.tags}`);
                 get_content(author, permlink);
             });
         })
