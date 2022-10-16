@@ -1,6 +1,6 @@
 const dsteem = require('dsteem');
 //const Remarkable = require('remarkable');
-const remarkable = require('remarkable');
+require('remarkable');
 
 // const fs = require("fs");
 
@@ -18,7 +18,7 @@ const client = new dsteem.Client('https://api.steemit.com');
 //get_content of the post
 get_content = async (author, permlink) => {
     client.database.call('get_content', [author, permlink]).then(result => {
-        const md = remarkable.remarkable({ html: true, linkify: true });
+        const md = Remarkable({ html: true, linkify: true });
         const body = md.render(result.body);
         //result.title
         //body
