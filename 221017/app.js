@@ -24,13 +24,14 @@ function createPatch(oldText, newText) {
 }
 
 
-edit_content = async (author, permlink, parent_permlink, json_metadata, old_body, new_body) => {
+edit_content = async (author, permlink, parent_permlink, json_metadata, new_title, old_body, new_body) => {
 
     console.log(" *** edit_content ***");
     console.log(author);
     console.log(permlink);
     console.log(parent_permlink);
     console.log(json_metadata);
+    console.log(new_title);
     console.log(old_body);
     console.log(new_body);
 
@@ -58,7 +59,7 @@ edit_content = async (author, permlink, parent_permlink, json_metadata, old_body
                 parent_author: '',
                 parent_permlink: parent_permlink,
                 permlink: permlink,
-                title: title,//必須
+                title: new_title,//必須
             },
             privateKey
         )
@@ -88,9 +89,9 @@ async function getLatestPost() {
             result.forEach(post => {
                 console.log("post=",post);
 
-                const title = "タイトル修正"; //タイトルを編集する。
+                const new_title = "タイトル修正"; //タイトルを編集する。
                 const new_body = post.body + " " + new Date().getTime();//本文を編集する。
-                edit_content(post.author, post.permlink, post.parent_permlink, post.json_metadata, post.body, new_body);
+                edit_content(post.author, post.permlink, post.parent_permlink, post.json_metadata, new_title, post.body, new_body);
             });
         })
         .catch(err => {
