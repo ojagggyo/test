@@ -13,14 +13,13 @@ const authorAcount = {
 };
 
 
-submitComment = async (parent_author, parent_permlink, tags) => {
+submitComment = async (parent_author, parent_permlink) => {
 
     console.log(" *** submitComment ***");
     console.log(parent_author);
     console.log(parent_permlink);
-    console.log(tags);
 
-    const body = "コメント";
+    const body = "コメント " + new Date().getTime();
 
     //generate random permanent link for post
     const permlink = Math.random()
@@ -65,12 +64,7 @@ async function getLatestPost() {
         .then(result => {
             result.forEach(post => {
                 console.log(post);
-                const body = post.body + " " + new Date().getTime();
-                const json = JSON.parse(post.json_metadata);
-                console.log(json);
-                tags = ('tags' in json) ? json.tags : [];
-                console.log(tags);
-                submitComment(post.author, post.permlink, tags);
+                submitComment(post.author, post.permlink);
             });
         })
         .catch(err => {
