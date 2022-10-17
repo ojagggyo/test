@@ -69,11 +69,11 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
             {
                 author: author,
                 body: body,
-                json_metadata: json_metadata,
+                //json_metadata: json_metadata,
                 parent_author: '',
                 parent_permlink: parent_permlink,
                 permlink: permlink,
-                title: title,
+                //title: title,
             },
             privateKey
         )
