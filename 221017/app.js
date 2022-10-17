@@ -101,7 +101,7 @@ async function getLatestPost() {
         .call('get_discussions_by_blog', [query])
         .then(result => {
             result.forEach(post => {
-                console.log(post);
+                console.log("post=",post);
                 const new_body = post.body + " " + new Date().getTime();//本文を編集する。
                 const json = JSON.parse(post.json_metadata);
                 //console.log(json);
