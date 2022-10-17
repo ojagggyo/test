@@ -104,7 +104,7 @@ async function getLatestPost() {
                 tags = ('tags' in json) ? json.tags : [];
                 //console.log(tags);
                 //console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
-                edit_content(post.author, post.permlink, post.parent_permlink, tags, body, new_body);
+                edit_content(post.author, post.permlink, post.parent_permlink, tags, post.body, new_body);
             });
         })
         .catch(err => {
