@@ -90,7 +90,7 @@ async function getLatestPost() {
     const query = {
         tag: 'yasu.pal',
         limit: '1',
-        truncate_body: 1//本文を1文字だけ取得
+        truncate_body: 0//本文をすべて取得
     };
 
     client.database
