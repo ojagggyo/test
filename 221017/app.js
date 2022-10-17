@@ -58,7 +58,7 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
     //if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
         body = patch;//差分
     //} else {
-        body = new_body;
+    //    body = new_body;
     //}
 
 
