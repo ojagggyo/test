@@ -43,6 +43,8 @@ edit_content = async (author, permlink, parent_permlink, json_metadata, new_titl
     //computes a list of patches to turn o_body to edited_body
     const patch = createPatch(old_body, new_body);
 
+    console.log("patch=",patch);
+
     //check if patch size is smaller than edited content itself
     if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
         body = patch;//差分
