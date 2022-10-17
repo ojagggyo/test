@@ -24,13 +24,13 @@ function createPatch(oldText, newText) {
 }
 
 
-edit_content = async (author, permlink, parent_permlink, tags, old_body, new_body) => {
+edit_content = async (author, permlink, parent_permlink, json_metadata, old_body, new_body) => {
 
     console.log(" *** edit_content ***");
     console.log(author);
     console.log(permlink);
     console.log(parent_permlink);
-    console.log(tags);
+    console.log(json_metadata);
     console.log(old_body);
     console.log(new_body);
 
@@ -38,38 +38,23 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
     const privateKey = authorAcount.privateKey;
     //get account name
     const account = authorAcount.acountName;
-    //get title
-    const title = "変更後title " + new Date().getTime();//タイトルを編集する。
-
-    //get tags and convert to array list
-    const taglist = tags;
-    //make simple json metadata including only tags
-    const json_metadata = JSON.stringify({ tags: taglist });
-
 
     //computes a list of patches to turn o_body to edited_body
     const patch = createPatch(old_body, new_body);
 
-    console.log("patch=",patch);
-    console.log("patch.length=",patch.length);
-    console.log("new Buffer(new_body, 'utf-8').length=",new Buffer(new_body, 'utf-8').length);
-
     //check if patch size is smaller than edited content itself
-    //if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
+    if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
         body = patch;//差分
-    //} else {
-    //    body = new_body;
-    //}
-
-
-    console.log("body=",body);
+    } else {
+        body = new_body;
+    }
 
     client.broadcast
         .comment(
             {
                 author: author,
                 body: body,
-                //json_metadata: json_metadata,
+                json_metadata: json_metadata,//必須
                 parent_author: '',
                 parent_permlink: parent_permlink,
                 permlink: permlink,
@@ -102,13 +87,10 @@ async function getLatestPost() {
         .then(result => {
             result.forEach(post => {
                 console.log("post=",post);
+
+                const title = "タイトル修正"; //タイトルを編集する。
                 const new_body = post.body + " " + new Date().getTime();//本文を編集する。
-                const json = JSON.parse(post.json_metadata);
-                //console.log(json);
-                tags = ('tags' in json) ? json.tags : [];
-                //console.log(tags);
-                //console.log(`author=${post.author},permlink=${post.permlink},parent_permlink=${post.parent_permlink},tags=${tags.join(".")}`);
-                edit_content(post.author, post.permlink, post.parent_permlink, tags, post.body, new_body);
+                edit_content(post.author, post.permlink, post.parent_permlink, post.json_metadata, post.body, new_body);
             });
         })
         .catch(err => {
