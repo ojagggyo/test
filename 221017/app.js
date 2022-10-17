@@ -24,7 +24,7 @@ function createPatch(oldText, newText) {
 }
 
 
-edit_content = async (author, permlink, parent_permlink, json_metadata, new_title, old_body, new_body) => {
+edit_content = async (author, permlink, parent_permlink, json_metadata, title, old_body, new_body) => {
 
     //get private key
     const privateKey = authorAcount.privateKey;
@@ -34,7 +34,7 @@ edit_content = async (author, permlink, parent_permlink, json_metadata, new_titl
     //computes a list of patches to turn o_body to edited_body
     const patch = createPatch(old_body, new_body);
 
-    console.log("patch=",patch);
+    console.log(patch);
 
     //check if patch size is smaller than edited content itself
     if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
@@ -52,7 +52,7 @@ edit_content = async (author, permlink, parent_permlink, json_metadata, new_titl
                 parent_author: '',
                 parent_permlink: parent_permlink,
                 permlink: permlink,
-                title: new_title,//必須
+                title: title,//必須
             },
             privateKey
         )
@@ -84,7 +84,8 @@ async function getLatestPost() {
 
                 const new_title = "タイトル修正"; //タイトルを編集する。
                 const new_body = post.body + " " + new Date().getTime();//本文を編集する。
-                edit_content(post.author, post.permlink, post.parent_permlink, post.json_metadata, new_title, post.body, new_body);
+                edit_content(post.author, post.permlink, post.parent_permlink, 
+                    post.json_metadata, new_title, post.body, new_body);
             });
         })
         .catch(err => {
