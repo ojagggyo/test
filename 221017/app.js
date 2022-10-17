@@ -39,7 +39,7 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
     //get account name
     const account = authorAcount.acountName;
     //get title
-    const title = "変更後title";
+    const title = "変更後title " + new Date().getTime();//タイトルを編集する。
 
     //get tags and convert to array list
     const taglist = tags;
