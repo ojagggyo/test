@@ -26,15 +26,6 @@ function createPatch(oldText, newText) {
 
 edit_content = async (author, permlink, parent_permlink, json_metadata, new_title, old_body, new_body) => {
 
-    console.log(" *** edit_content ***");
-    console.log(author);
-    console.log(permlink);
-    console.log(parent_permlink);
-    console.log(json_metadata);
-    console.log(new_title);
-    console.log(old_body);
-    console.log(new_body);
-
     //get private key
     const privateKey = authorAcount.privateKey;
     //get account name
