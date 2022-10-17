@@ -51,13 +51,16 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
     const patch = createPatch(old_body, new_body);
 
     console.log("patch=",patch);
+    console.log("patch.length=",patch.length);
+    console.log("new Buffer(new_body, 'utf-8').length=",new Buffer(new_body, 'utf-8').length);
 
     //check if patch size is smaller than edited content itself
-    if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
+    //if (patch && patch.length < new Buffer(new_body, 'utf-8').length) {
         body = patch;//差分
-    } else {
+    //} else {
         body = new_body;
-    }
+    //}
+
 
     console.log("body=",body);
 
