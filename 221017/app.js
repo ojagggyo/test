@@ -73,7 +73,7 @@ edit_content = async (author, permlink, parent_permlink, tags, old_body, new_bod
                 parent_author: '',
                 parent_permlink: parent_permlink,
                 permlink: permlink,
-                //title: title,
+                title: title,//必須
             },
             privateKey
         )
