@@ -9,7 +9,7 @@
 // });
 
 const https = require("https");
-const res = require("fs");
+const res = require("res");
 
 const download = (uri , filename ) => {
     return new Promise((resolve, reject) =>
