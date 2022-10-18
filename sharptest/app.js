@@ -8,8 +8,8 @@
 //     if( err ) { console.error(err) }
 // });
 
-require("https");
-
+const https = require("https");
+const res = require("fs");
 
 const download = (uri , filename ) => {
     return new Promise((resolve, reject) =>
