@@ -22,7 +22,7 @@ get_content_replies = async (author, permlink) => {
 async function getLatestPost() {
     
     const query = {
-        tag: 'yasu.pal',
+        tag: 'yasu',
         limit: '1',
         truncate_body: 1//本文を1文字だけ取得
     };
