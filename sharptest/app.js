@@ -8,6 +8,8 @@
 //     if( err ) { console.error(err) }
 // });
 
+require("https");
+
 
 const download = (uri , filename ) => {
     return new Promise((resolve, reject) =>
