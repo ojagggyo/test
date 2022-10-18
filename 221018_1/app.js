@@ -11,7 +11,7 @@ get_content_replies = async (author, permlink) => {
         .call('get_content_replies', [author, permlink])
         .then(result => {
             for (var i = 0; i < result.length; i++) {
-                console.log(result[i]);
+                console.log(result[i]+"\n");
                 //console.log(`${result[i].author},${result[i].created},${result[i].body}`);
             }
         });
