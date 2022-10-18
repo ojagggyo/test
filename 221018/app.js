@@ -15,10 +15,6 @@ const authorAcount = {
 
 submitComment = async (parent_author, parent_permlink) => {
 
-    console.log(" *** submitComment ***");
-    console.log(parent_author);
-    console.log(parent_permlink);
-
     const body = "コメント " + new Date().getTime();
 
     //generate random permanent link for post
