@@ -11,9 +11,10 @@
 
 
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 
 const file = fs.createWriteStream("file.jpg");
-const request = http.get("https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png", function(response) {
+const request = https.get("https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png", function(response) {
   response.pipe(file);
 });
