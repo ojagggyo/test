@@ -40,4 +40,11 @@ async function getLatestPost() {
         });
 }
 
-getLatestPost();
+if(process.argv.length > 2){
+    getLatestPost(process.argv[2]);
+}
+else{
+    getLatestPost();
+}
+
+
