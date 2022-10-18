@@ -8,23 +8,12 @@
 //     if( err ) { console.error(err) }
 // });
 
-const https = require("https");
-const res = require("res");
 
-const download = (uri , filename ) => {
-    return new Promise((resolve, reject) =>
-      https
-        .request(uri, (res) => {
-          res
-            .pipe(createWriteStream(filename))
-            .on("close", resolve)
-            .on("error", reject);
-        })
-        .end()
-    );
-  };
-  
-  download(
-    "https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png",
-    "Charizard-gmax.png"
-  ).then(() => console.log("done"));
+
+const http = require('http');
+const fs = require('fs');
+
+const file = fs.createWriteStream("file.jpg");
+const request = http.get("https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png", function(response) {
+  response.pipe(file);
+});
