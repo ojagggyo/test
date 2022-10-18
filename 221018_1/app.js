@@ -6,19 +6,15 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 get_content_replies = async (author, permlink) => {
 
-    console.log(" *** get_content_replies ***");
-    console.log(author);
-    console.log(permlink);
-
     //get_content_replies of the selected post
     client.database
         .call('get_content_replies', [author, permlink])
         .then(result => {
             for (var i = 0; i < result.length; i++) {
-                console.log(`${result[i].author},${result[i].created},${result[i].body}`);
+                console.log(result[i]);
+                //console.log(`${result[i].author},${result[i].created},${result[i].body}`);
             }
         });
-
 };
 
 
@@ -35,7 +31,7 @@ async function getLatestPost() {
         .call('get_discussions_by_blog', [query])
         .then(result => {
             result.forEach(post => {
-                console.log(post);
+                //console.log(post);
                 get_content_replies(post.author, post.permlink);
             });
         })
