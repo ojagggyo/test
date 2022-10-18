@@ -38,11 +38,6 @@ async function getLatestPost() {
         .then(result => {
             result.forEach(post => {
                 console.log(post);
-                const body = post.body + " " + new Date().getTime();
-                const json = JSON.parse(post.json_metadata);
-                console.log(json);
-                tags = ('tags' in json) ? json.tags : [];
-                console.log(tags);
                 get_content_replies(post.author, post.permlink);
             });
         })
