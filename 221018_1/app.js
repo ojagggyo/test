@@ -19,10 +19,11 @@ get_content_replies = async (author, permlink) => {
 
 
 // 最新の記事を取得する。
-async function getLatestPost() {
+async function getLatestPost(tag) {
     
     const query = {
-        tag: 'yasu.pal',
+        //tag: 'yasu.pal',
+        tag: tag,
         limit: '1',
         truncate_body: 1//本文を1文字だけ取得
     };
