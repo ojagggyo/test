@@ -78,6 +78,7 @@ let promise2 = sharp(
         }
     }
 );
+
 // await promise2.composite([ 
 //          {
 //               input: "1.png",
@@ -86,7 +87,7 @@ let promise2 = sharp(
 //           }
 //         ] );
 
-await promise2.toFile("./out/ooo.png");
+await promise2.toFile("./out/out.png");
 
 
 })();//非同期終了
