@@ -41,6 +41,22 @@ await sharp(`./images/1.png`)
   .grayscale()
   .toFile('output2.jpg');
 
+
+//丸い形に切り取る
+const width = 400;
+const r = width / 2;
+const circleShape = Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`);
+
+await sharp(`./images/1.png`)
+    .resize(width, width)
+    .composite([{
+        input: circleShape,
+        blend: 'dest-in'
+    }])
+    .png()
+    .toFile('output3.png');
+
+
 //--------------------
 })();//非同期終了
 //--------------------
