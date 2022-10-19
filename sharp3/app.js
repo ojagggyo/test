@@ -56,7 +56,7 @@ const sharp = require('sharp')
 
 //リサイズ
 await sharp(`./images/back.png`)
-.resize({width: 650, height: 400, fit: 'contain'})
+.resize({width: 610, height: 400, fit: 'contain'})
 .toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
@@ -66,17 +66,6 @@ for (let index = 0; index < urls.length; index++) {
     .toFile(`./${index + 1}.png`);
 }
 
-// for (let index = 0; index < urls.length; index++) { 
-//     await sharp(`./images/back.png`)
-//         .composite([{
-//             input: `./${index + 1}.png`, 
-//             top: 0, 
-//             left: index * 200
-//         }])
-//         .toFile(`./out${index + 1}.png`);
-//     }
-
-
 let payload = []
 for (let index = 0; index < urls.length; index++) {
     a = {input: `./${index + 1}.png`, top: 0, left: index*200};
@@ -85,20 +74,7 @@ for (let index = 0; index < urls.length; index++) {
 
 const s = await sharp(`./back.png`)
 for (let index = 0; index < urls.length; index++) {
-    let left = index * 200;
     await s.composite(payload)
-    // await s.composite([
-    //     {
-    //         input: `./${1}.png`, 
-    //         top: 0, 
-    //         left: 0
-    // },
-    // {
-    //     input: `./${2}.png`, 
-    //     top: 0, 
-    //     left: 200
-    // },
-    // ]);
 }
 await s.toFile(`./outout.png`);
 
