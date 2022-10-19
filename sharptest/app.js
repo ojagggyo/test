@@ -43,12 +43,15 @@ for (let index = 0; index < urls.length; index++) {
         if( err ) { console.error(err) }
     });
 
-    console.log(`./images/${index + 1}.png 終了`);
+    console.log(`終了`);
 }
 
 const promise2 = sharp(`./images/back.png`);
 
 for (let index = 0; index < urls.length; index++) {
+
+    console.log(`./${index + 1}.png 開始`);
+
     await promise2.composite([ 
         {
              input: `./${index + 1}.png`,
@@ -56,6 +59,8 @@ for (let index = 0; index < urls.length; index++) {
              left: index * 200,
          }
     ] )
+
+    console.log(`終了`);
 }
 
 // 画像出力
