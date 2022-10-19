@@ -43,8 +43,8 @@ const image_width = 200;
 const image_height = 200;
 const x = parseInt(Math.sqrt(n-1)+1);
 const y = parseInt((n - 1) / x);
-console.log("n=${n}");
-console.log("x=${x},y=${y}");
+console.log(`n=${n}`);
+console.log(`x=${x},y=${y}`);
 
 //リサイズ
 await sharp(`./images/back.png`)
