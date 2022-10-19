@@ -104,7 +104,7 @@ await promise2.composite(
 ] )
 
 
-await promise2.toFile("ooo2.png" , ( err , info ) =>{
+await promise2.png().toFile("ooo2.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
 
