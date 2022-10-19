@@ -77,15 +77,16 @@ let promise2 = sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
     }
-)
-    .composite([ 
+);
+await promise2.composite([ 
         {
              input: "./out/1.png",
              top: 0,
              left: 0,
          }
-    ] )
-    .toFile("./ooo.png");
+    ] );
+
+await promise2.toFile("./ooo.png");
 
 
 })();//非同期終了
