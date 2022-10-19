@@ -3,6 +3,14 @@ const sleepFunc = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
   };
   
+//   // 実際に使う時
+//   const hoge = async () => {
+//     console.log("すたーと！");
+//     // こんな感じで使う
+//     await sleepFunc(100);
+//     console.log("えんど！");
+//   }
+
 
 // ダウンロード
 var request = require('request');
@@ -12,7 +20,6 @@ var urls = [
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png',
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmczvYkSKu5U1L1go8UEFy5Y2H3CNADpqpVyKnStrgBUey/image.png'
 ];
-
 
 console.log("スタート");
 
@@ -34,54 +41,32 @@ for (let index = 0; index < urls.length; index++) {
 //--------------------
 
 
-
 const sharp = require('sharp')
-
-
-const n = urls.length;
-const image_width = 200;
-const image_height = 150;
-const x = parseInt(Math.sqrt(n - 1)) + 1;
-const y = parseInt((n - 1) / x) + 1;
-console.log(`n=${n}`);
-console.log(`x=${x},y=${y}`);
 
 //リサイズ
 await sharp(`./images/back.png`)
-    .resize({
-        width: x * image_width, 
-        height: y * image_height, 
-        //fit: 'contain'
-    })
-    .toFile('back.png');
+.resize({width: 600, height: 400, fit: 'contain'})
+.toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
-        .resize(
-            {
-                width: image_width, 
-                height: image_height, 
-                //fit: 'contain'
-            })
-        .toFile(`./${index + 1}.png`);
+    .resize({width: 200, height: 200, fit: 'contain'})
+    .toFile(`./${index + 1}.png`);
 
     console.log("1秒スリープ");
     // こんな感じで使う
     await sleepFunc(1000);
     console.log("再開");
+
 }
 
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    const dx = index % x;
-    const dy = parseInt(index / y);
-    console.log(`dx=${dx},y=${dy}`);
-    a = {
-        input: `./${index + 1}.png`, 
-        top: dy * image_height, 
-        left: dx * image_width,
-    };
+    let left = parseInt(index % 2) * 200;
+    let top = parseInt(index / 2) * 200;
+    //a = {input: `./${index + 1}.png`, top: `${0}`, left: `${200}`};
+    a = {input: `./${index + 1}.png`, top: top, left: left};
     payload.push(a);
 }
 
