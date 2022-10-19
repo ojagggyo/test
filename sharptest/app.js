@@ -86,7 +86,7 @@ let promise2 = sharp(
 //           }
 //         ] );
 
-await promise2.toFile("ooo.png");
+await promise2.toFile("./out/ooo.png");
 
 
 })();//非同期終了
