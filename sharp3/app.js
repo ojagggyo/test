@@ -22,40 +22,44 @@ for (let index = 0; index < urls.length; index++) {
 }
 
 
-
 //--------------------
 (async ()=>{//非同期開始
 //--------------------
 
 
+
+
+
+const sharp = require("sharp");
+for (let index = 0; index < urls.length; index++) {
+
+    console.log(`./images/${index + 1}.png 開始`);
+
+    const promise = await sharp(`./images/${index + 1}.png`);
+    // 画像サイズ変更
+    await promise.resize({
+        width: 200,
+        height: 200,
+        fit: 'contain'
+    })
+    // 画像出力
+    .toFile(`./${index + 1}.png` , ( err , info ) =>{
+        if( err ) { console.error(err) }
+    });
+
+    console.log(`終了`);
+}
+
+
+
+
+/*
 const sharp = require('sharp')
 
 //リサイズ
-await sharp(`./images/1.png`)
-  .resize(512, 200)
-  .toFile('output1.jpg');
-
-
-  //グレイスケール
-  await sharp(`./images/1.png`)
-  .grayscale()
-  .toFile('output2.jpg');
-
-
-//丸い形に切り取る
-const width = 400;
-const r = width / 2;
-const circleShape = Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`);
-
-await sharp(`./images/1.png`)
-    .resize(width, width)
-    .composite([{
-        input: circleShape,
-        blend: 'dest-in'
-    }])
-    .png()
-    .toFile('output3.png');
-
+await sharp(`./images/back.png`)
+  .resize(600, 400)
+  .toFile('back.jpg');
 
 
 //const width = 400;
@@ -78,7 +82,7 @@ await sharp(`./images/back.png`)
     }])
     .png()
     .toFile('output4.png');
-
+*/
 
 //--------------------
 })();//非同期終了
