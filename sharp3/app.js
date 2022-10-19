@@ -1,3 +1,16 @@
+// いい感じにPromiseでラップする
+const sleepFunc = (m) => {
+    return new Promise((resolve) => setTimeout(resolve, m));
+  };
+  
+//   // 実際に使う時
+//   const hoge = async () => {
+//     console.log("すたーと！");
+//     // こんな感じで使う
+//     await sleepFunc(100);
+//     console.log("えんど！");
+//   }
+
 
 // ダウンロード
 var request = require('request');
@@ -41,10 +54,20 @@ for (let index = 0; index < urls.length; index++) {
     .toFile(`./${index + 1}.png`);
 }
 
+
+実際に使う時
+  const hoge = async () => {
+    console.log("すたーと！");
+    // こんな感じで使う
+    await sleepFunc(5000);
+    console.log("えんど！");
+  }
+
+
 let payload = []
 for (let index = 0; index < urls.length; index++) {
     let left = parseInt(index % 2) * 200;
-    let top = parseInt(index / 2) * 200;
+    let top = parseInt(index / m2) * 200;
     //a = {input: `./${index + 1}.png`, top: `${0}`, left: `${200}`};
     a = {input: `./${index + 1}.png`, top: top, left: left};
     payload.push(a);
