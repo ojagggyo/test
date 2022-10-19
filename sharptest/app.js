@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-sharp(
+await sharp(
     {
         create: {
             width: 640,
@@ -76,8 +76,8 @@ sharp(
             channels: 4,
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
-    }
-).composite([ 
+    })
+    .composite([ 
          {
               input: "1.png",
               top: 0,
@@ -88,12 +88,9 @@ sharp(
             top: 0,
             left: 200
         }
-
         ] )
-        .then( e=>{
-            this.toFile("ooo.png");
-        } )
-        .catch( e=>{} );
+    .toFile("ooo.png");
+    
 
 
 //await promise2.toFile("ooo.png");
