@@ -84,7 +84,7 @@ for (let index = 0; index < urls.length; index++) {
             left: index * 200
         }]);
     }
-await s.toFile(`./out${index + 1}.png`);
+await s.toFile(`./outout.png`);
 
 
 //--------------------
