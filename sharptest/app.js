@@ -33,7 +33,7 @@ for (let index = 0; index < urls.length; index++) {
         height: 200,
         fit: 'contain'
     })
-
+    // 画像出力
     promise.toFile(`./images/${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
