@@ -68,7 +68,29 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-const promise = sharp(
+// const promise = sharp(
+//     {
+//         create: {
+//             width: 640,
+//             height: 400,
+//             channels: 4,
+//             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
+//         }
+//     }
+// );
+
+// // await promise.composite([ 
+// //          {
+// //               input: "1.png",
+// //               top: 0,
+// //               left: 0
+// //           }
+// //         ] );
+
+// await promise.toFile("out.png");
+
+
+await sharp(
     {
         create: {
             width: 640,
@@ -77,17 +99,14 @@ const promise = sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
     }
-);
+).composite([ 
+         {
+              input: "1.png",
+              top: 0,
+              left: 0
+          }
+        ] );
 
-// await promise.composite([ 
-//          {
-//               input: "1.png",
-//               top: 0,
-//               left: 0
-//           }
-//         ] );
-
-await promise.toFile("out.png");
 
 
 })();//非同期終了
