@@ -73,12 +73,12 @@ let promise2 = sharp(`./images/back.png`)
         {
              input: "`./out/1.png",
              top: 0,
-             left: 0 * 200,
+             left: 0,
          },
          {
             input: "`./out/2.png",
             top: 0,
-            left: 1 * 200,
+            left: 200,
         }
     ] )
     .toFile(`./out.png` , ( err , info ) =>{
