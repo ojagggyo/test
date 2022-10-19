@@ -38,3 +38,21 @@ for (let index = 0; index < urls.length; index++) {
         if( err ) { console.error(err) }
     });
 }
+
+const promise2 = sharp(`./images/back.png`);
+
+for (let index = 0; index < urls.length; index++) {
+    await promise2.composite([ 
+        {
+             input: `./${index + 1}.png`,
+             top: 0,
+             left: i * 200,
+         }
+    ] )
+}
+
+// 画像出力
+promise2.toFile(`./out.png` , ( err , info ) =>{
+    if( err ) { console.error(err) }
+});
+
