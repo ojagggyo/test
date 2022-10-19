@@ -42,7 +42,7 @@ for (let index = 0; index < urls.length; index++) {
 const promise2 = sharp(`./images/back.png`);
 
 for (let index = 0; index < urls.length; index++) {
-    await promise2.composite([ 
+    promise2.composite([ 
         {
              input: `./${index + 1}.png`,
              top: 0,
