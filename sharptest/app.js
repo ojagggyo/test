@@ -90,8 +90,10 @@ for (let index = 0; index < urls.length; index++) {
     ] );
 }
 
-await promise2.toFile("out.png" , ( err , info ) =>{
-    if( err ) { console.error(err) }
-});
+await promise2.toFile("ooo.png");
+
+// await promise2.toFile("ooo.png" , ( err , info ) =>{
+//     if( err ) { console.error(err) }
+// });
 
 })();//非同期終了
