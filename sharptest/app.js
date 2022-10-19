@@ -24,14 +24,23 @@ for (let index = 0; index < urls.length; index++) {
 
 // 画像編集
 const sharp = require("sharp");
-const promise = sharp("./images/2.png");
-// 画像サイズ変更
-promise.resize({
-    width: 200,
-    height: 100,
-    fit: 'contain'
-  })
+for (let index = 0; index < urls.length; index++) {
+    const url = urls[index];
+    const promise = sharp(`./images/${index + 1}.png`);
+    // 画像サイズ変更
+    promise.resize({
+        width: 200,
+        height: 200,
+        fit: 'contain'
+    })
+}
 
-  promise.toFile( "./aaa.png" , ( err , info ) =>{
-    if( err ) { console.error(err) }
-});
+
+for (let index = 0; index < urls.length; index++) {
+    const url = urls[index];
+    promise.toFile(`./images/${index + 1}.png` , ( err , info ) =>{
+        if( err ) { console.error(err) }
+    });
+}
+
+
