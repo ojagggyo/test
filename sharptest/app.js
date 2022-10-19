@@ -79,13 +79,13 @@ const promise = sharp(
     }
 );
 
-await promise.composite([ 
-         {
-              input: "1.png",
-              top: 0,
-              left: 0
-          }
-        ] );
+// await promise.composite([ 
+//          {
+//               input: "1.png",
+//               top: 0,
+//               left: 0
+//           }
+//         ] );
 
 await promise.toFile("out.png");
 
