@@ -61,7 +61,7 @@ for (let index = 0; index < urls.length; index++) {
     // .toFile('bbb.jpg');
 
     await sharp(`./images/${index + 1}.png`)
-    .resize({idth: 200, height: 200, fit: 'contain'})
+    .resize({width: 200, height: 200, fit: 'contain'})
     .toFile(`./${index + 1}.png`);
 }
 
