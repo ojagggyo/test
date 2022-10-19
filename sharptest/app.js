@@ -34,7 +34,7 @@ for (let index = 0; index < urls.length; index++) {
         fit: 'contain'
     })
     // 画像出力
-    promise.toFile(`./${index + 1}.png` , ( err , info ) =>{
+    .promise.toFile(`./${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
 }
