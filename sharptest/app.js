@@ -63,7 +63,7 @@ for (let index = 0; index < urls.length; index++) {
     console.log(`終了`);
 }
 
-画像出力
+//画像出力
 await promise2.toFormat("png").toFile(`out.png` , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
