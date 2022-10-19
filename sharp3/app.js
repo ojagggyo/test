@@ -52,20 +52,13 @@ for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
     .resize({width: 200, height: 200, fit: 'contain'})
     .toFile(`./${index + 1}.png`);
-}
 
-
-// //実際に使う時
-//   const hoge = async () => {
-//     console.log("すたーと！");
-//     // こんな感じで使う
-//     await sleepFunc(5000);
-//     console.log("えんど！");
-//   }
-    console.log("すたーと！");
+    console.log("1秒スリープ");
     // こんな感じで使う
-    await sleepFunc(5000);
-    console.log("えんど！");
+    await sleepFunc(1000);
+    console.log("再開");
+
+}
 
 
 let payload = []
