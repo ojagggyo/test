@@ -69,21 +69,14 @@ for (let index = 0; index < urls.length; index++) {
 // });
 
 let promise2 = sharp(`./images/back.png`)
-.composite([ 
+    .composite([ 
         {
              input: "`./out/1.png",
              top: 0,
              left: 0,
-         },
-         {
-            input: "`./out/2.png",
-            top: 0,
-            left: 200,
-        }
+         }
     ] )
-    .toFile(`./out.png` , ( err , info ) =>{
-        if( err ) { console.error(err) }
-    });
+    .toFile(`./out.png`);
 
 
 })();//非同期終了
