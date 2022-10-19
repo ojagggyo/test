@@ -46,7 +46,7 @@ for (let index = 0; index < urls.length; index++) {
         {
              input: `./${index + 1}.png`,
              top: 0,
-             left: i * 200,
+             left: index * 200,
          }
     ] )
 }
