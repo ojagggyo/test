@@ -68,8 +68,8 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-let promise2 = sharp(`./images/back.png`);
-    await promise2.composite([ 
+let promise2 = sharp(`./images/back.png`)
+. promise2.composite([ 
         {
              input: "`./out/1.png",
              top: 0,
@@ -81,9 +81,9 @@ let promise2 = sharp(`./images/back.png`);
             left: 1 * 200,
         }
     ] )
-    // .toFile(`./out.png` , ( err , info ) =>{
-    //     if( err ) { console.error(err) }
-    // });
+    .toFile(`./out.png` , ( err , info ) =>{
+        if( err ) { console.error(err) }
+    });
 
 
 })();//非同期終了
