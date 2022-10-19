@@ -26,12 +26,13 @@ for (let index = 0; index < urls.length; index++) {
 console.log("画像編集");
 
 // 画像編集
-const sharp = require("sharp");
+//const sharp = require("sharp");
+require("sharp");
 for (let index = 0; index < urls.length; index++) {
 
     console.log(`./images/${index + 1}.png 開始`);
 
-    const promise = sharp.sharp(`./images/${index + 1}.png`);
+    const promise = sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     await promise.resize({
         width: 200,
@@ -68,7 +69,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-const promise2 = sharp.sharp(
+const promise2 = sharp(
     {
         create: {
             width: 640,
