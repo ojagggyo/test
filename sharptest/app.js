@@ -31,7 +31,7 @@ for (let index = 0; index < urls.length; index++) {
 
     console.log(`./images/${index + 1}.png 開始`);
 
-    const promise = sharp(`./images/${index + 1}.png`);
+    const promise = sharp.sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     await promise.resize({
         width: 200,
@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-let promise2 = sharp(
+const promise2 = sharp.sharp(
     {
         create: {
             width: 640,
