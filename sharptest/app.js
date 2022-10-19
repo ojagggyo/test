@@ -17,7 +17,12 @@ request(
 
 const promise = sharp("./images/a.png");
 
-promise.toFile( "./aaa.png" , ( err , info ) =>{
+promise.resize({
+    width: 200,
+    height: 100,
+    fit: 'contain'
+  })
+
+  promise.toFile( "./aaa.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
-
