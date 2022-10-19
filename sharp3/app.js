@@ -51,12 +51,18 @@ await sharp(`./images/back.png`)
     .resize({
         width: x * image_width, 
         height: y * image_height, 
-        fit: 'contain'})
+        //fit: 'contain'
+    })
     .toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
-        .resize({width: image_width, height: image_height, fit: 'contain'})
+        .resize(
+            {
+                width: image_width, 
+                height: image_height, 
+                //fit: 'contain'
+            })
         .toFile(`./${index + 1}.png`);
 
     console.log("1秒スリープ");
