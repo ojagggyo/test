@@ -36,7 +36,6 @@ await sharp(`./images/back.png`)
 .toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
-
     await sharp(`./images/${index + 1}.png`)
     .resize({width: 200, height: 200, fit: 'contain'})
     .toFile(`./${index + 1}.png`);
@@ -44,7 +43,9 @@ for (let index = 0; index < urls.length; index++) {
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    a = {input: `./${index + 1}.png`, top: 0, left: index*200};
+    let x = index % 2;
+    let y = index / 2;
+    a = {input: `./${index + 1}.png`, top: y, left: x};
     payload.push(a);
 }
 
