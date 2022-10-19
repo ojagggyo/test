@@ -71,12 +71,12 @@ for (let index = 0; index < urls.length; index++) {
 const promise2 = sharp(`./images/back.png`);
     await promise2.composite([ 
         {
-             input: `./1.png`,
+             input: "`./1.png",
              top: 0,
              left: 0 * 200,
          },
          {
-            input: `./2.png`,
+            input: "`./2.png",
             top: 0,
             left: 1 * 200,
         }
