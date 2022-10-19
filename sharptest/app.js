@@ -82,9 +82,15 @@ await promise2.composite([
          {
               input: "1.png",
               top: 0,
-              left: 200
-          }
-     ] );
+              left: 0
+          },
+          {
+            input: "2.png",
+            top: 0,
+            left: 200
+        }
+
+        ] );
 
 await promise2.toFile("./ooo.png");
 
