@@ -1,22 +1,31 @@
-const sharp = require("sharp");
 
-
+// ダウンロード
 var request = require('request');
 var fs = require('fs');
+var urls = [
+    'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png',
+    'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png'
+];
 
-var url = 'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png';
 
-request(
-    {method: 'GET', url: url, encoding: null},
-    function (error, response, body){
-        if(!error && response.statusCode === 200){
-            fs.writeFileSync('./images/a.png', body, 'binary');
+
+for (let index = 0; index < array.length; index++) {
+    const url = urls[index];
+    request(
+        {method: 'GET', url: url, encoding: null},
+        function (error, response, body){
+            if(!error && response.statusCode === 200){
+                fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+            }
         }
-    }
-);
+    );
+}
 
-const promise = sharp("./images/a.png");
 
+// 画像編集
+const sharp = require("sharp");
+const promise = sharp("./images/2.png");
+// 画像サイズ変更
 promise.resize({
     width: 200,
     height: 100,
