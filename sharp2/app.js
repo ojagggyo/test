@@ -74,6 +74,7 @@ const iconBuffer = await sharp(`./images/back.png`)
 
 // 加工したicon画像を背景画像の中心に合成
 await sharp(`./images/1.png`)
+    .resize(200, 200)//リサイズ
     .composite([{
         input: iconBuffer, gravity: "center", blend: "hard-light"
     }])
