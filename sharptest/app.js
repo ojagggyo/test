@@ -77,9 +77,7 @@ let promise2 = sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
     }
-);
-
-await promise2.composite([ 
+).composite([ 
          {
               input: "1.png",
               top: 0,
@@ -93,7 +91,7 @@ await promise2.composite([
 
         ] )
         .then( e=>{
-            promise2.toFile("ooo.png");
+            this.toFile("ooo.png");
         } )
         .catch( e=>{} );
 
