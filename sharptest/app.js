@@ -77,18 +77,18 @@ await sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
     })
-    .composite([ 
-         {
-              input: "1.png",
-              top: 0,
-              left: 0
-          },
-          {
-            input: "2.png",
-            top: 0,
-            left: 200
-        }
-        ] )
+    // .composite([ 
+    //      {
+    //           input: "1.png",
+    //           top: 0,
+    //           left: 0
+    //       },
+    //       {
+    //         input: "2.png",
+    //         top: 0,
+    //         left: 200
+    //     }
+    //     ] )
     .toFile("ooo.png");
     
 
