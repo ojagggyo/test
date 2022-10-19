@@ -85,7 +85,7 @@ let promise2 = sharp(
              left: 0,
          }
     ] )
-    .toFile(`./ooo.png`);
+    .toFile("./ooo.png");
 
 
 })();//非同期終了
