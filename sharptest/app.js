@@ -87,7 +87,7 @@ await promise.composite([
           }
         ] );
 
-await promise.toFile("./out/out.png");
+await promise.toFile("out.png");
 
 
 })();//非同期終了
