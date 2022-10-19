@@ -56,7 +56,7 @@ const sharp = require('sharp')
 
 //リサイズ
 await sharp(`./images/back.png`)
-.resize({width: 600, height: 400, fit: 'contain'})
+.resize({width: 650, height: 400, fit: 'contain'})
 .toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
