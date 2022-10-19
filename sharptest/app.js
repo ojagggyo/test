@@ -39,7 +39,7 @@ for (let index = 0; index < urls.length; index++) {
         fit: 'contain'
     })
     // 画像出力
-    .toFile(`./images/${index + 1}.png` , ( err , info ) =>{
+    .toFile(`./out/${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
 
@@ -71,12 +71,12 @@ for (let index = 0; index < urls.length; index++) {
 const promise2 = sharp(`./images/back.png`);
     await promise2.composite([ 
         {
-             input: "`./images/1.png",
+             input: "`./out/1.png",
              top: 0,
              left: 0 * 200,
          },
          {
-            input: "`./images/2.png",
+            input: "`./out/2.png",
             top: 0,
             left: 1 * 200,
         }
