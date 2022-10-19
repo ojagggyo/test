@@ -40,7 +40,7 @@ const sharp = require('sharp')
 
 const n = urls.length;
 const image_width = 200;
-const image_height = 200;
+const image_height = 150;
 const x = parseInt(Math.sqrt(n - 1)) + 1;
 const y = parseInt((n - 1) / x) + 1;
 console.log(`n=${n}`);
