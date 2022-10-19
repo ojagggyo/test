@@ -71,7 +71,7 @@ for (let index = 0; index < urls.length; index++) {
 let promise2 = sharp(`./out/back.png`)
     .composite([ 
         {
-             input: "`./out/1.png",
+             input: "./out/1.png",
              top: 0,
              left: 0,
          }
