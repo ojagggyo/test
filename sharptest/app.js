@@ -79,14 +79,14 @@ const promise2 = sharp(
     });
 
 
-// 画像サイズ変更
-await promise2.composite(
-[
-    {
-        input: "1.png",
-        gravity:"northwest",
-    }
-] );
+// // 画像サイズ変更
+// await promise2.composite(
+// [
+//     {
+//         input: "1.png",
+//         gravity:"northwest",
+//     }
+// ] );
 
 // 画像出力
 await promise2.toFile("`ooo.png" , ( err , info ) =>{
