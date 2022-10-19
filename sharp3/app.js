@@ -57,13 +57,27 @@ const sharp = require('sharp')
 for (let index = 0; index < urls.length; index++) {
     // //リサイズ
     // await sharp(`./images/back.png`)
-    // .resize({idth: 600, height: 400, fit: 'contain'})
+    // .resize({width: 600, height: 400, fit: 'contain'})
     // .toFile('bbb.jpg');
 
     await sharp(`./images/${index + 1}.png`)
     .resize({width: 200, height: 200, fit: 'contain'})
     .toFile(`./${index + 1}.png`);
 }
+
+
+
+for (let index = 0; index < urls.length; index++) {
+    
+    await sharp(`./images/back.png`)
+        .composite([{
+            input: `./${index + 1}.png`, 
+            top: 0, 
+            left: 200
+        }])
+        .toFile(`./out${index + 1}.png`);
+    }
+
 
 /*
 //const width = 400;
