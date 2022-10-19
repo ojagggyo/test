@@ -1,3 +1,10 @@
+const { setTimeout } = require('timers/promises');
+
+
+console.log("すたーと！");
+await setTimeout(100);
+console.log("えんど！");
+
 
 // ダウンロード
 var request = require('request');
