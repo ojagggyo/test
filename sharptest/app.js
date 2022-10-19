@@ -80,15 +80,20 @@ let promise2 = sharp(
 );
 
 
-for (let index = 0; index < urls.length; index++) {
+//for (let index = 0; index < urls.length; index++) {
     await promise2.composite([ 
             {
-                input: `${index + 1}.png`,
+                input: `${1}.png`,
                 top: 0,
-                left: index * 200
+                left: 0
+            },
+            {
+                input: `${2}.png`,
+                top: 0,
+                left: 200
             }
-    ] );
-}
+        ] );
+//}
 
 await promise2.toFile("ooo.png");
 
