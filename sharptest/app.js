@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-const promise2 = sharp(`./images/back.png`);
+let promise2 = sharp(`./images/back.png`);
     await promise2.composite([ 
         {
              input: "`./out/1.png",
