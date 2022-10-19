@@ -64,7 +64,12 @@ for (let index = 0; index < urls.length; index++) {
 }
 
 // 画像出力
-await promise2.toFile(`out.png` , ( err , info ) =>{
+// await promise2.toFile(`out.png` , ( err , info ) =>{
+//     if( err ) { console.error(err) }
+// });
+
+
+promise2.toFile("./ooo.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
 
