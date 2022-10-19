@@ -7,7 +7,7 @@ var urls = [
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png'
 ];
 
-
+console.log("スタート");
 
 for (let index = 0; index < urls.length; index++) {
     const url = urls[index];
@@ -21,23 +21,24 @@ for (let index = 0; index < urls.length; index++) {
     );
 }
 
+console.log("画像編集");
 
 // 画像編集
 const sharp = require("sharp");
 for (let index = 0; index < urls.length; index++) {
-    const url = urls[index];
     const promise = sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     promise.resize({
         width: 200,
         height: 200,
         fit: 'contain'
-    })
+    }),
 }
+
+console.log("出力");
 
 
 for (let index = 0; index < urls.length; index++) {
-    const url = urls[index];
     promise.toFile(`./images/${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
