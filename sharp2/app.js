@@ -30,10 +30,16 @@ for (let index = 0; index < urls.length; index++) {
 
 const sharp = require('sharp')
 
+//リサイズ
 await sharp(`./images/1.png`)
   .resize(512, 200)
-  .toFile('output.jpg');
+  .toFile('output1.jpg');
 
+
+  //グレイスケール
+  await sharp(`./images/1.png`)
+  .grayscale()
+  .toFile('output2.jpg');
 
 //--------------------
 })();//非同期終了
