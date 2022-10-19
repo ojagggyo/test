@@ -68,8 +68,8 @@ for (let index = 0; index < urls.length; index++) {
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    let left = parseInt(Math.sqrt(index + 1)) * image_width;
-    let top = parseInt(index / x) * image_height;
+    let left = parseInt(Math.sqrt(n - 1) + 0) * image_width;
+    let top = parseInt((n - 1) / x + 0) * image_height;
     a = {input: `./${index + 1}.png`, top: top, left: left};
     payload.push(a);
 }
