@@ -68,13 +68,13 @@ for (let index = 0; index < urls.length; index++) {
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    let x = parseInt(Math.sqrt((index+1) - 1)) + 1;
-    let y = parseInt(((index+1) - 1) / x) + 1;
-    console.log(`x=${x},y=${y}`);
+    const dx = index % x;
+    const dy = parseInt(index / y);
+    console.log(`dx=${dx},y=${dy}`);
     a = {
         input: `./${index + 1}.png`, 
-        top: (y-1) * image_height, 
-        left: (x-1) * image_width,
+        top: dy * image_height, 
+        left: dx * image_width,
     };
     payload.push(a);
 }
