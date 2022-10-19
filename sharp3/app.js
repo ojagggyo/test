@@ -75,7 +75,7 @@ for (let index = 0; index < urls.length; index++) {
         .composite([{
             input: `./${index + 1}.png`, 
             top: 0, 
-            left: 200
+            left: index * 200
         }])
         .toFile(`./out${index + 1}.png`);
     }
