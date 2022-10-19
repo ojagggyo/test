@@ -105,7 +105,8 @@ await sharp(
               top: 0,
               left: 0
           }
-        ] );
+        ] )
+.toFile("out.png");
 
 
 
