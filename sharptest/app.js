@@ -53,7 +53,7 @@ request(
     {method: 'GET', url: url, encoding: null},
     function (error, response, body){
         if(!error && response.statusCode === 200){
-            fs.writeFileSync('a.png', body, 'binary');
+            fs.writeFileSync('./images/a.png', body, 'binary');
         }
     }
 );
