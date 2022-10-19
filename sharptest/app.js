@@ -106,7 +106,7 @@ await promise2.composite(
         input: "1.png",
         gravity:"northwest",
     }
-] ).toFile("ooo.png" , ( err , info ) =>{
+] ).toFile("ooo2.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
 
