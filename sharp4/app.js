@@ -3,6 +3,14 @@ const sleepFunc = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
   };
   
+//   // 実際に使う時
+//   const hoge = async () => {
+//     console.log("すたーと！");
+//     // こんな感じで使う
+//     await sleepFunc(100);
+//     console.log("えんど！");
+//   }
+
 
 // ダウンロード
 var request = require('request');
@@ -12,7 +20,6 @@ var urls = [
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png',
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmczvYkSKu5U1L1go8UEFy5Y2H3CNADpqpVyKnStrgBUey/image.png'
 ];
-
 
 console.log("スタート");
 
@@ -34,43 +41,31 @@ for (let index = 0; index < urls.length; index++) {
 //--------------------
 
 
-
 const sharp = require('sharp')
-
-
-const n = urls.length;
-const image_width = 200;
-const image_height = 200;
-const back_width = parseInt(Math.sqrt(n));
-const back_height= parseInt((n - 1) / x);
-console.log("n=${n}");
-console.log("image_width=${image_width},image_height=${image_height}");
-console.log("back_width=${back_width},back_height=${back_height}");
 
 //リサイズ
 await sharp(`./images/back.png`)
-    .resize({
-        width: back_width * image_width, 
-        height: back_height * image_height, 
-        fit: 'contain'})
-    .toFile('back.png');
+.resize({width: 600, height: 400, fit: 'contain'})
+.toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
-        .resize({width: image_width, height: image_height, fit: 'contain'})
-        .toFile(`./${index + 1}.png`);
+    .resize({width: 200, height: 200, fit: 'contain'})
+    .toFile(`./${index + 1}.png`);
 
     console.log("1秒スリープ");
     // こんな感じで使う
     await sleepFunc(1000);
     console.log("再開");
+
 }
 
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    let left = parseInt(Math.sqrt(index + 1)) * image_width;
-    let top = parseInt(index / x) * image_height;
+    let left = parseInt(index % 2) * 200;
+    let top = parseInt(index / 2) * 200;
+    //a = {input: `./${index + 1}.png`, top: `${0}`, left: `${200}`};
     a = {input: `./${index + 1}.png`, top: top, left: left};
     payload.push(a);
 }
