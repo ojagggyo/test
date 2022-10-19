@@ -83,8 +83,8 @@ for (let index = 0; index < urls.length; index++) {
 let payload = []
 for (let index = 0; index < urls.length; index++) {
     const dx = index % x;
-    const dy = parseInt(index / y);
-    console.log(`dx=${dx},y=${dy}`);
+    const dy = parseInt(index / x);
+    console.log(`dx=${dx},dy=${dy}`);
     a = {
         input: `./${index + 1}.png`, 
         top: dy * image_height, 
