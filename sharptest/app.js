@@ -1,9 +1,7 @@
 const { setTimeout } = require('timers/promises');
 
 
-console.log("すたーと！");
-await setTimeout(100);
-console.log("えんど！");
+
 
 
 // ダウンロード
@@ -15,6 +13,13 @@ var urls = [
 ];
 
 (async ()=>{//非同期開始
+
+
+    console.log("すたーと！");
+    await setTimeout(100);
+    console.log("えんど！");
+
+
 
 console.log("スタート");
 
