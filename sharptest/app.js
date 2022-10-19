@@ -68,7 +68,16 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-let promise2 = sharp(`./out/back.png`)
+let promise2 = sharp(
+    {
+        create: {
+            width: 640,
+            height: 400,
+            channels: 4,
+            background: { r: 255, g: 100, b: 100, alpha: 0.5 }
+        }
+    }
+)
     .composite([ 
         {
              input: "./out/1.png",
