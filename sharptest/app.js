@@ -58,7 +58,7 @@ for (let index = 0; index < urls.length; index++) {
              top: 0,
              left: index * 200,
          }
-    ] )
+    ] );
 
     console.log(`終了`);
 }
