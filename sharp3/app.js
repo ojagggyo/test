@@ -41,8 +41,8 @@ const sharp = require('sharp')
 const n = urls.length;
 const image_width = 200;
 const image_height = 200;
-const x = parseInt(Math.sqrt(n - 1) + 1);
-const y = parseInt((n - 1) / x + 1);
+const x = parseInt(Math.sqrt(n - 1)) + 1;
+const y = parseInt((n - 1) / x) + 1;
 console.log(`n=${n}`);
 console.log(`x=${x},y=${y}`);
 
@@ -68,8 +68,8 @@ for (let index = 0; index < urls.length; index++) {
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    let x = parseInt(Math.sqrt(index - 1 + 1) + 1 - 1);
-    let y = parseInt((index - 1 + 1) / x + 1 - 1);
+    let x = parseInt(Math.sqrt((index+1) - 1)) + 1;
+    let y = parseInt(((index+1) - 1) / x) + 1;
     console.log(`x=${x},y=${y}`);
     a = {
         input: `./${index + 1}.png`, 
