@@ -27,9 +27,7 @@ for (let index = 0; index < urls.length; index++) {
 //--------------------
 
 
-
-
-
+/*
 const sharp = require("sharp");
 for (let index = 0; index < urls.length; index++) {
 
@@ -38,7 +36,7 @@ for (let index = 0; index < urls.length; index++) {
     const promise = await sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     await promise.resize({
-        width: 200,
+        w 200,
         height: 200,
         fit: 'contain'
     })
@@ -49,19 +47,19 @@ for (let index = 0; index < urls.length; index++) {
 
     console.log(`終了`);
 }
+*/
 
 
 
 
-/*
 const sharp = require('sharp')
 
 //リサイズ
 await sharp(`./images/back.png`)
-  .resize(600, 400)
-  .toFile('back.jpg');
+  .resize({idth: 600, height: 400, fit: 'contain'})
+  .toFile('bbb.jpg');
 
-
+/*
 //const width = 400;
 //const r = width / 2;
 //const circleShape = ;
