@@ -76,7 +76,8 @@ for (let index = 0; index < urls.length; index++) {
 //     }
 
 
-const payload = Buffer.from("{input: 1.png, top: 0, left: 0}");
+const payload = []
+payload.push(Buffer.from("{input: 1.png, top: 0, left: 0}"));
     
 
 const s = await sharp(`./back.png`)
