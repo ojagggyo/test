@@ -78,27 +78,21 @@ let promise2 = sharp(
         }
     }
 );
+await promise2.composite([ 
+         {
+              input: "1.png",
+              top: 0,
+              left: 0
+          },
+          {
+            input: "2.png",
+            top: 0,
+            left: 200
+        }
 
-
-//for (let index = 0; index < urls.length; index++) {
-    await promise2.composite([ 
-            {
-                input: "1.png",
-                top: 0,
-                left: 0
-            },
-            {
-                input: "2.png",
-                top: 0,
-                left: 200
-            }
         ] );
-//}
 
-await promise2.toFile("ooo.png");
+await promise2.toFile("./ooo.png");
 
-// await promise2.toFile("ooo.png" , ( err , info ) =>{
-//     if( err ) { console.error(err) }
-// });
 
 })();//非同期終了
