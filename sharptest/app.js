@@ -28,6 +28,9 @@ console.log("画像編集");
 // 画像編集
 const sharp = require("sharp");
 for (let index = 0; index < urls.length; index++) {
+
+    console.log(`./images/${index + 1}.png 開始`);
+
     const promise = sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     promise.resize({
@@ -39,6 +42,8 @@ for (let index = 0; index < urls.length; index++) {
     .toFile(`./${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
+
+    console.log(`./images/${index + 1}.png 終了`);
 }
 
 const promise2 = sharp(`./images/back.png`);
