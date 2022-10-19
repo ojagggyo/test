@@ -69,9 +69,7 @@ for (let index = 0; index < urls.length; index++) {
 // });
 
 
-promise2.toFile("./ooo.png" , ( err , info ) =>{
-    if( err ) { console.error(err) }
-});
+promise2.toFile("./ooo.png");
 
 
 })();//非同期終了
