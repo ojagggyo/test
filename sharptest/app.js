@@ -7,6 +7,8 @@ var urls = [
     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png'
 ];
 
+(async ()=>{//非同期開始
+
 console.log("スタート");
 
 for (let index = 0; index < urls.length; index++) {
@@ -56,3 +58,5 @@ promise2.toFile(`./out.png` , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
 
+
+})();//非同期終了
