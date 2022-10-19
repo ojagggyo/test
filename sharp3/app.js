@@ -45,7 +45,7 @@ let payload = []
 for (let index = 0; index < urls.length; index++) {
     let x = index % 2;
     let y = index / 2;
-    a = {input: `./${index + 1}.png`, top: y, left: x};
+    a = {input: `./${index + 1}.png`, top: y * 1, left: x * 200};
     payload.push(a);
 }
 
