@@ -24,9 +24,17 @@ for (let index = 0; index < urls.length; index++) {
 
 
 //--------------------
+(async ()=>{//非同期開始
+//--------------------
+
 
 const sharp = require('sharp')
 
 await sharp(`./images/1.png`)
   .resize(512, 200)
   .toFile('output.jpg');
+
+
+//--------------------
+})();//非同期終了
+//--------------------
