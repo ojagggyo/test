@@ -80,7 +80,7 @@ let promise2 = sharp(
 );
 await promise2.composite([ 
          {
-              input: "./out/1.png",
+              input: "1.png",
               gravity:"northwest"
           }
      ] );
