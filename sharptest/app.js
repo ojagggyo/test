@@ -31,7 +31,7 @@ for (let index = 0; index < urls.length; index++) {
 
     console.log(`./images/${index + 1}.png 開始`);
 
-    const promise = new sharp(`./images/${index + 1}.png`);
+    const promise = sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     await promise.resize({
         width: 200,
@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-const promise2 = new sharp(
+const promise = sharp(
     {
         create: {
             width: 640,
@@ -79,7 +79,7 @@ const promise2 = new sharp(
     }
 );
 
-await promise2.composite([ 
+await promise.composite([ 
          {
               input: "1.png",
               top: 0,
@@ -87,7 +87,7 @@ await promise2.composite([
           }
         ] );
 
-await promise2.toFile("./out/out.png");
+await promise.toFile("./out/out.png");
 
 
 })();//非同期終了
