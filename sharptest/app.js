@@ -42,13 +42,13 @@ for (let index = 0; index < urls.length; index++) {
 const promise2 = sharp(`./images/back.png`);
 
 for (let index = 0; index < urls.length; index++) {
-    promise2.composite( 
+    await promise2.composite([ 
         {
              input: `./${index + 1}.png`,
              top: 0,
              left: index * 200,
          }
-     )
+    ] )
 }
 
 // 画像出力
