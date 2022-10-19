@@ -64,7 +64,7 @@ await sharp(`./images/1.png`)
 // アイコン画像を丸い形で加工
 const iconBuffer = await sharp(`./images/1.png`)
     .png() // ※元画像がjpgの場合は、pngにして透過できるようにする
-    .resize(200, 200)
+    .resize(50, 50)
     .composite([{
         input: Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`),
         blend: 'dest-in'
