@@ -77,7 +77,7 @@ const promise2 = sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
     });
-
+    
 // 画像出力
 await promise2.toFile("ooo.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
@@ -91,12 +91,14 @@ await promise2.composite(
         input: "1.png",
         gravity:"northwest",
     }
-] );
-
-// 画像出力
-await promise2.toFile("ooo.png" , ( err , info ) =>{
+] ).toFile("ooo.png" , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
+
+// // 画像出力
+// await promise2.toFile("ooo.png" , ( err , info ) =>{
+//     if( err ) { console.error(err) }
+// });
 
 
 
