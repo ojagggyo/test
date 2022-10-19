@@ -32,7 +32,7 @@ for (let index = 0; index < urls.length; index++) {
         width: 200,
         height: 200,
         fit: 'contain'
-    }),
+    })
 }
 
 console.log("出力");
