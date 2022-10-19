@@ -43,10 +43,10 @@ for (let index = 0; index < urls.length; index++) {
 
 let payload = []
 for (let index = 0; index < urls.length; index++) {
-    let x = parseInt(index % 3);
-    let y = parseInt(index /3);
+    let left = parseInt(index % 3) * 200;
+    let top = parseInt(index /3) * 200;
     //a = {input: `./${index + 1}.png`, top: `${0}`, left: `${200}`};
-    a = {input: `./${index + 1}.png`, top: 0, left: x * 200};
+    a = {input: `./${index + 1}.png`, top: top, left: left};
     payload.push(a);
 }
 
