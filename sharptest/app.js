@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-await sharp(
+const promise2 = sharp(
     {
         create: {
             width: 640,
@@ -76,30 +76,21 @@ await sharp(
             channels: 4,
             background: { r: 255, g: 100, b: 100, alpha: 0.5 }
         }
-    })
-    // .composite([ 
-    //      {
-    //           input: "1.png",
-    //           top: 0,
-    //           left: 0
-    //       },
-    //       {
-    //         input: "2.png",
-    //         top: 0,
-    //         left: 200
-    //     }
-    //     ] )
+    });
 
 
-    .composite([ 
-         {
-              input: "1.png",
-              gravity:"northwest",
-          }
-         ] )
-   
-
-    .toFile("ooo.png");
+        // 画像サイズ変更
+        await promise2.composite(
+        [
+            {
+                input: "1.png",
+                gravity:"northwest",
+            }
+        ] )
+        // 画像出力
+        .toFile(`ooo.png` , ( err , info ) =>{
+            if( err ) { console.error(err) }
+        });
     
 
 
