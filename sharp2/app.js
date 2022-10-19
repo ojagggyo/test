@@ -60,21 +60,19 @@ await sharp(`./images/1.png`)
 
 //const width = 400;
 //const r = width / 2;
-//const circleShape = Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`);
-
+//const circleShape = ;
 // アイコン画像を丸い形で加工
-const iconBuffer = await sharp(`./images/back.png`)
+const iconBuffer = await sharp(`./images/1.png`)
     .png() // ※元画像がjpgの場合は、pngにして透過できるようにする
-    .resize(width, width)
+    .resize(200, 200)
     .composite([{
-        input: circleShape,
+        input: Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`),
         blend: 'dest-in'
     }])
     .toBuffer();
 
 // 加工したicon画像を背景画像の中心に合成
-await sharp(`./images/1.png`)
-    .resize(200, 200)//リサイズ
+await sharp(`./images/back.png`)
     .composite([{
         input: iconBuffer, gravity: "center", blend: "hard-light"
     }])
