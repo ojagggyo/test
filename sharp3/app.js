@@ -77,14 +77,14 @@ for (let index = 0; index < urls.length; index++) {
 
 
 const s = await sharp(`./back.png`)
-for (let index = 0; index < urls.length; index++) {
+for (let index = 0; index < urls.length-1; index++) {
     let left = index * 200;
     await s.composite([{
             input: `./${index + 1}.png`, 
             top: 0, 
             left: left
-        }]);
-    }
+    }]);
+}
 await s.toFile(`./outout.png`);
 
 
