@@ -9,7 +9,7 @@ var urls = [
 
 
 
-for (let index = 0; index < array.length; index++) {
+for (let index = 0; index < urls.length; index++) {
     const url = urls[index];
     request(
         {method: 'GET', url: url, encoding: null},
