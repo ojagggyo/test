@@ -76,14 +76,23 @@ for (let index = 0; index < urls.length; index++) {
 //     }
 
 
+//const circleShape = Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`);
+
 const s = await sharp(`./back.png`)
-for (let index = 0; index < urls.length-1; index++) {
+for (let index = 0; index < urls.length; index++) {
     let left = index * 200;
-    await s.composite([{
-            input: `./${index + 1}.png`, 
+    await s.composite([
+        {
+            input: `./${1}.png`, 
             top: 0, 
-            left: left
-    }]);
+            left: 0
+    },
+    {
+        input: `./${2}.png`, 
+        top: 0, 
+        left: 200
+},
+]);
 }
 await s.toFile(`./outout.png`);
 
