@@ -78,13 +78,12 @@ let promise2 = sharp(
         }
     }
 );
-// await promise2.composite([ 
-//         {
-//              input: "./out/1.png",
-//              top: 0,
-//              left: 0,
-//          }
-//     ] );
+await promise2.composite([ 
+         {
+              input: "./out/1.png",
+              gravity:"northwest"
+          }
+     ] );
 
 await promise2.toFile("./ooo.png");
 
