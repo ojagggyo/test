@@ -33,7 +33,7 @@ for (let index = 0; index < urls.length; index++) {
 
     const promise = sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
-    promise.resize({
+    await promise.resize({
         width: 200,
         height: 200,
         fit: 'contain'
@@ -64,7 +64,7 @@ for (let index = 0; index < urls.length; index++) {
 }
 
 // 画像出力
-promise2.toFile(`out.png` , ( err , info ) =>{
+await promise2.toFile(`out.png` , ( err , info ) =>{
     if( err ) { console.error(err) }
 });
 
