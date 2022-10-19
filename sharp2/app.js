@@ -57,6 +57,30 @@ await sharp(`./images/1.png`)
     .toFile('output3.png');
 
 
+
+//const width = 400;
+//const r = width / 2;
+//const circleShape = Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`);
+
+// アイコン画像を丸い形で加工
+const iconBuffer = await sharp(`./images/1.png`)
+    .png() // ※元画像がjpgの場合は、pngにして透過できるようにする
+    .resize(width, width)
+    .composite([{
+        input: circleShape,
+        blend: 'dest-in'
+    }])
+    .toBuffer();
+
+// 加工したicon画像を背景画像の中心に合成
+await sharp(`./images/back.png`)
+    .composite([{
+        input: iconBuffer, gravity: "center", blend: "hard-light"
+    }])
+    .png()
+    .toFile('output4.png');
+
+
 //--------------------
 })();//非同期終了
 //--------------------
