@@ -28,35 +28,11 @@ for (let index = 0; index < urls.length; index++) {
 //--------------------
 
 
-/*
-const sharp = require("sharp");
-for (let index = 0; index < urls.length; index++) {
-
-    console.log(`./images/${index + 1}.png 開始`);
-
-    const promise = await sharp(`./images/${index + 1}.png`);
-    // 画像サイズ変更
-    await promise.resize({
-        w 200,
-        height: 200,
-        fit: 'contain'
-    })
-    // 画像出力
-    .toFile(`./${index + 1}.png` , ( err , info ) =>{
-        if( err ) { console.error(err) }
-    });
-
-    console.log(`終了`);
-}
-*/
-
-
-
 const sharp = require('sharp')
 
 //リサイズ
 await sharp(`./images/back.png`)
-.resize({width: 610, height: 400, fit: 'contain'})
+.resize({width: 600, height: 400, fit: 'contain'})
 .toFile('back.png');
 
 for (let index = 0; index < urls.length; index++) {
