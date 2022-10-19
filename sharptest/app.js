@@ -1,4 +1,4 @@
-const { setTimeout } = require('timers/promises');
+
 
 
 
@@ -14,10 +14,6 @@ var urls = [
 
 (async ()=>{//非同期開始
 
-
-    console.log("すたーと！");
-    await setTimeout(100);
-    console.log("えんど！");
 
 
 
@@ -43,7 +39,7 @@ for (let index = 0; index < urls.length; index++) {
 
     console.log(`./images/${index + 1}.png 開始`);
 
-    const promise = sharp(`./images/${index + 1}.png`);
+    const promise = await sharp(`./images/${index + 1}.png`);
     // 画像サイズ変更
     await promise.resize({
         width: 200,
@@ -83,7 +79,7 @@ for (let index = 0; index < urls.length; index++) {
 
 console.log(`1`);
 
-const promise2 = sharp(
+const promise2 = await sharp(
     {
         create: {
             width: 640,
