@@ -89,6 +89,16 @@ await sharp(
     //         left: 200
     //     }
     //     ] )
+
+
+    .composite([ 
+         {
+              input: "1.png",
+              gravity:"northwest",
+          }
+         ] )
+   
+
     .toFile("ooo.png");
     
 
