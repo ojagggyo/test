@@ -33,15 +33,8 @@ for (let index = 0; index < urls.length; index++) {
         height: 200,
         fit: 'contain'
     })
-}
 
-console.log("出力");
-
-
-for (let index = 0; index < urls.length; index++) {
     promise.toFile(`./images/${index + 1}.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
 }
-
-
