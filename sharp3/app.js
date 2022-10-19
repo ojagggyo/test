@@ -41,17 +41,16 @@ const sharp = require('sharp')
 const n = urls.length;
 const image_width = 200;
 const image_height = 200;
-const back_width = parseInt(Math.sqrt(n));
-const back_height= parseInt((n - 1) / x);
+const x = parseInt(Math.sqrt(n));
+const y = parseInt((n - 1) / x);
 console.log("n=${n}");
-console.log("image_width=${image_width},image_height=${image_height}");
-console.log("back_width=${back_width},back_height=${back_height}");
+console.log("x=${x},y=${y}");
 
 //リサイズ
 await sharp(`./images/back.png`)
     .resize({
-        width: back_width * image_width, 
-        height: back_height * image_height, 
+        width: x * image_width, 
+        height: y * image_height, 
         fit: 'contain'})
     .toFile('back.png');
 
