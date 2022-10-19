@@ -55,13 +55,17 @@ for (let index = 0; index < urls.length; index++) {
 }
 
 
-//実際に使う時
-  const hoge = async () => {
+// //実際に使う時
+//   const hoge = async () => {
+//     console.log("すたーと！");
+//     // こんな感じで使う
+//     await sleepFunc(5000);
+//     console.log("えんど！");
+//   }
     console.log("すたーと！");
     // こんな感じで使う
     await sleepFunc(5000);
     console.log("えんど！");
-  }
 
 
 let payload = []
