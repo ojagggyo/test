@@ -68,7 +68,7 @@ for (let index = 0; index < urls.length; index++) {
 //     if( err ) { console.error(err) }
 // });
 
-let promise2 = sharp(
+sharp(
     {
         create: {
             width: 640,
