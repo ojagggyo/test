@@ -65,10 +65,10 @@ await sharp(`./images/1.png`)
 const iconBuffer = await sharp(`./images/1.png`)
     .png() // ※元画像がjpgの場合は、pngにして透過できるようにする
     .resize(50, 50)
-    .composite([{
-        input: Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`),
-        blend: 'dest-in'
-    }])
+    // .composite([{
+    //     input: Buffer.from(`<svg><circle cx="${r}" cy="${r}" r="${r}" /></svg>`),
+    //     blend: 'dest-in'
+    // }])
     .toBuffer();
 
 // 加工したicon画像を背景画像の中心に合成
