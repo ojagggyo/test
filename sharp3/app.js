@@ -51,14 +51,16 @@ for (let index = 0; index < urls.length; index++) {
 
 
 
-
 const sharp = require('sharp')
 
+
+
+//リサイズ
+await sharp(`./images/back.png`)
+.resize({width: 600, height: 400, fit: 'contain'})
+.toFile('back.png');
+
 for (let index = 0; index < urls.length; index++) {
-    // //リサイズ
-    // await sharp(`./images/back.png`)
-    // .resize({width: 600, height: 400, fit: 'contain'})
-    // .toFile('bbb.jpg');
 
     await sharp(`./images/${index + 1}.png`)
     .resize({width: 200, height: 200, fit: 'contain'})
