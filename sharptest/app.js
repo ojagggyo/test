@@ -81,7 +81,7 @@ const promise2 = sharp(`./images/back.png`);
             left: 1 * 200,
         }
     ] )
-    .toFormat("png").toFile(`./out.png` , ( err , info ) =>{
+    .toFile(`./out.png` , ( err , info ) =>{
         if( err ) { console.error(err) }
     });
 
