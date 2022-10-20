@@ -26,7 +26,8 @@ return new Promise((resolve, reject) => {
     let urls = [];
     const filter = "created";
     const query = {
-        tag: 'japanese',
+        //tag: 'japanese',
+        tag: 'hive-161179',
         limit: 40,
         truncate_body: 1//本文を1文字だけ取得
     };
