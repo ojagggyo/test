@@ -1,7 +1,16 @@
-/**
- * @returns {Promise.<number>}
- */
- function 非同期処理() {
+
+
+const sleep = (m) => {
+    return new Promise((resolve) => setTimeout(resolve, m));
+};
+  
+
+
+ async function 非同期処理() {
+    console.log("タイマー開始") 
+    await sleep(1000);
+    console.log("タイマー終了")
+    console.log("aaa") 
     return Promise.resolve(1)
 }
 
