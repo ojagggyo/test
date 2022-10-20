@@ -1,8 +1,5 @@
 const dsteem = require('dsteem');
-//const fs = require('fs');
-//const request = require('request');
 
-//connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
 function getDateString(date){
@@ -13,8 +10,11 @@ function log(msg) {
 }
 
 
-//ミュートしたいアカウント
-const muteList = ["bukitcantik"];
+//ミュートしたいアカウント（他人にアップボートしない人）
+const muteList = [
+    "bukitcantik",
+    "sawahbukit",
+];
 
 
 //filter change selection function
@@ -44,6 +44,11 @@ return new Promise((resolve, reject) => {
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
                     //const image = json.image ? json.image[0] : '';
+
+                    //アカウント対象外
+                    if(-1 < muteList.indexOf(author)){
+                        return;
+                    }
 
                     if(json.image){
                         urls.push(json.image[0]);
