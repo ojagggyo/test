@@ -84,6 +84,6 @@ return new Promise((resolve, reject) => {
         console.log(urls);
 
 
-resolve(urls);
+return resolve(urls);
 })
 };
