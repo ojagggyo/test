@@ -52,14 +52,16 @@ getPosts = async () => {
 
                 });
 
-                document.getElementById('postList').innerHTML = 'OK';
+                //document.getElementById('postList').innerHTML = 'OK';
+                console.log('ok');
             } else {
-                document.getElementById('postList').innerHTML = 'No result.';
+                //document.getElementById('postList').innerHTML = 'No result.';
+                console.log('No result.');
             }
         })
         .catch(err => {
             console.log(err);
-            alert(`Error:${err}, try again`);
+            //alert(`Error:${err}, try again`);
         });
 };
 
