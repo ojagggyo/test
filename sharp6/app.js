@@ -69,18 +69,20 @@ module.exports.getPosts = async () => {
                 });
 
                 //document.getElementById('postList').innerHTML = 'OK';
-                console.log('ok');
+
             } else {
                 //document.getElementById('postList').innerHTML = 'No result.';
-                console.log('No result.');
+               
             }
 
-            console.log('*** getPosts then終了 ***');
             return new Promise.resolve(urls);
+            console.log('*** getPosts then終了 ***');
+
         })
         .catch(err => {
             console.log(err);
             //alert(`Error:${err}, try again`);
+            return new Promise.reject(urls);
         });
 
 
