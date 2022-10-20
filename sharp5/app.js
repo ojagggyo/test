@@ -54,15 +54,6 @@ const y = parseInt((n - 1) / x) + 1;
 console.log(`n=${n}`);
 console.log(`x=${x},y=${y}`);
 
-//リサイズ
-// await sharp(`./images/back.png`)
-//     .resize({
-//         width: x * image_width, 
-//         height: y * image_height, 
-//         //fit: 'contain'
-//     })
-//     .toFile('back.png');
-
 
 for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
@@ -72,7 +63,7 @@ for (let index = 0; index < urls.length; index++) {
                 height: image_height, 
                 //fit: 'contain'
             })
-        .toFile(`./${index + 1}.png`);
+        .toFile(`./resize/${index + 1}.png`);
 
     console.log("1秒スリープ");
     // こんな感じで使う
@@ -87,7 +78,7 @@ for (let index = 0; index < urls.length; index++) {
     const dy = parseInt(index / x);
     console.log(`dx=${dx},dy=${dy}`);
     a = {
-        input: `./${index + 1}.png`, 
+        input: `./resize/${index + 1}.png`, 
         top: dy * image_height, 
         left: dx * image_width,
     };
@@ -105,7 +96,6 @@ const s = await sharp(
             background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
         }
     });
-
 for (let index = 0; index < urls.length; index++) {
     await s.composite(payload)
 }
