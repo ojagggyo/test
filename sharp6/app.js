@@ -40,7 +40,7 @@ module.exports.getPosts = async () => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
-                        urls.push(json.image[0]);
+                        module.exports.urls.push(json.image[0]);
                         //const url = json.image[0];
                         // request(
                         //     {method: 'GET', url: url, encoding: null},
