@@ -29,6 +29,8 @@ return new Promise((resolve, reject) => {
         limit = 100;
     }
 
+    console.log(`limit=${limit}`);
+
     const urls = [];
     const filter = "created";
     const query = {
