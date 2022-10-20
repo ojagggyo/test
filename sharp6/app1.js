@@ -21,7 +21,7 @@ const muteList = ["bukitcantik"];
 module.exports.getPosts = async (tag) => {
 return new Promise((resolve, reject) => {
         
-    console.log('*** getPosts開始 ***');
+    console.log(`*** getPosts開始 ${tag} ***`);
 
     let urls = [];
     const filter = "created";
