@@ -10,7 +10,7 @@ const sleep = (m) => {
   
 //
 async function main(){
-    await app.getPosts("japanese",200)//tagを指定する
+    await app.getPosts("japanese",100)//tagを指定する
         .then(result => {
             console.log(result);
             sub(result);
