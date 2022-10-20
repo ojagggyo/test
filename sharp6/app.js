@@ -16,7 +16,7 @@ function log(msg) {
 //ミュートしたいアカウント
 const muteList = ["bukitcantik"];
 
-const urls = [];
+let urls = [];
 
 // module.exports.getUrls = () => {
 //     console.log('getUrls');
