@@ -26,6 +26,7 @@ const urls = [];
 
 //filter change selection function
 module.exports.getPosts = async () => {
+return new Promise((resolve, reject) => {
 
     console.log('getPosts');
 
@@ -82,5 +83,7 @@ module.exports.getPosts = async () => {
 
         console.log(urls);
 
-    return Promise.resolve(urls);
+
+resolve(urls);
+})
 };

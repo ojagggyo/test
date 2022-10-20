@@ -32,6 +32,7 @@ var fs = require('fs');
 (async ()=>{//非同期開始
 //--------------------
 
+
     console.log("await app.getPosts();呼ぶ前");
     const urls = await app.getPosts();
     console.log(urls);
