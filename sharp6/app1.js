@@ -23,8 +23,8 @@ module.exports.getPosts = async (tag, param_limit) => {
 return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${param_limit} ***`);
-    
-    let limit = param_limit + 10;//スキップされる記事がありため。
+
+    let limit = parseInt(param_limit) + 10;//スキップされる記事がありため。
 
     console.log(`limit1=${limit}`);
 
