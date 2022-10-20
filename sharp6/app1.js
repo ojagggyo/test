@@ -24,11 +24,15 @@ return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
 
-    limit = parseInt(limit) + 10;//スキップされる記事がありため。
+    let max = limit;
+
+    console.log(`max=${max}`);
+
+    limit =  parseInt(limit) + 10;//スキップされる記事がありため。
 
     console.log(`limit1=${limit}`);
 
-    if(limit > 100){
+    if(max > 100){
         console.log(`limit2=${limit}`);
         limit = 100;
         console.log(`limit3=${limit}`);
@@ -56,6 +60,11 @@ return new Promise((resolve, reject) => {
                 let index = 0;
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
+
+                    if(urls.length > max){
+                        console.log('skip ', 'urls.length > max');
+                        return;
+                    }
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(post.author)){
