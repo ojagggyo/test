@@ -22,14 +22,16 @@ const muteList = [
 
 //new Date(result[0].last_vote_time+"z")
 async function get_accounts(name)  {
+return new Promise(async (resolve, reject) => {
     await client.database
         .call('get_accounts', [[name]])
         .then(result => {
             if(result.length == 0){
-                return null;
+                return reject(null);
             }
-            return result[0];
+            return resolve(result[0]);
         });
+});
 }
 
 
