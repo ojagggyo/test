@@ -56,7 +56,7 @@ return new Promise((resolve, reject) => {
                     const json = JSON.parse(post.json_metadata);
 
                     client.database
-                        .call('get_accounts', ['yasu'])
+                        .call('get_accounts', [['yasu']])
                         .then(result => {
                             for (var i = 0; i < result.length; i++) {
                                 console.log(result[i]);
