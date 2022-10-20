@@ -66,4 +66,7 @@ module.exports.getPosts = async () => {
             console.log(err);
             //alert(`Error:${err}, try again`);
         });
+
+
+        console.log(module.exports.urls);
 };
