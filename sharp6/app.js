@@ -19,12 +19,16 @@ const muteList = ["bukitcantik"];
 const urls = [];
 
 module.exports.getUrls = () => {
+    console.log('getUrls');
     console.log(urls);
     return urls;
 }
 
 //filter change selection function
 module.exports.getPosts = async () => {
+
+    console.log('getPosts');
+
     const filter = "created";
     const query = {
         tag: 'japanese',
@@ -37,6 +41,7 @@ module.exports.getPosts = async () => {
         .then(result => {
             console.log('Response received:', result);
 
+
             if (result) {
                 
                 let index = 0;
@@ -47,6 +52,7 @@ module.exports.getPosts = async () => {
                     if(json.image){
                         
                         console.log("urls.push(json.image[0]);");
+
                         urls.push(json.image[0]);
                         //const url = json.image[0];
                         // request(
