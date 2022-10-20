@@ -26,23 +26,26 @@ var fs = require('fs');
 
 
 //
-
-
-//--------------------
-(async ()=>{//非同期開始
-//--------------------
-
-
-    console.log("await app.getPosts();呼ぶ前");
+async function main(){
+console.log("await app.getPosts();呼ぶ前");
     const urls = await app.getPosts().then(result => {
       }).then(result => {
         console.log("then");
         console.log(result);
+        sub();
       });
     
     console.log(urls);
     console.log("await app.getPosts();呼んだ後");
+}
 
+
+async function sub(){
+//--------------------
+//(async ()=>{//非同期開始
+//--------------------
+
+    
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
@@ -115,6 +118,7 @@ var fs = require('fs');
     }
     await s.toFile(`./out.png`);
 
+}
 //--------------------
-})();//非同期終了
+//})();//非同期終了
 //--------------------
