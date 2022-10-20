@@ -19,12 +19,12 @@ const muteList = [
 
 
 //filter change selection function
-module.exports.getPosts = async (tag, param_limit) => {
+module.exports.getPosts = async (tag, limit) => {
 return new Promise((resolve, reject) => {
         
-    console.log(`*** getPosts開始 ${tag} ${param_limit} ***`);
+    console.log(`*** getPosts開始 ${tag} ${limit} ***`);
 
-    let limit = parseInt(param_limit) + 10;//スキップされる記事がありため。
+    limit = parseInt(limit) + 10;//スキップされる記事がありため。
 
     console.log(`limit1=${limit}`);
 
