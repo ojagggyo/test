@@ -34,7 +34,12 @@ var fs = require('fs');
 
 
     console.log("await app.getPosts();呼ぶ前");
-    const urls = await app.getPosts();
+    const urls = await app.getPosts().then(result => {
+      }).then(result => {
+        console.log("then");
+        console.log(result);
+      });
+    
     console.log(urls);
     console.log("await app.getPosts();呼んだ後");
 
