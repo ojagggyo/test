@@ -20,23 +20,6 @@ const muteList = [
 ];
 
 
-// //new Date(result[0].last_vote_time+"z")
-// async function get_accounts(name)  {
-// return new Promise(async (resolve, reject) => {
-//     await client.database
-//         .call('get_accounts', [[name]])
-//         .then(result => {
-//             if(result.length == 0){
-//                 return reject(null);
-//             }
-//             return resolve(result[0]);
-//         });
-// });
-//}
-
-
-
-
 //filter change selection function
 module.exports.getPosts = async (tag, limit) => {
 //module.exports.getPosts = function getPosts(tag, limit) {
@@ -67,21 +50,25 @@ return new Promise((resolve, reject) => {
             //console.log('Response received:', result);
             console.log('length:', result.length);
 
+            var today = new Date();
+            console.log(today);
+            var yesterday = new Date(today.setDate(today.getDate() - 1) );
+            console.log(yesterday);
+
             if (result) {
                 
                 let index = 0;
                 result.forEach(  post => {
                     const json = JSON.parse(post.json_metadata);
-
-                    (async ()=>{//非同期開始
-                        // let a = await get_accounts(post.author);
-                        // console.log(new Date(a.last_vote_time+"z"));
-                        let a =  await client.database.call('get_accounts', [[post.author]]).then(result => {return result[0]});
-                        console.log(new Date(a.last_vote_time + "z"));
-                    })();//非同期終了
+                    const created = new Date(post.created + "z");
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
+                        return;
+                    }
+
+                    //24時間以上前
+                    if(yesterday.getTime() > created.getTime()){
                         return;
                     }
 
