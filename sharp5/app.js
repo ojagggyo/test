@@ -96,7 +96,7 @@ for (let index = 0; index < urls.length; index++) {
     for (let index = 0; index < urls.length; index++) {
         await s.composite(payload)
     }
-    await s.toFile(`./outout.png`);
+    await s.toFile(`./out.png`);
 
 //--------------------
 })();//非同期終了
