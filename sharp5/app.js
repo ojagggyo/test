@@ -97,12 +97,12 @@ for (let index = 0; index < urls.length; index++) {
 
 //合成する。
 const s = await sharp(
-    {
+    {//背景
         create: {
             width: x * image_width,
             height: y * image_height,
             channels: 4,
-            background: { r: 255, g: 100, b: 100, alpha: 0.5 }//色を指定する。
+            background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
         }
     });
 
