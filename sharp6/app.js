@@ -16,7 +16,7 @@ function log(msg) {
 //ミュートしたいアカウント
 const muteList = ["bukitcantik"];
 
-let urls = [];
+
 
 // module.exports.getUrls = () => {
 //     console.log('getUrls');
@@ -27,9 +27,9 @@ let urls = [];
 //filter change selection function
 module.exports.getPosts = async () => {
 
-
     console.log('getPosts');
 
+    let urls = [];
     const filter = "created";
     const query = {
         tag: 'japanese',
