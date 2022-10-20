@@ -1,6 +1,8 @@
 const app = require('./app.js');
 app.getPosts();
 const urls = app.urls;
+console.log(urls);
+
 
 // いい感じにPromiseでラップする
 const sleep = (m) => {
