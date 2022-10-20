@@ -15,7 +15,7 @@ const sleep = (m) => {
 
 async function main() {
     console.log("aaa") 
-    console.log(1 + 非同期処理()) // 1[object Promise]
+    console.log(1 + await 非同期処理()) // 1[object Promise]
     console.log("bbb") 
     console.log(1 + await 非同期処理()) // 2
     console.log("ccc") 
