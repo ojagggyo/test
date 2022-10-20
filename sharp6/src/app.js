@@ -1,5 +1,5 @@
 const dsteem = require('dsteem');
-var fs = require('fs');
+const fs = require('fs');
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
