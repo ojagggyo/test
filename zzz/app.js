@@ -10,7 +10,6 @@ const sleep = (m) => {
     console.log("タイマー開始") 
     await sleep(1000);
     console.log("タイマー終了")
-    console.log("aaa") 
     return Promise.resolve(1)
 }
 
