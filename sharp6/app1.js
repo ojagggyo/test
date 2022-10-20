@@ -43,10 +43,9 @@ return new Promise((resolve, reject) => {
                 let index = 0;
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
-                    //const image = json.image ? json.image[0] : '';
 
                     //アカウント対象外
-                    if(-1 < muteList.indexOf(author)){
+                    if(-1 < muteList.indexOf(post.author)){
                         return;
                     }
 
