@@ -45,6 +45,8 @@ module.exports.getPosts = async () => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
+                        
+                        console.log("urls.push(json.image[0]);");
                         urls.push(json.image[0]);
                         //const url = json.image[0];
                         // request(
