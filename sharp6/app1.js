@@ -22,7 +22,7 @@ const muteList = [
 
 //new Date(result[0].last_vote_time+"z")
 async function get_accounts(name)  {
-    let a =  await client.database
+    await client.database
         .call('get_accounts', [[name]])
         .then(result => {
             if(result.length == 0){
@@ -30,7 +30,6 @@ async function get_accounts(name)  {
             }
             return result[0];
         });
-    return a;
 }
 
 
@@ -71,7 +70,7 @@ return new Promise((resolve, reject) => {
                     const json = JSON.parse(post.json_metadata);
 
                     let a = await get_accounts(post.author);
-                    console.log(a);
+                    console.log(new Date(a.last_vote_time+"z"));
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
