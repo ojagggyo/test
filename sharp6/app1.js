@@ -78,7 +78,7 @@ return new Promise((resolve, reject) => {
                         return;
                     }
 
-                    if(json.image){
+                    if(json.image.length > 0){
                         urls.push(json.image[0]);
                      }
                      else{
