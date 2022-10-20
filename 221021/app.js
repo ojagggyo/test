@@ -22,6 +22,8 @@ const targetPost = {
 };
 
 
+console.log('privateKey:', voterAcount.privateKey);
+
 submitVote = async () => {
     
     //get account name of voter
@@ -55,4 +57,4 @@ submitVote = async () => {
 };
 
 
-submitVote();
+//submitVote();
