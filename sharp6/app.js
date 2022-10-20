@@ -19,7 +19,7 @@ const muteList = ["bukitcantik"];
 module.exports.urls = [];
 
 //filter change selection function
-getPosts = async () => {
+module.exports.getPosts = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
