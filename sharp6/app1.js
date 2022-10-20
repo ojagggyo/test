@@ -1,5 +1,5 @@
 const app = require('./app.js');
-app.getPosts();
+await app.getPosts();
 const urls = app.getUrls();
 console.log(urls);
 
