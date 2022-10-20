@@ -64,7 +64,7 @@ for (let index = 0; index < urls.length; index++) {
         .toFile(`./resize/${index + 1}.png`);
 
     console.log("1秒スリープ");
-    await sleepFunc(1000);
+    await sleep(1000);
 }
 
 
