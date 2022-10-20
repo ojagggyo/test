@@ -20,18 +20,18 @@ const muteList = [
 ];
 
 
-//new Date(result[0].last_vote_time+"z")
-async function get_accounts(name)  {
-return new Promise(async (resolve, reject) => {
-    await client.database
-        .call('get_accounts', [[name]])
-        .then(result => {
-            if(result.length == 0){
-                return reject(null);
-            }
-            return resolve(result[0]);
-        });
-});
+// //new Date(result[0].last_vote_time+"z")
+// async function get_accounts(name)  {
+// return new Promise(async (resolve, reject) => {
+//     await client.database
+//         .call('get_accounts', [[name]])
+//         .then(result => {
+//             if(result.length == 0){
+//                 return reject(null);
+//             }
+//             return resolve(result[0]);
+//         });
+// });
 }
 
 
@@ -68,11 +68,11 @@ return new Promise((resolve, reject) => {
             if (result) {
                 
                 let index = 0;
-                result.forEach(async post => {
+                result.forEach( post => {
                     const json = JSON.parse(post.json_metadata);
 
-                    let a = await get_accounts(post.author);
-                    console.log(new Date(a.last_vote_time+"z"));
+                    // let a = await get_accounts(post.author);
+                    // console.log(new Date(a.last_vote_time+"z"));
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
