@@ -55,6 +55,16 @@ return new Promise((resolve, reject) => {
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
 
+                    client.database
+                        .call('get_accounts', ['yasu'])
+                        .then(result => {
+                            for (var i = 0; i < result.length; i++) {
+                                console.log(result[i]);
+                                console.log("");
+                            }
+                    });
+
+
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
                         return;
