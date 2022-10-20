@@ -58,7 +58,6 @@ return new Promise((resolve, reject) => {
                     if(json.image){
                         urls.push(json.image[0]);
                     }
-
                 });
 
                 return resolve(urls);

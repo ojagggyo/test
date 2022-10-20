@@ -35,18 +35,24 @@ async function sub(tag, limit, urls){
 //--------------------
 //(async ()=>{//非同期開始
 //--------------------
+
+
+
    
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
-        request(
-            {method: 'GET', url: url, encoding: null},
-            function (error, response, body){
-                if(!error && response.statusCode === 200){
-                    fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+
+        //if(url != ''){
+            request(
+                {method: 'GET', url: url, encoding: null},
+                function (error, response, body){
+                    if(!error && response.statusCode === 200){
+                        fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+                    }
                 }
-            }
-        );
+            );
+        //}
     }
    
 
