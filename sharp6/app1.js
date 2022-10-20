@@ -24,6 +24,11 @@ return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ***`);
 
+    limit = limit + 10;//スキップされる記事がありため。
+    if(limit > 100){
+        limit = 100;
+    }
+
     const urls = [];
     const filter = "created";
     const query = {
