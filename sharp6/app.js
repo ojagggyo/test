@@ -27,11 +27,11 @@ async function main(){
     await app.getPosts(tag, limit)//tagを指定する
         .then(result => {
             console.log(result);
-            sub(result);
+            sub(tag, limit, result);
         });   
 }
 
-async function sub(urls){
+async function sub(tag, limit, urls){
 //--------------------
 //(async ()=>{//非同期開始
 //--------------------
@@ -103,7 +103,7 @@ async function sub(urls){
     for (let index = 0; index < urls.length; index++) {
         await s.composite(payload)
     }
-    await s.toFile(`./out.png`);
+    await s.toFile(`./${tag}_${limit}.png`);
 
 }
 //--------------------
