@@ -17,13 +17,6 @@ function log(msg) {
 const muteList = ["bukitcantik"];
 
 
-
-// module.exports.getUrls = () => {
-//     console.log('getUrls');
-//     console.log(urls);
-//     return urls;
-// }
-
 //filter change selection function
 module.exports.getPosts = async () => {
 return new Promise((resolve, reject) => {
@@ -34,7 +27,7 @@ return new Promise((resolve, reject) => {
     const filter = "created";
     const query = {
         tag: 'japanese',
-        limit: 5,
+        limit: 40,
         truncate_body: 1//本文を1文字だけ取得
     };
 
@@ -55,16 +48,6 @@ return new Promise((resolve, reject) => {
                         console.log("urls.push(json.image[0]);");
 
                         urls.push(json.image[0]);
-                        //const url = json.image[0];
-                        // request(
-                        //     {method: 'GET', url: url, encoding: null},
-                        //     function (error, response, body){
-                        //         if(!error && response.statusCode === 200){
-                        //             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-                        //             index++;
-                        //         }
-                        //     }
-                        // );
                     }
 
                 });
