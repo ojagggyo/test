@@ -18,7 +18,7 @@ const muteList = ["bukitcantik"];
 
 
 //filter change selection function
-module.exports.getPosts = async () => {
+module.exports.getPosts = async (tag) => {
 return new Promise((resolve, reject) => {
         
     console.log('*** getPosts開始 ***');
@@ -27,7 +27,7 @@ return new Promise((resolve, reject) => {
     const filter = "created";
     const query = {
         //tag: 'japanese',
-        tag: 'hive-161179',
+        tag: tag,
         limit: 40,
         truncate_body: 1//本文を1文字だけ取得
     };

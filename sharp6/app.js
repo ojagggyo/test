@@ -1,3 +1,5 @@
+const request = require('request');
+const fs = require('fs');
 const app = require('./app1.js');
 
 // いい感じにPromiseでラップする
@@ -5,21 +7,14 @@ const sleep = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
   };
   
-
-// ダウンロード
-var request = require('request');
-var fs = require('fs');
-
-
 //
 async function main(){
-    await app.getPosts()
+    await app.getPosts("yasu")//tagを指定する
         .then(result => {
             console.log(result);
             sub(result);
         });   
 }
-
 
 async function sub(urls){
 //--------------------
