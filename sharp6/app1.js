@@ -36,8 +36,8 @@ return new Promise(async (resolve, reject) => {
 
 
 //filter change selection function
-//module.exports.getPosts = async (tag, limit) => {
-module.exports.getPosts = function getPosts(tag, limit) {
+module.exports.getPosts = async (tag, limit) => {
+//module.exports.getPosts = function getPosts(tag, limit) {
 return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
