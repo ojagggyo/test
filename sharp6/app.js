@@ -1,6 +1,7 @@
-const request = require('request');
-const fs = require('fs');
-const app = require('./app1.js');
+const request = require('request')
+const fs = require('fs')
+const sharp = require('sharp')
+const app = require('./app1.js')
 
 // いい感じにPromiseでラップする
 const sleep = (m) => {
@@ -33,8 +34,7 @@ async function sub(urls){
             }
         );
     }
-
-    const sharp = require('sharp')
+   
 
     const n = urls.length;
     const image_width = 200;
