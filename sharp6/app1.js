@@ -24,15 +24,15 @@ return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
     
-    limit = limit + 10;//スキップされる記事がありため。
+    // limit = limit + 10;//スキップされる記事がありため。
 
-    console.log(`limit1=${limit}`);
+    // console.log(`limit1=${limit}`);
 
-    if(limit > 100){
-        console.log(`limit2=${limit}`);
-        limit = 100;
-        console.log(`limit3=${limit}`);
-    }
+    // if(limit > 100){
+    //     console.log(`limit2=${limit}`);
+    //     limit = 100;
+    //     console.log(`limit3=${limit}`);
+    // }
 
     console.log(`limit=${limit}`);
 
