@@ -19,7 +19,6 @@ const muteList = [
     "bukitpinus",
 ];
 
-
 //filter change selection function
 module.exports.getPosts = async (tag, limit) => {
 return new Promise((resolve, reject) => {
@@ -54,15 +53,6 @@ return new Promise((resolve, reject) => {
                 let index = 0;
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
-
-                    client.database
-                        .call('get_accounts', [['yasu']])
-                        .then(result => {
-                            for (var i = 0; i < result.length; i++) {
-                                console.log(result[i].last_vote_time);
-                            }
-                    });
-
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
