@@ -18,7 +18,6 @@ async function main(){
             console.log(result);
             sub(result);
         });   
-    console.log(urls);
 }
 
 
