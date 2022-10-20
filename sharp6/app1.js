@@ -73,10 +73,12 @@ return new Promise((resolve, reject) => {
                 result.forEach(  post => {
                     const json = JSON.parse(post.json_metadata);
 
-                    // let a = await get_accounts(post.author);
-                    // console.log(new Date(a.last_vote_time+"z"));
-                    let a =  client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
-                    console.log((new Date(a.last_vote_time + "z")));
+                    (async ()=>{//非同期開始
+                        // let a = await get_accounts(post.author);
+                        // console.log(new Date(a.last_vote_time+"z"));
+                        let a =  await client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
+                        console.log(new Date(a.last_vote_time + "z"));
+                    })();//非同期終了
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
