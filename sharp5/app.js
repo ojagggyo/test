@@ -1,5 +1,5 @@
 // いい感じにPromiseでラップする
-const sleepFunc = (m) => {
+const sleep = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
   };
   
@@ -22,8 +22,8 @@ var urls = [
 ];
 
 
-console.log("スタート");
-
+//
+console.log("画像をダウンロードする。");
 for (let index = 0; index < urls.length; index++) {
     const url = urls[index];
     request(
@@ -41,10 +41,7 @@ for (let index = 0; index < urls.length; index++) {
 (async ()=>{//非同期開始
 //--------------------
 
-
-
 const sharp = require('sharp')
-
 
 const n = urls.length;
 const image_width = 200;
@@ -54,7 +51,8 @@ const y = parseInt((n - 1) / x) + 1;
 console.log(`n=${n}`);
 console.log(`x=${x},y=${y}`);
 
-
+//
+console.log("ダウンロードした画像をリサイズする。");
 for (let index = 0; index < urls.length; index++) {
     await sharp(`./images/${index + 1}.png`)
         .resize(
@@ -66,12 +64,12 @@ for (let index = 0; index < urls.length; index++) {
         .toFile(`./resize/${index + 1}.png`);
 
     console.log("1秒スリープ");
-    // こんな感じで使う
     await sleepFunc(1000);
-    console.log("再開");
 }
 
 
+//
+console.log("composite用のデータを作成する。");
 let payload = []
 for (let index = 0; index < urls.length; index++) {
     const dx = index % x;
@@ -86,7 +84,8 @@ for (let index = 0; index < urls.length; index++) {
 }
 
 
-//合成する。
+//
+console.log("合成する。");
 const s = await sharp(
     {//背景
         create: {
