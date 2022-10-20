@@ -70,12 +70,12 @@ return new Promise((resolve, reject) => {
             if (result) {
                 
                 let index = 0;
-                result.forEach( async post => {
+                result.forEach(  post => {
                     const json = JSON.parse(post.json_metadata);
 
                     // let a = await get_accounts(post.author);
                     // console.log(new Date(a.last_vote_time+"z"));
-                    let a = await client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
+                    let a =  client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
                     console.log((new Date(a.last_vote_time + "z")));
 
                     if(urls.length >= max){
