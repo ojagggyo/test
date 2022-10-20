@@ -22,7 +22,7 @@ const muteList = [
 module.exports.getPosts = async (tag,limit) => {
 return new Promise((resolve, reject) => {
         
-    console.log(`*** getPosts開始 ${tag} ***`);
+    console.log(`*** getPosts開始 ${tag} ${limit} ***`);
 
     limit = limit + 10;//スキップされる記事がありため。
     if(limit > 100){
