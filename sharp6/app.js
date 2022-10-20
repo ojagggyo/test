@@ -26,7 +26,8 @@ const muteList = ["bukitcantik"];
 
 //filter change selection function
 module.exports.getPosts = async () => {
-
+return new Promise((resolve, reject) => {
+        
     console.log('*** getPosts開始 ***');
 
     let urls = [];
@@ -68,23 +69,21 @@ module.exports.getPosts = async () => {
 
                 });
 
-                //document.getElementById('postList').innerHTML = 'OK';
-
+                return resolve(urls);
             } else {
-                //document.getElementById('postList').innerHTML = 'No result.';
-               
+                return resolve(urls);
             }
-
-            return new Promise.resolve(urls);
-            console.log('*** getPosts then終了 ***');
+      
 
         })
         .catch(err => {
             console.log(err);
             //alert(`Error:${err}, try again`);
-            return new Promise.reject(urls);
+            return reject(urls);
         });
 
 
     console.log('*** getPosts終了 ***');
+
+});
 };
