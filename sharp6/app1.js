@@ -19,8 +19,24 @@ const muteList = [
     "bukitpinus",
 ];
 
+
+//new Date(result[0].last_vote_time+"z")
+async function get_accounts(name)  {
+    let a =  await client.database
+        .call('get_accounts', [[name]])
+        .then(result => {
+            if(result.length == 0){
+                return null;
+            }
+            return result[0];
+        });
+    return a;
+}
+
+
 //filter change selection function
-module.exports.getPosts = async (tag, limit) => {
+//module.exports.getPosts = async (tag, limit) => {
+module.exports.getPosts = function getPosts(tag, limit) {
 return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
@@ -53,6 +69,9 @@ return new Promise((resolve, reject) => {
                 let index = 0;
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
+
+                    let a = get_accounts(post.author);
+                    console.log(a);
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
