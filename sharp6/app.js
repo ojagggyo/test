@@ -27,7 +27,7 @@ const muteList = ["bukitcantik"];
 //filter change selection function
 module.exports.getPosts = async () => {
 
-    console.log('getPosts');
+    console.log('*** getPosts開始 ***');
 
     let urls = [];
     const filter = "created";
@@ -75,10 +75,14 @@ module.exports.getPosts = async () => {
                 console.log('No result.');
             }
 
-            return Promise.resolve(urls);
+            console.log('*** getPosts then終了 ***');
+            return new Promise.resolve(urls);
         })
         .catch(err => {
             console.log(err);
             //alert(`Error:${err}, try again`);
         });
+
+
+    console.log('*** getPosts終了 ***');
 };
