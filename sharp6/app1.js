@@ -35,7 +35,7 @@ return new Promise((resolve, reject) => {
     client.database
         .getDiscussions(filter, query)
         .then(result => {
-            console.log('Response received:', result);
+            //console.log('Response received:', result);
             console.log('length:', result.length);
 
             if (result) {
