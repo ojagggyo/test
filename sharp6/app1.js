@@ -52,12 +52,16 @@ return new Promise((resolve, reject) => {
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(post.author)){
+                        console.log('skip ', post.author));
                         return;
                     }
 
-                    if(json.image){
-                        urls.push(json.image[0]);
-                    }
+                    if(!json.image){
+                        console.log('skip ','no image');
+                        return;
+                     }
+ 
+                     urls.push(json.image[0]);
                 });
 
                 return resolve(urls);
