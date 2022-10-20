@@ -76,7 +76,7 @@ return new Promise((resolve, reject) => {
                     (async ()=>{//非同期開始
                         // let a = await get_accounts(post.author);
                         // console.log(new Date(a.last_vote_time+"z"));
-                        let a =  await client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
+                        let a =  await client.database.call('get_accounts', [[post.author]]).then(result => {return result[0]});
                         console.log(new Date(a.last_vote_time + "z"));
                     })();//非同期終了
 
