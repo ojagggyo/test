@@ -76,7 +76,8 @@ async function sub(tag, limit, urls){
                 })
             .toFile(`./resize/${index + 1}.png`);
 
-        console.log("0.2秒スリープ");
+        process.stdout.write(".");
+        //console.log("0.2秒スリープ");
         await sleep(200);
     }
 
