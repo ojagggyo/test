@@ -32,7 +32,7 @@ console.log("await app.getPosts();呼ぶ前");
     .then(result => {
         console.log("then");
         console.log(result);
-        sub();
+        sub(result);
     });
     
     console.log(urls);
@@ -40,12 +40,11 @@ console.log("await app.getPosts();呼ぶ前");
 }
 
 
-async function sub(){
+async function sub(urls){
 //--------------------
 //(async ()=>{//非同期開始
 //--------------------
-
-    
+   
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
