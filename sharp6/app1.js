@@ -32,7 +32,7 @@ const muteList = [
 //             return resolve(result[0]);
 //         });
 // });
-}
+//}
 
 
 //filter change selection function
