@@ -61,8 +61,8 @@ async function sub(urls){
                 })
             .toFile(`./resize/${index + 1}.png`);
 
-        console.log("0.5秒スリープ");
-        await sleep(500);
+        console.log("0.1秒スリープ");
+        await sleep(100);
     }
 
     //
