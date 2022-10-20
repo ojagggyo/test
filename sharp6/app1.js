@@ -13,8 +13,10 @@ function log(msg) {
 //ミュートしたいアカウント（他人にアップボートしない人）
 const muteList = [
     "yasu.witness",//私
-    "bukitcantik",
+    "yadamaniart",
     "sawahbukit",
+    "royalsherris",
+    "bukitpinus",
 ];
 
 
