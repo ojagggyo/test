@@ -23,7 +23,7 @@ return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ***`);
 
-    let urls = [];
+    const urls = [];
     const filter = "created";
     const query = {
         //tag: 'japanese',
@@ -36,6 +36,7 @@ return new Promise((resolve, reject) => {
         .getDiscussions(filter, query)
         .then(result => {
             console.log('Response received:', result);
+            console.log('length:', result.length);
 
             if (result) {
                 
@@ -45,9 +46,6 @@ return new Promise((resolve, reject) => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
-                        
-                        console.log("urls.push(json.image[0]);");
-
                         urls.push(json.image[0]);
                     }
 
