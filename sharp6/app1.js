@@ -1,6 +1,6 @@
 const app = require('./app.js');
 app.getPosts();
-const urls = app.urls;
+const urls = app.getUrls();
 console.log(urls);
 
 

@@ -16,7 +16,12 @@ function log(msg) {
 //ミュートしたいアカウント
 const muteList = ["bukitcantik"];
 
-module.exports.urls = [];
+const urls = [];
+
+module.exports.getUrls = () => {
+    console.log(urls);
+    return urls;
+}
 
 //filter change selection function
 module.exports.getPosts = async () => {
@@ -40,7 +45,7 @@ module.exports.getPosts = async () => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
-                        module.exports.urls.push(json.image[0]);
+                        urls.push(json.image[0]);
                         //const url = json.image[0];
                         // request(
                         //     {method: 'GET', url: url, encoding: null},
@@ -68,5 +73,5 @@ module.exports.getPosts = async () => {
         });
 
 
-        console.log(module.exports.urls);
+        console.log(urls);
 };
