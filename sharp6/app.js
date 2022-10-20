@@ -26,7 +26,7 @@ let urls = [];
 
 //filter change selection function
 module.exports.getPosts = async () => {
-return new Promise((resolve, reject) => {
+
 
     console.log('getPosts');
 
@@ -74,16 +74,11 @@ return new Promise((resolve, reject) => {
                 //document.getElementById('postList').innerHTML = 'No result.';
                 console.log('No result.');
             }
+
+            return Promise.resolve(urls);
         })
         .catch(err => {
             console.log(err);
             //alert(`Error:${err}, try again`);
         });
-
-
-        console.log(urls);
-
-
-return resolve(urls);
-})
 };
