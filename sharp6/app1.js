@@ -1,6 +1,5 @@
 const app = require('./app.js');
 
-
 // いい感じにPromiseでラップする
 const sleep = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
@@ -10,33 +9,16 @@ const sleep = (m) => {
 // ダウンロード
 var request = require('request');
 var fs = require('fs');
-// var urls = [
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmczvYkSKu5U1L1go8UEFy5Y2H3CNADpqpVyKnStrgBUey/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmczvYkSKu5U1L1go8UEFy5Y2H3CNADpqpVyKnStrgBUey/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmdA56beW1LVbnL28qphDBLnSYTZmmcbt1wdmhX5RqQSnf/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmW75RTjrArTdMMXBdr5eyrBhp7ZeFHgDYXpVKWb7NDojC/image.png',
-//     'https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmczvYkSKu5U1L1go8UEFy5Y2H3CNADpqpVyKnStrgBUey/image.png',
-  
-// ];
 
 
 //
 async function main(){
-console.log("await app.getPosts();呼ぶ前");
-    const urls = await app.getPosts()
-    .then(result => {
-        console.log("then");
-        console.log(result);
-        sub(result);
-    });
-    
+    await app.getPosts()
+        .then(result => {
+            console.log(result);
+            sub(result);
+        });   
     console.log(urls);
-    console.log("await app.getPosts();呼んだ後");
 }
 
 
@@ -57,8 +39,6 @@ async function sub(urls){
             }
         );
     }
-
-
 
     const sharp = require('sharp')
 
@@ -82,8 +62,8 @@ async function sub(urls){
                 })
             .toFile(`./resize/${index + 1}.png`);
 
-        console.log("1秒スリープ");
-        await sleep(1000);
+        console.log("0.5秒スリープ");
+        await sleep(500);
     }
 
     //
