@@ -38,7 +38,7 @@ getPosts = async () => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
-                        const url = "https://steemit.com/"+json.image[0];
+                        const url = json.image[0];
                         request(
                             {method: 'GET', url: url, encoding: null},
                             function (error, response, body){
