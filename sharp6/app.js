@@ -108,6 +108,11 @@ async function sub(tag, limit, urls){
             }
         });
     for (let index = 0; index < urls.length; index++) {
+
+        await s.rotate( 317 , 
+            { 
+               background:{ r:200,g:150,b:150,alpha:1}
+           })
         await s.composite(payload)
     }
     await s.toFile(`./${tag}_${limit}.png`);
