@@ -52,7 +52,7 @@ return new Promise((resolve, reject) => {
 
                     //アカウント対象外
                     if(-1 < muteList.indexOf(post.author)){
-                        console.log('skip ', post.author));
+                        console.log('skip ', post.author);
                         return;
                     }
 
