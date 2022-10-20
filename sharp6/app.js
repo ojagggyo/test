@@ -16,7 +16,7 @@ function log(msg) {
 const muteList = ["bukitcantik"];
 
 //filter change selection function
-window.getPosts = async () => {
+getPosts = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
@@ -58,3 +58,6 @@ window.getPosts = async () => {
             alert(`Error:${err}, try again`);
         });
 };
+
+
+getPosts();
