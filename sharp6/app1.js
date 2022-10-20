@@ -33,9 +33,7 @@ return new Promise((resolve, reject) => {
     console.log(`limit1=${limit}`);
 
     if(max > 100){
-        console.log(`limit2=${limit}`);
         limit = 100;
-        console.log(`limit3=${limit}`);
     }
 
     console.log(`limit=${limit}`);
@@ -61,7 +59,7 @@ return new Promise((resolve, reject) => {
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
 
-                    if(urls.length > max){
+                    if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
                         return;
                     }
