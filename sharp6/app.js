@@ -10,7 +10,21 @@ const sleep = (m) => {
   
 //
 async function main(){
-    await app.getPosts("kr",100)//tagを指定する
+    //コマンドマラメータ取得
+    for(var i = 0;i < process.argv.length; i++){
+        console.log("argv[" + i + "] = " + process.argv[i]);
+      }
+
+    let tag = "japanese";//デフォルト
+    let limit = 4;//デフォルト
+    if(process.argv.length > 2){
+        tag = process.argv[2];
+    }
+    if(process.argv.length > 3){
+        limit = process.argv[3];
+    }
+
+    await app.getPosts(tag, limit)//tagを指定する
         .then(result => {
             console.log(result);
             sub(result);
