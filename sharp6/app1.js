@@ -1,7 +1,4 @@
 const app = require('./app.js');
-await app.getPosts();
-const urls = app.getUrls();
-console.log(urls);
 
 
 // いい感じにPromiseでラップする
@@ -29,23 +26,31 @@ var fs = require('fs');
 
 
 //
-console.log("画像をダウンロードする。");
-for (let index = 0; index < urls.length; index++) {
-    const url = urls[index];
-    request(
-        {method: 'GET', url: url, encoding: null},
-        function (error, response, body){
-            if(!error && response.statusCode === 200){
-                fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-            }
-        }
-    );
-}
 
 
 //--------------------
 (async ()=>{//非同期開始
 //--------------------
+
+    await app.getPosts();
+    const urls = app.getUrls();
+    console.log(urls);
+
+
+    console.log("画像をダウンロードする。");
+    for (let index = 0; index < urls.length; index++) {
+        const url = urls[index];
+        request(
+            {method: 'GET', url: url, encoding: null},
+            function (error, response, body){
+                if(!error && response.statusCode === 200){
+                    fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+                }
+            }
+        );
+    }
+
+
 
     const sharp = require('sharp')
 
