@@ -21,6 +21,7 @@ getPosts = async () => {
     const query = {
         tag: 'japanese',
         limit: 5,
+        truncate_body: 1//本文を1文字だけ取得
     };
 
     client.database
@@ -30,6 +31,7 @@ getPosts = async () => {
 
             if (result) {
                 
+                let index = 0;
                 result.forEach(post => {
                     const json = JSON.parse(post.json_metadata);
                     //const image = json.image ? json.image[0] : '';
@@ -41,6 +43,7 @@ getPosts = async () => {
                             function (error, response, body){
                                 if(!error && response.statusCode === 200){
                                     fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+                                    index++;
                                 }
                             }
                         );
