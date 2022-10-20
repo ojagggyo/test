@@ -32,10 +32,10 @@ var fs = require('fs');
 (async ()=>{//非同期開始
 //--------------------
 
-    await app.getPosts();
-    const urls = app.getUrls();
+    console.log("await app.getPosts();呼ぶ前");
+    const urls = await app.getPosts();
     console.log(urls);
-
+    console.log("await app.getPosts();呼んだ後");
 
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {

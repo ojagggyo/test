@@ -18,11 +18,11 @@ const muteList = ["bukitcantik"];
 
 const urls = [];
 
-module.exports.getUrls = () => {
-    console.log('getUrls');
-    console.log(urls);
-    return urls;
-}
+// module.exports.getUrls = () => {
+//     console.log('getUrls');
+//     console.log(urls);
+//     return urls;
+// }
 
 //filter change selection function
 module.exports.getPosts = async () => {
@@ -40,7 +40,6 @@ module.exports.getPosts = async () => {
         .getDiscussions(filter, query)
         .then(result => {
             console.log('Response received:', result);
-
 
             if (result) {
                 
@@ -82,4 +81,6 @@ module.exports.getPosts = async () => {
 
 
         console.log(urls);
+
+    return Promise.resolve(urls);
 };
