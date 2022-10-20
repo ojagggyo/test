@@ -1,6 +1,6 @@
 const dsteem = require('dsteem');
-const fs = require('fs');
-const request = require('request');
+//const fs = require('fs');
+//const request = require('request');
 
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
@@ -15,6 +15,8 @@ function log(msg) {
 
 //ミュートしたいアカウント
 const muteList = ["bukitcantik"];
+
+module.exports.urls = [];
 
 //filter change selection function
 getPosts = async () => {
@@ -38,16 +40,17 @@ getPosts = async () => {
                     //const image = json.image ? json.image[0] : '';
 
                     if(json.image){
-                        const url = json.image[0];
-                        request(
-                            {method: 'GET', url: url, encoding: null},
-                            function (error, response, body){
-                                if(!error && response.statusCode === 200){
-                                    fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-                                    index++;
-                                }
-                            }
-                        );
+                        urls.push(json.image[0]);
+                        //const url = json.image[0];
+                        // request(
+                        //     {method: 'GET', url: url, encoding: null},
+                        //     function (error, response, body){
+                        //         if(!error && response.statusCode === 200){
+                        //             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+                        //             index++;
+                        //         }
+                        //     }
+                        // );
                     }
 
                 });
@@ -64,6 +67,3 @@ getPosts = async () => {
             //alert(`Error:${err}, try again`);
         });
 };
-
-
-getPosts();
