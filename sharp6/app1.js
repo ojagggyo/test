@@ -67,10 +67,10 @@ return new Promise((resolve, reject) => {
             if (result) {
                 
                 let index = 0;
-                result.forEach(post => {
+                result.forEach(async post => {
                     const json = JSON.parse(post.json_metadata);
 
-                    let a = get_accounts(post.author);
+                    let a = await get_accounts(post.author);
                     console.log(a);
 
                     if(urls.length >= max){
