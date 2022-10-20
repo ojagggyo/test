@@ -13,10 +13,10 @@ function log(msg) {
 //ミュートしたいアカウント（他人にアップボートしない人）
 const muteList = [
     "yasu.witness",//私
-    "yadamaniart",
-    "sawahbukit",
-    "royalsherris",
-    "bukitpinus",
+    // "yadamaniart",
+    // "sawahbukit",
+    // "royalsherris",
+    // "bukitpinus",
 ];
 
 
@@ -33,6 +33,8 @@ const muteList = [
 //         });
 // });
 //}
+
+
 
 
 //filter change selection function
@@ -68,11 +70,13 @@ return new Promise((resolve, reject) => {
             if (result) {
                 
                 let index = 0;
-                result.forEach( post => {
+                result.forEach( async post => {
                     const json = JSON.parse(post.json_metadata);
 
                     // let a = await get_accounts(post.author);
                     // console.log(new Date(a.last_vote_time+"z"));
+                    let a = await client.database.call('get_accounts', [[post.author]]).then(result => {result[0]});
+                    console.log((new Date(a.last_vote_time + "z")));
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
