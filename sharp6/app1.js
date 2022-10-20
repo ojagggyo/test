@@ -28,12 +28,12 @@ var fs = require('fs');
 //
 async function main(){
 console.log("await app.getPosts();呼ぶ前");
-    const urls = await app.getPosts().then(result => {
-      }).then(result => {
+    const urls = await app.getPosts()
+    .then(result => {
         console.log("then");
         console.log(result);
         sub();
-      });
+    });
     
     console.log(urls);
     console.log("await app.getPosts();呼んだ後");
