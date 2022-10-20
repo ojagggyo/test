@@ -59,8 +59,7 @@ return new Promise((resolve, reject) => {
                         .call('get_accounts', [['yasu']])
                         .then(result => {
                             for (var i = 0; i < result.length; i++) {
-                                console.log(result[i]);
-                                console.log("");
+                                console.log(result[i].last_vote_time);
                             }
                     });
 
