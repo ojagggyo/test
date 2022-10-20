@@ -78,12 +78,12 @@ return new Promise((resolve, reject) => {
                         return;
                     }
 
-                    if(!json.image){
-                        console.log('skip ','no image');
-                        return;
+                    if(json.image){
+                        urls.push(json.image[0]);
                      }
- 
-                     urls.push(json.image[0]);
+                     else{
+                        urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
+                     }                    
                 });
 
                 return resolve(urls);
