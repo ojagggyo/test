@@ -25,14 +25,8 @@ return new Promise((resolve, reject) => {
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
 
     let max = limit;
-
-    console.log(`max=${max}`);
-
     limit =  parseInt(limit) + 10;//スキップされる記事がありため。
-
-    console.log(`limit1=${limit}`);
-
-    if(max > 100){
+    if(limit > 100){
         limit = 100;
     }
 
