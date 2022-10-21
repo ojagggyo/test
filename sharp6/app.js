@@ -78,7 +78,7 @@ async function sub(tag, limit, urls){
 
         process.stdout.write(".");
         //console.log("0.2秒スリープ");
-        await sleep(200);
+        await sleep(500);
     }
 
     //
