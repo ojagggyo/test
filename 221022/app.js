@@ -18,13 +18,13 @@ get_accounts = async (accountName) => {
 }
 
 //同期
-get_accounts_await = async (accountName) => {
-    console.log('get_accounts_await start')
+get_accounts_sync = async (accountName) => {
+    console.log('get_accounts_sync start')
     const result = await client.database.call('get_accounts', [[accountName]])
     if(result.length > 0){
         console.log(result[0])
     }
-    console.log('get_accounts_await end')
+    console.log('get_accounts_sync end')
     return result
 }
 
@@ -33,10 +33,10 @@ async function main()
     console.log('main start')
 
     //非同期
-    get_accounts("yasu")
+    //get_accounts("yasu")
 
     //同期
-    const result = await get_accounts_await("yasu.witness")
+    const result = await get_accounts_sync("yasu.witness")
     
     console.log('main end')
 }
