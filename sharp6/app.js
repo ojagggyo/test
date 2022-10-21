@@ -56,6 +56,7 @@ async function sub(tag, limit, urls){
         console.log(`${urls[index]}`);
     }
    
+    await sleep(2000); 
 
     const n = urls.length;
     const image_width = 200;
@@ -91,6 +92,9 @@ async function sub(tag, limit, urls){
         }
     }
 
+
+    await sleep(2000); 
+
     //
     console.log("composite用のデータを作成する。");
     let payload = []
@@ -106,7 +110,7 @@ async function sub(tag, limit, urls){
         payload.push(a);
     }
 
-    //
+    await sleep(2000); 
 
 
     console.log("sharp");
@@ -119,11 +123,11 @@ async function sub(tag, limit, urls){
                 background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
             }
         });
-    await sleep(500); 
+    //await sleep(500); 
 
     console.log("composite");
     s.composite(payload)
-    await sleep(500); 
+    //await sleep(500); 
 
     console.log("toFile");
     s.toFile(`./${tag}_${limit}.png`);
