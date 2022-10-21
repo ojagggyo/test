@@ -44,6 +44,9 @@ async function sub(tag, limit, urls){
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
+       
+        console.log(`url=${url}`);
+        url = encodeURI( url);
 
         //非同期
         // request(
@@ -62,6 +65,7 @@ async function sub(tag, limit, urls){
         if(res.statusCode === 200){
             fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
         }
+        
         
     
     
