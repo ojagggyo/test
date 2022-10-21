@@ -78,7 +78,6 @@ async function sub(tag, limit, urls){
                     height: image_height, 
                     //fit: 'contain'
                 })
-            .png()
             .toFile(`./resize/${index + 1}.png`);
 
             process.stdout.write(`${index + 1}.png `);
@@ -123,6 +122,7 @@ for (let retry = 0; retry < 3; retry++) {
                     background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
                 }
             });
+        s.png()
         console.log("composite");
         s.composite(payload)
         console.log("toFile");
