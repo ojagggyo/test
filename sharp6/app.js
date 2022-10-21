@@ -139,5 +139,10 @@ async function sub(tag, limit, urls){
 //})();//非同期終了
 //--------------------
 
+//ゴミ削除
+const { execSync } = require('child_process')
+console.log(`${execSync('rm ./images/*').toString()}`)
+console.log(`${execSync('rm ./resize/*').toString()}`)
+console.log(`${execSync('rm *.png').toString()}`)
 
 main();
