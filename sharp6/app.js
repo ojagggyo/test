@@ -53,6 +53,7 @@ async function sub(tag, limit, urls){
                 }
             );
         //}
+        await sleep(500);
     }
    
 
