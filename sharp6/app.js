@@ -127,7 +127,8 @@ for (let retry = 0; retry < 3; retry++) {
         s.composite(payload)
         console.log("toFile");
         console.log(`./${tag}_${limit}.png`);
-        s.toFile(`./${tag}_${limit}.png`);
+        //s.toFile(`./${tag}_${limit}.png`);
+        s.toFile(`${tag}_${limit}.png`);
         console.log("完了");
         break;
     
