@@ -44,7 +44,13 @@ async function sub(tag, limit, urls){
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
-       
+   
+
+
+        url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
+
+
+
         //console.log(`url=${url}`);
         //url = encodeURI( url);
 
