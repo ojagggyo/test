@@ -36,12 +36,18 @@ async function sub(tag, limit, urls){
 //(async ()=>{//非同期開始
 //--------------------
 
-
+const n = urls.length;
+const image_width = 200;
+const image_height = 150;
+const x = parseInt(Math.sqrt(n - 1)) + 1;
+const y = parseInt((n - 1) / x) + 1;
+console.log(`n=${n}`);
+console.log(`x=${x},y=${y}`);
 
    
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
-        const url = urls[index];
+        const url = `https://steemitimages.com/${image_width}/${image_height}` + urls[index];
 
         //if(url != ''){
             request(
@@ -58,13 +64,7 @@ async function sub(tag, limit, urls){
    
     await sleep(2000); 
 
-    const n = urls.length;
-    const image_width = 200;
-    const image_height = 150;
-    const x = parseInt(Math.sqrt(n - 1)) + 1;
-    const y = parseInt((n - 1) / x) + 1;
-    console.log(`n=${n}`);
-    console.log(`x=${x},y=${y}`);
+
 
     //
     console.log("ダウンロードした画像をリサイズする。");
