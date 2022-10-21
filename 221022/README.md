@@ -1,4 +1,4 @@
-# 
+# 非同期と同期
 
 ## 初期化
 npm install dsteem

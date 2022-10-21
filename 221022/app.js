@@ -1,42 +1,44 @@
-const dsteem = require('dsteem');
+const dsteem = require('dsteem')
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.steemit.com')
 
+//非同期
 get_accounts = async (accountName) => {
-    console.log('get_accounts start');
+    console.log('get_accounts start')
     client.database
         .call('get_accounts', [[accountName]])
             .then(result => {
-                console.log('get_accounts then');
+                console.log('get_accounts then')
                 if(result.length > 0){
-                    console.log(result[0]);
+                    console.log(result[0])
                 }
-            });
-    console.log('get_accounts end');
-};
+            })
+    console.log('get_accounts end')
+}
 
+//同期
 get_accounts_await = async (accountName) => {
-    console.log('get_accounts_await start');
-    const result = await client.database.call('get_accounts', [[accountName]]);
+    console.log('get_accounts_await start')
+    const result = await client.database.call('get_accounts', [[accountName]])
     if(result.length > 0){
-        console.log(result[0]);
+        console.log(result[0])
     }
-    console.log('get_accounts_await end');
-    return result;
-};
+    console.log('get_accounts_await end')
+    return result
+}
 
 async function main()
 {
-    console.log('main start');
+    console.log('main start')
 
     //非同期
-    get_accounts("yasu");
+    get_accounts("yasu")
 
     //同期
-    const result = await get_accounts_await("yasu.witness");
+    const result = await get_accounts_await("yasu.witness")
     
-    console.log('main end');
+    console.log('main end')
 }
 
-main();
+main()
