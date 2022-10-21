@@ -141,8 +141,12 @@ async function sub(tag, limit, urls){
 
 //ゴミ削除
 const { execSync } = require('child_process')
-console.log(`${execSync('rm ./images/*').toString()}`)
-console.log(`${execSync('rm ./resize/*').toString()}`)
-console.log(`${execSync('rm *.png').toString()}`)
+execSync('rm ./images/*')
+execSync('rm ./resize/*')
+execSync('rm *.png')
 
-//main();
+console.log(`${execSync('ls ./images').toString()}`)
+console.log(`${execSync('ls ./resize').toString()}`)
+console.log(`${execSync('ls *.png').toString()}`)
+
+main();
