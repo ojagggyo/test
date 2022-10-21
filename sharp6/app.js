@@ -70,22 +70,20 @@ async function sub(tag, limit, urls){
     for (let index = 0; index < urls.length; index++) {
 
         try {
-            for (let retry = 0; retry < 3; retry++) {
 
-                sharp(`./images/${index + 1}.png`)
-                .resize(
-                    {
-                        width: image_width, 
-                        height: image_height, 
-                        //fit: 'contain'
-                    })
-                .png()
-                .toFile(`./resize/${index + 1}.png`);
-    
-                process.stdout.write(`${index + 1}.png `);
-                
-                break;
-            }
+            sharp(`./images/${index + 1}.png`)
+            .resize(
+                {
+                    width: image_width, 
+                    height: image_height, 
+                    //fit: 'contain'
+                })
+            .png()
+            .toFile(`./resize/${index + 1}.png`);
+
+            process.stdout.write(`${index + 1}.png `);
+            
+            break;
     
         } catch (error) {
             console.log("catch");
