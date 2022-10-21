@@ -67,7 +67,7 @@ async function sub(tag, limit, urls){
 
     //
     console.log("ダウンロードした画像をリサイズする。");
-    //for (let index = 0; index < urls.length; index++) {
+    for (let index = 0; index < urls.length; index++) {
 
         try {
 
@@ -81,8 +81,6 @@ async function sub(tag, limit, urls){
             .toFile(`./resize/${index + 1}.png`);
 
             process.stdout.write(`${index + 1}.png `);
-            
-            //break;
     
         } catch (error) {
             console.log("catch");
@@ -91,7 +89,7 @@ async function sub(tag, limit, urls){
             await sleep(500); 
         }finally{
         }
-    //}
+    }
 
     //
     console.log("composite用のデータを作成する。");
