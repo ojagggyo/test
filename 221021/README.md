@@ -1,9 +1,11 @@
 # UPVOTEする。
 
-期化
-npm init
+## 初期化
 
-実行
+npm install dsteem
+config.json にアカウント名とポスティングキーを設定する。
+
+## 実行
 node app.js
 
 
