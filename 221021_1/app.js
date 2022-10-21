@@ -18,10 +18,12 @@ get_accounts = async (accountName) => {
 };
 
 
-
+//コマンドパラメータ取得
 let accountName = "yasu";//デフォルト
 if(process.argv.length > 2){
     accountName = process.argv[2];
+}else{
+   console.log('node app.js accountName'); 
 }
 
 get_accounts(accountName);
