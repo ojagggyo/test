@@ -5,16 +5,22 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 
 get_accounts = async (accountName) => {
-
-    //get_content_replies of the selected post
+    console.log('get_accounts start');
     client.database
         .call('get_accounts', [[accountName]])
-        .then(result => {
-            if(result.length > 0){
-                console.log(result[0]);
-                console.log("");
+            .then(result => {
+                console.log('get_accounts then');
+                if(result.length > 0){
+                    console.log(result[0]);
+                    console.log("");
+                }
+            })
+            .then(result => {
+                console.log('get_accounts then 2');
             }
-        });
+            )
+            ;
+    console.log('get_accounts end');
 };
 
 
@@ -26,4 +32,6 @@ if(process.argv.length > 2){
    console.log('node app.js accountName'); 
 }
 
+console.log('main start');
 get_accounts(accountName);
+console.log('end start');
