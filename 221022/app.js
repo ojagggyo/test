@@ -25,19 +25,11 @@ get_accounts_await = async (accountName) => {
 
 async function main()
 {
-    //コマンドパラメータ取得
-    let accountName = "yasu";//デフォルト
-    if(process.argv.length > 2){
-        accountName = process.argv[2];
-    }else{
-    console.log('node app.js accountName'); 
-    }
-
     console.log('main start');
 
-    get_accounts(accountName);
+    get_accounts("yasu");
     
-    const result = await get_accounts_await(accountName);
+    const result = await get_accounts_await("yasu.witness");
     if(result.length > 0){
         console.log(result[0]);
         console.log("");
