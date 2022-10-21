@@ -14,7 +14,7 @@ get_accounts = async (accountName) => {
                     console.log("");
                 }
             });
-    console.log('get_accounts start');
+    console.log('get_accounts end');
 };
 
 // get_accounts = async (accountName) => {
