@@ -115,8 +115,8 @@ async function sub(tag, limit, urls){
 
 for (let retry = 0; retry < 3; retry++) {
     try {
-        console.log("合成する。");
-        const s = await sharp(
+        console.log("sharp");
+        const s = sharp(
             {//背景
                 create: {
                     width: x * image_width,
@@ -125,14 +125,11 @@ for (let retry = 0; retry < 3; retry++) {
                     background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
                 }
             });
-        console.log("合成する。");
-        //for (let index = 0; index < urls.length; index++) {
-        //    process.stdout.write(".");
-            await s.composite(payload)
-        //}
-        console.log("合成する。出力");
+        console.log("composite");
+        s.composite(payload)
+        console.log("toFile");
         s.toFile(`./${tag}_${limit}.png`);
-        console.log("合成する。完了");
+        console.log("完了");
         break;
     
     } catch (error) {
