@@ -31,8 +31,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 get_accounts = (accountName) => {
     console.log('get_accounts start');
     
-    const ret = client.database.call('get_accounts', [[accountName]]);
-    console.log(ret);
+    const p = new Promise.all(client.database.call('get_accounts', [[accountName]]));
+    console.log(p);
     console.log('get_accounts end');
 
     return ret;
