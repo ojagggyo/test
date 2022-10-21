@@ -123,9 +123,11 @@ async function sub(tag, limit, urls){
                 background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
             }
         });
+    console.log("合成する。開始");
     for (let index = 0; index < urls.length; index++) {
         await s.composite(payload)
     }
+    console.log("合成する。出力");
     await s.toFile(`./${tag}_${limit}.png`);
 
 }
