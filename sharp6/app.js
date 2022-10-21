@@ -47,7 +47,7 @@ async function sub(tag, limit, urls){
    
 
 
-        url = url.replace(/(%EF%BC%BF)/g, '＿');//%EF%BC%BF 対応
+        url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
 
 
 
