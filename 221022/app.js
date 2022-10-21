@@ -56,7 +56,7 @@ async function sub()
 {
 }
 
-function main()
+async function main()
 {
     console.log('main start');
     await get_accounts(accountName);
