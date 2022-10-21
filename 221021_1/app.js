@@ -27,20 +27,17 @@ const client = new dsteem.Client('https://api.steemit.com');
 get_accounts = async (accountName) => {
     console.log('get_accounts start');
     
-    func = (accountName) => Promise.all(
-
-        client.database
-        .call('get_accounts', [[accountName]])
-            .then(result => {
-                console.log('get_accounts then ');
-                if(result.length > 0){
-                    console.log(result[0]);
-                    console.log("");
-                }
-                return 123;
-            })
-    )
-
+    client.database
+    .call('get_accounts', [[accountName]])
+        .then(result => {
+            console.log('get_accounts then ');
+            if(result.length > 0){
+                console.log(result[0]);
+                console.log("");
+            }
+            return 123;
+        })
+        .all(   console.log("all"));
 
     console.log('get_accounts end');
 };
