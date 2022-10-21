@@ -145,4 +145,4 @@ console.log(`${execSync('rm ./images/*').toString()}`)
 console.log(`${execSync('rm ./resize/*').toString()}`)
 console.log(`${execSync('rm *.png').toString()}`)
 
-main();
+//main();
