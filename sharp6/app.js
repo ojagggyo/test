@@ -44,7 +44,7 @@ async function sub(tag, limit, urls){
         const url = urls[index];
 
         //if(url != ''){
-            request(
+            await request(
                 {method: 'GET', url: url, encoding: null},
                 function (error, response, body){
                     if(!error && response.statusCode === 200){
