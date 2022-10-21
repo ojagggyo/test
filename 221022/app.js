@@ -56,7 +56,7 @@ async function main()
     }
 
     console.log('main start');
-    get_accounts(accountName);
+    await get_accounts(accountName);
     console.log('main end');
 }
 
