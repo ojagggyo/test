@@ -17,6 +17,8 @@ get_accounts = async (accountName) => {
             })
             .then(result => {
                 console.log('get_accounts then 2');
+                console.log(result);
+                console.log("");
             }
             )
             ;
@@ -34,4 +36,4 @@ if(process.argv.length > 2){
 
 console.log('main start');
 get_accounts(accountName);
-console.log('end start');
+console.log('main end');
