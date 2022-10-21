@@ -14,10 +14,11 @@ get_accounts = async (accountName) => {
                     console.log(result[0]);
                     console.log("");
                 }
+                return 123;
             })
             .then(result => {
                 console.log('get_accounts then 2');
-                console.log(result.length);
+                console.log(result);
                 console.log("");
             }
             )
