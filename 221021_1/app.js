@@ -5,27 +5,7 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 
 
-get_accounts = (accountName) => Promise.all(
-    client.database
-        .call('get_accounts', [[accountName]])
-            .then(result => {
-                console.log('get_accounts then');
-                if(result.length > 0){
-                    console.log(result[0]);
-                    console.log("");
-                }
-                return 123;
-            })
-            .then(result => {
-                console.log('get_accounts then 2');
-                console.log(result);
-                console.log("");
-            }
-            )
-)
-
-// get_accounts = async (accountName) => {
-//     console.log('get_accounts start');
+// get_accounts = (accountName) => Promise.all(
 //     client.database
 //         .call('get_accounts', [[accountName]])
 //             .then(result => {
@@ -42,9 +22,33 @@ get_accounts = (accountName) => Promise.all(
 //                 console.log("");
 //             }
 //             )
-//             ;
-//     console.log('get_accounts end');
-// };
+// )
+
+get_accounts = async (accountName) => {
+    console.log('get_accounts start');
+    
+    func = (accountName) => Promise.all(
+        client.database
+        .call('get_accounts', [[accountName]])
+            .then(result => {
+                console.log('get_accounts then');
+                if(result.length > 0){
+                    console.log(result[0]);
+                    console.log("");
+                }
+                return 123;
+            })
+            .then(result => {
+                console.log('get_accounts then 2');
+                console.log(result);
+                console.log("");
+            }
+            )
+    )
+
+
+    console.log('get_accounts end');
+};
 
 
 //コマンドパラメータ取得
