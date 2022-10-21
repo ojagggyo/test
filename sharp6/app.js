@@ -57,6 +57,7 @@ async function sub(tag, limit, urls){
         // console.log(`${urls[index]}`);
     
         //同期
+        console.log(`url=${url}`);
         const res = request('GET', url, {});
         if(res.statusCode === 200){
             fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
@@ -66,7 +67,7 @@ async function sub(tag, limit, urls){
     
     }
    
-    await sleep(2000); 
+    //await sleep(2000); 
 
 
     const n = urls.length;
@@ -104,7 +105,7 @@ async function sub(tag, limit, urls){
     }
 
 
-    await sleep(2000); 
+    //await sleep(2000); 
 
     //
     console.log("composite用のデータを作成する。");
@@ -121,7 +122,7 @@ async function sub(tag, limit, urls){
         payload.push(a);
     }
 
-    await sleep(2000); 
+    //await sleep(2000); 
 
 
     console.log("sharp");
