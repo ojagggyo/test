@@ -52,9 +52,7 @@ if(process.argv.length > 2){
    console.log('node app.js accountName'); 
 }
 
-main()
-{
-    console.log('main start');
-    await get_accounts(accountName);
-    console.log('main end');
-}
+
+console.log('main start');
+await get_accounts(accountName);
+console.log('main end');
