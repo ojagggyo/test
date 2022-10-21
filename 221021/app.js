@@ -21,8 +21,10 @@ const targetPost = {
     author: "yasu.pal"
 };
 
+
+let p = dsteem.PrivateKey.fromString(config.posting_key);
 console.log("---");
-console.log(dsteem.PrivateKey.fromString(config.posting_key));
+console.log(p);
 console.log("---");
 
 // submitVote = async () => {
