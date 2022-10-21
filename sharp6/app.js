@@ -43,7 +43,7 @@ async function sub(tag, limit, urls){
    
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
-        const url = urls[index];
+        let url = urls[index];
    
 
 
