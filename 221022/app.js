@@ -32,7 +32,7 @@ get_accounts = (accountName) => {
     console.log('get_accounts start');
     
     const ret = client.database.call('get_accounts', [[accountName]]);
- 
+    console.log(ret);
     console.log('get_accounts end');
 
     return ret;
