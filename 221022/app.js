@@ -11,7 +11,6 @@ get_accounts = async (accountName) => {
                 console.log('get_accounts then');
                 if(result.length > 0){
                     console.log(result[0]);
-                    console.log("");
                 }
             });
     console.log('get_accounts end');
@@ -22,7 +21,6 @@ get_accounts_await = async (accountName) => {
     const result = await client.database.call('get_accounts', [[accountName]]);
     if(result.length > 0){
         console.log(result[0]);
-        console.log("");
     }
     console.log('get_accounts_await end');
     return result;
