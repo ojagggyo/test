@@ -113,22 +113,36 @@ async function sub(tag, limit, urls){
     }
 
     //
-    console.log("合成する。");
-    const s = await sharp(
-        {//背景
-            create: {
-                width: x * image_width,
-                height: y * image_height,
-                channels: 4,
-                background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
-            }
-        });
-    console.log("合成する。開始");
-    for (let index = 0; index < urls.length; index++) {
-        await s.composite(payload)
+
+for (let retry = 0; retry < 3; retry++) {
+    try {
+        console.log("合成する。");
+        const s = await sharp(
+            {//背景
+                create: {
+                    width: x * image_width,
+                    height: y * image_height,
+                    channels: 4,
+                    background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
+                }
+            });
+        console.log("合成する。開始");
+        for (let index = 0; index < urls.length; index++) {
+            await s.composite(payload)
+        }
+        console.log("合成する。出力");
+        s.toFile(`./${tag}_${limit}.png`);
+        
+        break;
+    
+    } catch (error) {
+        console.log("catch");
+        console.log(error);
+        //console.log("0.2秒スリープ");
+        await sleep(500); 
     }
-    console.log("合成する。出力");
-    await s.toFile(`./${tag}_${limit}.png`);
+}    
+
 
 }
 //--------------------
