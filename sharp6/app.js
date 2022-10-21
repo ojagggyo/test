@@ -44,7 +44,7 @@ async function sub(tag, limit, urls){
         const url = urls[index];
 
         //if(url != ''){
-            await request(
+            request(
                 {method: 'GET', url: url, encoding: null},
                 function (error, response, body){
                     if(!error && response.statusCode === 200){
@@ -53,7 +53,7 @@ async function sub(tag, limit, urls){
                 }
             );
         //}
-        await sleep(500);
+        console.log(`${urls[index]}`);
     }
    
 
