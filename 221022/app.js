@@ -3,43 +3,25 @@ const dsteem = require('dsteem');
 //connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
-
 get_accounts = async (accountName) => {
     console.log('get_accounts start');
-    const ret = await client.database
+    client.database
         .call('get_accounts', [[accountName]])
             .then(result => {
-                console.log('get_accounts then');
                 if(result.length > 0){
                     console.log(result[0]);
                     console.log("");
                 }
             });
-    console.log('ret=');
-    console.log(ret);
     console.log('get_accounts end');
-    return ret;
 };
 
-// get_accounts = async (accountName) => {
-//     console.log('get_accounts start');
-//     await client.database
-//         .call('get_accounts', [[accountName]])
-//             .then(result => {
-//                 if(result.length > 0){
-//                     console.log(result[0]);
-//                     console.log("");
-//                 }
-//             });
-//     console.log('get_accounts end');
-// };
-
-// get_accounts = async (accountName) => {
-//     console.log('get_accounts start');
-//     const result = await client.database.call('get_accounts', [[accountName]]);
-//     console.log('get_accounts end');
-//     return result;
-// };
+get_accounts_await = async (accountName) => {
+    console.log('get_accounts_await start');
+    const result = await client.database.call('get_accounts', [[accountName]]);
+    console.log('get_accounts_await end');
+    return result;
+};
 
 async function main()
 {
@@ -52,16 +34,16 @@ async function main()
     }
 
     console.log('main start');
-    const result = await get_accounts(accountName);
+
+    get_accounts(accountName);
+    
+    const result = await get_accounts_await(accountName);
     if(result.length > 0){
         console.log(result[0]);
         console.log("");
     }
+    
     console.log('main end');
-
-    // console.log('main start');
-    // await get_accounts(accountName);
-    // console.log('main end');
 }
 
 main();
