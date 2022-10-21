@@ -1,5 +1,5 @@
-//const request = require('request')
-const request = require('sync-request');
+//const request = require('request')//非同期
+const request = require('sync-request');//同期
 const fs = require('fs')
 const sharp = require('sharp')
 const app = require('./app1.js')
@@ -45,6 +45,7 @@ async function sub(tag, limit, urls){
     for (let index = 0; index < urls.length; index++) {
         const url = urls[index];
 
+        //非同期
         // request(
         //     {method: 'GET', url: url, encoding: null},
         //     function (error, response, body){
@@ -55,6 +56,7 @@ async function sub(tag, limit, urls){
         // );
         // console.log(`${urls[index]}`);
     
+        //同期
         const res = request('GET', url, {});
         if(res.statusCode === 200){
             fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
