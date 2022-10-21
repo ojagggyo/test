@@ -6,16 +6,31 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 get_accounts = async (accountName) => {
     console.log('get_accounts start');
-    await client.database
+    const ret = await client.database
         .call('get_accounts', [[accountName]])
             .then(result => {
+                console.log('get_accounts then');
                 if(result.length > 0){
                     console.log(result[0]);
                     console.log("");
                 }
             });
     console.log('get_accounts end');
+    return ret;
 };
+
+// get_accounts = async (accountName) => {
+//     console.log('get_accounts start');
+//     await client.database
+//         .call('get_accounts', [[accountName]])
+//             .then(result => {
+//                 if(result.length > 0){
+//                     console.log(result[0]);
+//                     console.log("");
+//                 }
+//             });
+//     console.log('get_accounts end');
+// };
 
 // get_accounts = async (accountName) => {
 //     console.log('get_accounts start');
@@ -34,17 +49,17 @@ async function main()
     console.log('node app.js accountName'); 
     }
 
-    // console.log('main start');
-    // const result = await get_accounts(accountName);
-    // console.log(result);
-    // console.log('main end');
-
-
     console.log('main start');
-    await get_accounts(accountName);
+    const result = await get_accounts(accountName);
+    if(result.length > 0){
+        console.log(result[0]);
+        console.log("");
+    }
     console.log('main end');
 
-
+    // console.log('main start');
+    // await get_accounts(accountName);
+    // console.log('main end');
 }
 
 main();
