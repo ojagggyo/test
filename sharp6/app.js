@@ -82,7 +82,6 @@ async function sub(tag, limit, urls){
                     })
                 .toFile(`./resize/${index + 1}.png`);
     
-                //process.stdout.write(".");
                 process.stdout.write(`${index + 1}.png `);
                 
                 break;
@@ -128,6 +127,7 @@ for (let retry = 0; retry < 3; retry++) {
             });
         console.log("合成する。開始");
         for (let index = 0; index < urls.length; index++) {
+            process.stdout.write(".");
             await s.composite(payload)
         }
         console.log("合成する。出力");
