@@ -4,17 +4,24 @@ const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
 
-get_content_replies = async (author, permlink) => {
+get_accounts = async (accountName) => {
 
     //get_content_replies of the selected post
     client.database
-        .call('get_accounts ', [['yasu']])
+        .call('get_accounts', [[accountName]])
         .then(result => {
-            for (var i = 0; i < result.length; i++) {
-                console.log(result[i]);
+            if(result.length > 0){
+                console.log(result[0]);
                 console.log("");
             }
         });
 };
 
-get_content_replies();
+
+
+let accountName = "yasu";//デフォルト
+if(process.argv.length > 2){
+    accountName = process.argv[2];
+}
+
+get_accounts(accountName);
