@@ -68,6 +68,7 @@ async function sub(tag, limit, urls){
     console.log("ダウンロードした画像をリサイズする。");
     for (let index = 0; index < urls.length; index++) {
         await sharp(`./images/${index + 1}.png`)
+            .png()
             .resize(
                 {
                     width: image_width, 
