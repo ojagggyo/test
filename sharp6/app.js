@@ -68,20 +68,32 @@ async function sub(tag, limit, urls){
     //
     console.log("ダウンロードした画像をリサイズする。");
     for (let index = 0; index < urls.length; index++) {
-        sharp(`./images/${index + 1}.png`)
-            .png()
-            .resize(
-                {
-                    width: image_width, 
-                    height: image_height, 
-                    //fit: 'contain'
-                })
-            .toFile(`./resize/${index + 1}.png`);
 
-        //process.stdout.write(".");
-        process.stdout.write(`${index + 1}.png `);
-        //console.log("0.2秒スリープ");
-        await sleep(500);
+        try {
+            for (let retry = 0; retry < 3; retry++) {
+
+                sharp(`./images/${index + 1}.png`)
+                .png()
+                .resize(
+                    {
+                        width: image_width, 
+                        height: image_height, 
+                        //fit: 'contain'
+                    })
+                .toFile(`./resize/${index + 1}.png`);
+    
+                //process.stdout.write(".");
+                process.stdout.write(`${index + 1}.png `);
+                
+                break;
+            }
+    
+        } catch (error) {
+            console.log(error);
+            //console.log("0.2秒スリープ");
+            await sleep(500); 
+        }finally{
+        }
     }
 
     //
