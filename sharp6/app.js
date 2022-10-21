@@ -141,9 +141,9 @@ async function sub(tag, limit, urls){
 
 //ゴミ削除
 const { execSync } = require('child_process')
-execSync('rm ./images/*.png')
-execSync('rm ./resize/*.png')
-execSync('rm ./*.png')
+execSync('rm -f ./images/*.png')
+execSync('rm -f ./resize/*.png')
+execSync('rm -f ./*.png')
 
 console.log(`${execSync('ls ./images').toString()}`)
 console.log(`${execSync('ls ./resize').toString()}`)
