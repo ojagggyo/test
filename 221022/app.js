@@ -52,9 +52,6 @@ if(process.argv.length > 2){
    console.log('node app.js accountName'); 
 }
 
-async function sub()
-{
-}
 
 async function main()
 {
@@ -63,3 +60,5 @@ async function main()
     console.log('main end');
     
 }
+
+main();
