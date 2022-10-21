@@ -31,11 +31,10 @@ const client = new dsteem.Client('https://api.steemit.com');
 get_accounts = (accountName) => {
     console.log('get_accounts start');
     
-    const p = Promise.all(client.database.call('get_accounts', [[accountName]]));
-    console.log(p);
+    Promise.all(client.database.call('get_accounts', [[accountName]]));
     console.log('get_accounts end');
 
-    return ret;
+    return;
 };
 
 
