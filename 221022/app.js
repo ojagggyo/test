@@ -4,7 +4,8 @@ const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
 
-get_accounts_async = async (accountName) => {
+get_accounts = async (accountName) => {
+    console.log('get_accounts start');
     await client.database
         .call('get_accounts', [[accountName]])
             .then(result => {
@@ -13,14 +14,15 @@ get_accounts_async = async (accountName) => {
                     console.log("");
                 }
             });
+    console.log('get_accounts start');
 };
 
-get_accounts = async (accountName) => {
-    console.log('get_accounts start');
-    const result = await client.database.call('get_accounts', [[accountName]]);
-    console.log('get_accounts end');
-    return result;
-};
+// get_accounts = async (accountName) => {
+//     console.log('get_accounts start');
+//     const result = await client.database.call('get_accounts', [[accountName]]);
+//     console.log('get_accounts end');
+//     return result;
+// };
 
 async function main()
 {
@@ -39,7 +41,7 @@ async function main()
 
 
     console.log('main start');
-    await get_accounts_async(accountName);
+    await get_accounts(accountName);
     console.log('main end');
 
 
