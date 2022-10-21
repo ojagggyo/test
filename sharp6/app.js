@@ -125,13 +125,13 @@ for (let retry = 0; retry < 3; retry++) {
                     background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
                 }
             });
-        console.log("合成する。開始");
-        for (let index = 0; index < urls.length; index++) {
-            process.stdout.write(".");
+        console.log("合成する。");
+        //for (let index = 0; index < urls.length; index++) {
+        //    process.stdout.write(".");
             await s.composite(payload)
-        }
+        //}
         console.log("合成する。出力");
-        s.png().toFile(`./${tag}_${limit}.png`);
+        s.toFile(`./${tag}_${limit}.png`);
         console.log("合成する。完了");
         break;
     
