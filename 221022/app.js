@@ -37,8 +37,8 @@ get_accounts = async (accountName) => {
 
 
 
-async function main()
-{
+//async function main()
+//{
     //コマンドパラメータ取得
     let accountName = "yasu";//デフォルト
     if(process.argv.length > 2){
@@ -51,6 +51,6 @@ async function main()
     const result = await get_accounts(accountName);
     console.log(result);
     console.log('main end');
-}
+//}
 
-main();
+//main();
