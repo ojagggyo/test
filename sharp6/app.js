@@ -132,7 +132,7 @@ for (let retry = 0; retry < 3; retry++) {
         }
         console.log("合成する。出力");
         s.png().toFile(`./${tag}_${limit}.png`);
-        
+        console.log("合成する。完了");
         break;
     
     } catch (error) {
