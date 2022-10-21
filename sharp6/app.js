@@ -73,13 +73,13 @@ async function sub(tag, limit, urls){
             for (let retry = 0; retry < 3; retry++) {
 
                 sharp(`./images/${index + 1}.png`)
-                .png()
                 .resize(
                     {
                         width: image_width, 
                         height: image_height, 
                         //fit: 'contain'
                     })
+                .png()
                 .toFile(`./resize/${index + 1}.png`);
     
                 process.stdout.write(`${index + 1}.png `);
