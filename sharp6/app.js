@@ -128,7 +128,7 @@ for (let retry = 0; retry < 3; retry++) {
             });
         console.log("合成する。開始");
         for (let index = 0; index < urls.length; index++) {
-            await s.composite(payload)
+            await s.composite(payload).png()
         }
         console.log("合成する。出力");
         s.toFile(`./${tag}_${limit}.png`);
