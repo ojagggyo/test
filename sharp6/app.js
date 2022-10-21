@@ -1,4 +1,5 @@
-const request = require('request')
+//const request = require('request')
+const request = require('sync-request');
 const fs = require('fs')
 const sharp = require('sharp')
 const app = require('./app1.js')
@@ -36,36 +37,44 @@ async function sub(tag, limit, urls){
 //(async ()=>{//非同期開始
 //--------------------
 
-const n = urls.length;
-const image_width = 200;
-const image_height = 150;
-const x = parseInt(Math.sqrt(n - 1)) + 1;
-const y = parseInt((n - 1) / x) + 1;
-console.log(`n=${n}`);
-console.log(`x=${x},y=${y}`);
+
+
 
    
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
-        const url = `https://steemitimages.com/${image_width}/${image_height}` + urls[index];
+        const url = urls[index];
 
-        //if(url != ''){
-            request(
-                {method: 'GET', url: url, encoding: null},
-                function (error, response, body){
-                    if(!error && response.statusCode === 200){
-                        fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-                    }
-                }
-            );
-        //}
-        console.log(`${urls[index]}`);
+        // request(
+        //     {method: 'GET', url: url, encoding: null},
+        //     function (error, response, body){
+        //         if(!error && response.statusCode === 200){
+        //             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+        //         }
+        //     }
+        // );
+        // console.log(`${urls[index]}`);
+    
+        const res = request('GET', url, {});
+        if(res.statusCode === 200){
+            fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
+        }
+        
+    
+    
     }
    
     await sleep(2000); 
 
 
-
+    const n = urls.length;
+    const image_width = 200;
+    const image_height = 150;
+    const x = parseInt(Math.sqrt(n - 1)) + 1;
+    const y = parseInt((n - 1) / x) + 1;
+    console.log(`n=${n}`);
+    console.log(`x=${x},y=${y}`);
+    
     //
     console.log("ダウンロードした画像をリサイズする。");
     for (let index = 0; index < urls.length; index++) {
