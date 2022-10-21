@@ -147,6 +147,6 @@ execSync('rm -f ./*.png')
 
 console.log(`${execSync('ls ./images').toString()}`)
 console.log(`${execSync('ls ./resize').toString()}`)
-console.log(`${execSync('ls *.png').toString()}`)
+console.log(`${execSync('ls -l').toString()}`)
 
 main();
