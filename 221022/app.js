@@ -8,6 +8,7 @@ get_accounts = async (accountName) => {
     client.database
         .call('get_accounts', [[accountName]])
             .then(result => {
+                console.log('get_accounts then');
                 if(result.length > 0){
                     console.log(result[0]);
                     console.log("");
