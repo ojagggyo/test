@@ -62,9 +62,9 @@ return new Promise((resolve, reject) => {
                     const json = JSON.parse(post.json_metadata);
                     const created = new Date(post.created + "z");
 
-                    console.log('******************json*********************');
-                    console.log(json);
-                    console.log('******************json*********************');
+                    // console.log('******************json*********************');
+                    // console.log(json);
+                    // console.log('******************json*********************');
 
                     if(urls.length >= max){
                         console.log('skip ', 'urls.length > max');
