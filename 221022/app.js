@@ -15,6 +15,8 @@ get_accounts = async (accountName) => {
                     console.log("");
                 }
             });
+    console.log('ret=');
+    console.log(ret);
     console.log('get_accounts end');
     return ret;
 };
