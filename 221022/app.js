@@ -32,14 +32,7 @@ get_accounts = async (accountName) => {
     console.log('get_accounts start');
     
     const resultPromise = await client.database.call('get_accounts', [[accountName]]);
-    // resultPromise
-    //   .then(result => {
-    //     console.log(result)
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
-    
+   
     console.log('get_accounts end');
 };
 
@@ -56,7 +49,7 @@ async function main()
     }
 
     console.log('main start');
-    get_accounts(accountName);
+    await get_accounts(accountName);
     console.log('main end');
 }
 
