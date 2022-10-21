@@ -33,7 +33,11 @@ get_accounts = async (accountName) => {
     
     const resultPromise = await client.database.call('get_accounts', [[accountName]]);
    
+
+    console.log(resultPromise);
+
     console.log('get_accounts end');
+    return resultPromise;
 };
 
 
