@@ -36,7 +36,7 @@ async function main()
     get_accounts("yasu")
 
     //同期
-    //const result = await get_accounts_sync("yasu.witness")
+    const result = await get_accounts_sync("yasu.witness")
     
     console.log('main end')
 }
