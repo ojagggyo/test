@@ -7,7 +7,11 @@ const client = new dsteem.Client('https://api.steemit.com');
 //非同期
 get_witnesses_by_vote = async () => { 
     var _info = await client.database.call('get_witnesses_by_vote',['',100])
-    console.log(_info)
+    //console.log(_info)
+
+    for (var i = 0; i < _info.length; i++) {
+        console.log(`${_info[i].owner}`);
+    }
 };
 
 
