@@ -9,10 +9,7 @@ get_active_witnesses = async () => {
     client.database
     .call('get_active_witnesses ', [])
         .then(result => {
-            if(result.length > 0){
-                console.log(result[0]);
-                console.log("");
-            }
+            console.log(result);
         })
 };
 
