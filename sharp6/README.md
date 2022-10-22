@@ -9,3 +9,6 @@ npm install sharp@0.31.1
 バージョンを下げるのOK
 npm install sharp@0.23.2 
 
+
+実行
+node app.js japanese 20

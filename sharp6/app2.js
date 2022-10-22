@@ -22,8 +22,6 @@ const muteList = [
 
 //filter change selection function
 module.exports.getPosts = async (tag, limit) => {
-//module.exports.getPosts = function getPosts(tag, limit) {
-//return new Promise((resolve, reject) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
 
@@ -44,68 +42,47 @@ module.exports.getPosts = async (tag, limit) => {
         truncate_body: 1//本文を1文字だけ取得
     };
 
-    client.database
-        .getDiscussions(filter, query)
-        .then(result => {
-            //console.log('Response received:', result);
-            console.log('length:', result.length);
+    const result = await client.database.getDiscussions(filter, query);
 
-            var today = new Date();
-            console.log(today);
-            var yesterday = new Date(today.setDate(today.getDate() - 1) );
-            console.log(yesterday);
+    console.log('length:', result.length);
 
-            if (result) {
+    var today = new Date();
+    console.log(today);
+    var yesterday = new Date(today.setDate(today.getDate() - 1) );
+    console.log(yesterday);
+
                 
-                let index = 0;
-                result.forEach(  post => {
-                    const json = JSON.parse(post.json_metadata);
-                    const created = new Date(post.created + "z");
+    let index = 0;
+    result.forEach(  post => {
+        const json = JSON.parse(post.json_metadata);
+        const created = new Date(post.created + "z");
 
-                    // console.log('******************json*********************');
-                    // console.log(json);
-                    // console.log('******************json*********************');
 
-                    if(urls.length >= max){
-                        console.log('skip ', 'urls.length > max');
-                        return;
-                    }
+        if(urls.length >= max){
+            console.log('skip ', 'urls.length > max');
+            return;
+        }
 
-                    //24時間以上前
-                    if(yesterday.getTime() > created.getTime()){
-                        return;
-                    }
+        //24時間以上前
+        if(yesterday.getTime() > created.getTime()){
+            return;
+        }
 
-                    //アカウント対象外
-                    if(-1 < muteList.indexOf(post.author)){
-                        console.log('skip ', post.author);
-                        return;
-                    }
+        //アカウント対象外
+        if(-1 < muteList.indexOf(post.author)){
+            console.log('skip ', post.author);
+            return;
+        }
 
-                    console.log(json.image);
-                    if(json.image){
-                        urls.push(json.image[0]);
-                     }
-                     else{
-                        urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
-                     }                    
-                });
-
-                return resolve(urls);
-            } else {
-                return resolve(urls);
+        console.log(json.image);
+        if(json.image){
+            urls.push(json.image[0]);
             }
-      
-
-        })
-        .catch(err => {
-            console.log(err);
-            //alert(`Error:${err}, try again`);
-            return reject(urls);
-        });
-
+            else{
+            urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
+            }                    
+    });
 
     console.log('*** getPosts終了 ***');
-
-//});
+    return resolve(urls);
 };

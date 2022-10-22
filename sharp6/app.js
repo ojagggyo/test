@@ -26,11 +26,18 @@ async function main(){
         limit = process.argv[3];
     }
 
-    await app.getPosts(tag, limit)//tagを指定する
-        .then(result => {
-            console.log(result);
-            sub(tag, limit, result);
-        });   
+    // await app.getPosts(tag, limit)//tagを指定する
+    //     .then(result => {
+    //         console.log(result);
+    //         sub(tag, limit, result);
+    //     });   
+
+
+    const result = await app.getPosts(tag, limit)//tagを指定する
+    console.log(result);
+    
+    sub(tag, limit, result);
+
 }
 
 async function sub(tag, limit, urls){
