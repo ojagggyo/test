@@ -7,7 +7,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 //非同期
 get_active_witnesses = async () => { 
     client.database
-    .call('list_witnesses', {"start": [0, ""], "limit": 0, "order": "by_name"})
+    //.call('list_witnesses', {"start": null, "limit": 0, "order": "by_name"})
+    .call('list_witnesses', [ null,  0, "by_name"])
         .then(result => {
             console.log(result);
         })
