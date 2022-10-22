@@ -145,11 +145,12 @@ async function sub(tag, limit, urls){
                 background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
             }
         });
-    //await sleep(500); 
+    await sleep(1000); 
 
     console.log("composite");
     s.composite(payload)
-    //await sleep(500); 
+
+    //await sleep(1000); 
 
     console.log("toFile");
     s.toFile(`./${tag}_${limit}.png`);
