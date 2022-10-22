@@ -6,7 +6,7 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 //非同期
 get_witnesses_by_vote = async () => { 
-    var _info = await client.database.call('get_witnesses_by_vote',['yasu',1])
+    var _info = await client.database.call('get_witnesses_by_vote',['',100])
     console.log(_info)
 };
 
