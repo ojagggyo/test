@@ -10,7 +10,7 @@ get_witnesses_by_vote = async () => {
     //console.log(_info)
 
     for (var i = 0; i < _info.length; i++) {
-        console.log(`${_info[i].owner}`);
+        console.log(`${i} ${_info[i].owner} ${_info[i].running_version}`);
     }
 };
 
