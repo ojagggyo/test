@@ -2,7 +2,8 @@
 const request = require('sync-request');//同期
 const fs = require('fs')
 const sharp = require('sharp')
-const app = require('./app1.js')
+
+const app = require('./app2.js')
 
 // いい感じにPromiseでラップする
 const sleep = (m) => {
