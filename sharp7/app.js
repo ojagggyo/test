@@ -96,7 +96,7 @@ async function sub(tag, limit, urls){
             console.log("catch");
             console.log(error);
             //console.log("0.2秒スリープ");
-            await sleep(500); 
+            //await sleep(500); 
         }finally{
         }
     }
