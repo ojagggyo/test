@@ -53,15 +53,15 @@ async function sub(tag, limit, urls){
    
 
     console.log("画像をダウンロードする。");
-    Promise.all(urls.map((url, index) => {
-        return request(url).then((response) => {          
-            console.log("画像をダウンロードする。then 1"); 
-            return fs.writeFileSync(`./images/${index + 1}.png`, respres.body, 'binary');
-        });
-    })).then((values) => {
-        console.log("画像をダウンロードする。then 2");
-        console.log('values', values);
-    }).catch(console.error.bind(console));
+    await Promise.all(urls.map((url, index) => {
+            return request(url).then((response) => {          
+                    console.log("画像をダウンロードする。then 1"); 
+                    return fs.writeFileSync(`./images/${index + 1}.png`, respres.body, 'binary');
+                });
+        })).then((values) => {
+            console.log("画像をダウンロードする。then 2");
+            console.log('values', values);
+        }).catch(console.error.bind(console));
     console.log("画像をダウンロードする。完了");
 
 
