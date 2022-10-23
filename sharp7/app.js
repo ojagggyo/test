@@ -1,5 +1,5 @@
-//const request = require('request')//非同期
-const request = require('sync-request');//同期
+const request = require('request')//非同期
+//const request = require('sync-request');//同期
 const fs = require('fs')
 const sharp = require('sharp')
 
@@ -38,6 +38,7 @@ async function main(){
 async function sub(tag, limit, urls){
   
     console.log("画像をダウンロードする。");
+    const resList = [];
     for (let index = 0; index < urls.length; index++) {
         let url = urls[index];
    
@@ -48,8 +49,12 @@ async function sub(tag, limit, urls){
         const res = request('GET', url, {});
         if(res.statusCode === 200){
             fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
+            resList.push(index);
         }
     }
+    console.log("画像をダウンロードする。for end");
+    await Promise.all(resList)
+    console.log("画像をダウンロードする。完了");
    
     const n = urls.length;
     const image_width = 200;
