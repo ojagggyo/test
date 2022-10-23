@@ -55,16 +55,17 @@ async function sub(tag, limit, urls){
     console.log("画像をダウンロードする。");
     await Promise.all(urls.map((url, index) => {
             return request(url).then((response) => {          
-                    console.log("画像をダウンロードする。then 1"); 
+                    console.log("画像をダウンロードする。then ", index); 
                     fs.writeFileSync(`./images/${index + 1}.png`, response.body, 'binary');
                 });
         })).then((values) => {
-            console.log("画像をダウンロードする。then 2");
-            console.log('values', values);
+            console.log("画像をダウンロードする。then all");
+            //console.log('values', values);
         }).catch(console.error.bind(console));
     console.log("画像をダウンロードする。完了");
 
 
+    sleep(2000);
 
     const n = urls.length;
     const image_width = 200;
