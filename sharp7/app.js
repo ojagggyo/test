@@ -58,7 +58,7 @@ async function sub(tag, limit, urls){
 
     (async ()=>{
         let index = 0;
-        const result = await Promise.all(urls.map(async (v)=>{
+        const result = await Promise.all(urls.map(async (url)=>{
             //const dummy = await funcPromise(true);
             url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
             //同期
