@@ -80,8 +80,10 @@ async function sub(tag, limit, urls){
     const imgBufferList = []
     for (let index = 0; index < urls.length; index++) {
 
+        console.log("1");
         try {
             console.log(`./images/${index + 1}.png`);
+            console.log("2");
             imgBufferList.push(
                 await sharp(`./images/${index + 1}.png`)
                 .resize(
@@ -91,7 +93,7 @@ async function sub(tag, limit, urls){
                     })
                 .toBuffer()
             )
-
+            console.log("3");
             process.stdout.write(`${index + 1}.png `);
     
         } catch (error) {
