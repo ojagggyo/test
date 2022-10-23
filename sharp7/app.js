@@ -1,5 +1,5 @@
-const request = require('request')//非同期
-//const request = require('sync-request');//同期
+//const request = require('request')//非同期
+const request = require('sync-request');//同期
 //const request = require('request-promise');
 const fs = require('fs')
 const sharp = require('sharp')
