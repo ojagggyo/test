@@ -56,16 +56,22 @@ async function sub(tag, limit, urls){
     for (let index = 0; index < urls.length; index++) {
          let url = urls[index];
          url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
-        request(
-            {method: 'GET', url: url, encoding: null},
-            function (error, response, body){
-                if(!error && response.statusCode === 200){
-                    fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-                }
-                resList.push(index);
-            }
-        );
-        //console.log(`${urls[index]}`);
+        // request(
+        //     {method: 'GET', url: url, encoding: null},
+        //     function (error, response, body){
+        //         if(!error && response.statusCode === 200){
+        //             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+        //         }
+        //         resList.push(index);
+        //     }
+        // );
+        request({method: 'GET', url: url, encoding: null})
+        .then((body) => {
+            fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
+            resList.push(index);
+        }).catch((err) => {
+            
+        });
     }
     await Promise.all(resList)
     // console.log("画像をダウンロードする。完了");
