@@ -66,7 +66,7 @@ async function sub(tag, limit, urls){
         //     }
         // );
         request({method: 'GET', url: url, encoding: null})
-        .then((body) => {
+        .then(function (body) {
             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
             resList.push(index);
         }).catch((err) => {
