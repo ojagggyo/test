@@ -94,7 +94,7 @@ async function sub(tag, limit, urls){
     for (let index = 0; index < urls.length; index++) {
 
         try {
-
+            console.log(`./images/${index + 1}.png`);
             imgBufferList.push(
                 await sharp(`./images/${index + 1}.png`)
                 .resize(
