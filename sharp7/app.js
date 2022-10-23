@@ -52,9 +52,19 @@ async function sub(tag, limit, urls){
     // console.log("画像をダウンロードする。完了");
    
 
+
+
+
     console.log("画像をダウンロードする。");
     await Promise.all(urls.map((url, index) => {
-            return request(url).then((response) => {          
+            const optionsStart = {
+                uri: url,
+                method: "GET",
+                encoding: "binary", // it also works with encoding: null
+                headers: {
+                }
+            };
+            return request(optionsStart).then((response) => {          
                     console.log("画像をダウンロードする。then ", index); 
                     fs.writeFileSync(`./images/${index + 1}.png`, response.body, 'binary');
                 });
