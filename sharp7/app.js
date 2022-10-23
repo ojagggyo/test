@@ -1,6 +1,6 @@
 //const request = require('request')//非同期
-//const request = require('sync-request');//同期
-const request = require('request-promise');
+const request = require('sync-request');//同期
+//const request = require('request-promise');
 const fs = require('fs')
 const sharp = require('sharp')
 
@@ -38,45 +38,19 @@ async function main(){
 
 async function sub(tag, limit, urls){
   
-    // console.log("画像をダウンロードする。");
-    // for (let index = 0; index < urls.length; index++) {
-    //     let url = urls[index]; 
-    //     url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
-    //     //同期
-    //     console.log(`url=${url}`);
-    //     const res = request('GET', url, {});
-    //     if(res.statusCode === 200){
-    //         fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
-    //     }
-    // }
-    // console.log("画像をダウンロードする。完了");
-   
-
-    //非同期
     console.log("画像をダウンロードする。");
-    const resList = [];
     for (let index = 0; index < urls.length; index++) {
-         let url = urls[index];
-         url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
-        // request(
-        //     {method: 'GET', url: url, encoding: null},
-        //     function (error, response, body){
-        //         if(!error && response.statusCode === 200){
-        //             fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-        //         }
-        //         resList.push(index);
-        //     }
-        // );
-        request({method: 'GET', url: url, encoding: null})
-        .then(function (body) {
-            resList.push(fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary'));
-        }).catch((err) => {
-            
-        });
+        let url = urls[index]; 
+        url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
+        //同期
+        console.log(`url=${url}`);
+        const res = request('GET', url, {});
+        if(res.statusCode === 200){
+            fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
+        }
     }
-    console.log("画像をダウンロードする。for end");
-    await Promise.all(resList)
     console.log("画像をダウンロードする。完了");
+   
 
 
     const n = urls.length;
