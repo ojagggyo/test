@@ -36,11 +36,6 @@ async function main(){
 }
 
 async function sub(tag, limit, urls){
-//--------------------
-//(async ()=>{//非同期開始
-//--------------------
-
-
   
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
@@ -48,20 +43,14 @@ async function sub(tag, limit, urls){
    
         url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
 
-
         //同期
         console.log(`url=${url}`);
         const res = request('GET', url, {});
         if(res.statusCode === 200){
             fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
         }
-   
-    
     }
    
-    //await sleep(2000); 
-
-
     const n = urls.length;
     const image_width = 200;
     const image_height = 150;
@@ -70,11 +59,9 @@ async function sub(tag, limit, urls){
     console.log(`n=${n}`);
     console.log(`x=${x},y=${y}`);
     
-
-    const imgBufferList = []
-
     //
     console.log("ダウンロードした画像をリサイズする。");
+    const imgBufferList = []
     for (let index = 0; index < urls.length; index++) {
 
         try {
@@ -86,7 +73,6 @@ async function sub(tag, limit, urls){
                         width: image_width, 
                         height: image_height, 
                     })
-                //.toFile(`./resize/${index + 1}.png`);
                 .toBuffer()
             )
 
@@ -94,15 +80,10 @@ async function sub(tag, limit, urls){
     
         } catch (error) {
             console.log("catch");
-            console.log(error);
-            //console.log("0.2秒スリープ");
-            //await sleep(500); 
+            console.log(error); 
         }finally{
         }
     }
-
-
-    //await sleep(2000); 
 
     //
     console.log("composite用のデータを作成する。");
@@ -112,31 +93,12 @@ async function sub(tag, limit, urls){
         const dy = parseInt(index / x);
         console.log(`dx=${dx},dy=${dy}`);
         a = {
-            //input: `./resize/${index + 1}.png`, 
             input: imgBufferList[index],
             top: dy * image_height, 
             left: dx * image_width,
         };
         payload.push(a);
     }
-
-    // console.log("sharp");
-    // const s = sharp(
-    //     {//背景
-    //         create: {
-    //             width: x * image_width,
-    //             height: y * image_height,
-    //             channels: 4,
-    //             background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
-    //         }
-    //     });
-
-    // console.log("composite");
-    // s.composite(payload)
-
-    // console.log("toFile");
-    // s.toFile(`./${tag}_${limit}.png`);
-    // console.log("完了");
 
     console.log("sharp");
     sharp(
@@ -145,17 +107,14 @@ async function sub(tag, limit, urls){
                 width: x * image_width,
                 height: y * image_height,
                 channels: 4,
-                background: { r: 255, g: 100, b: 100, alpha: 0.1 }//色を指定する。
+                background: { r: 100, g: 255, b: 100, alpha: 0.1 }//色を指定する。
             }
         })
         .composite(payload)
         .toFile(`./${tag}_${limit}.png`);
     console.log("完了");
-
 }
-//--------------------
-//})();//非同期終了
-//--------------------
+
 
 
 console.log("ゴミ削除");
