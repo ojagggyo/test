@@ -68,8 +68,8 @@ async function sub(tag, limit, urls){
             console.log('start ', index);
             return request(optionsStart).then((body) => {          
                     console.log("画像をダウンロードする。then ", index); 
-                    //fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
-                    fs.writeFile(`./images/${index + 1}.png`, body, 'binary');
+                    const fs2 = fs;
+                    fs2.writeFileSync(`./images/${index + 1}.png`, body, 'binary');
                 }).catch((err) => {     
                     console.log("★★★★★★★★★★★★★");    
                 })
