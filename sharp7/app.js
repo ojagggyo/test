@@ -60,7 +60,7 @@ async function sub(tag, limit, urls){
             const optionsStart = {
                 uri: url,
                 method: "GET",
-                encoding: null, // it also works with encoding: null
+                encoding: "binary", // it also works with encoding: null
                 headers: {
                 }
             };
