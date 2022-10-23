@@ -54,7 +54,7 @@ async function sub(tag, limit, urls){
 
 
     Promise.all(urls.map((url, index) => {
-        return request('GET', url, {}).then((response) => {           
+        return request(url).then((response) => {           
             return respres.body;
         }).then((data) => {
             fs.writeFileSync(`./images/${index + 1}.png`, data, 'binary');
