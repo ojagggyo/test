@@ -17,8 +17,8 @@ async function main(){
         console.log("argv[" + i + "] = " + process.argv[i]);
       }
 
-    let tag = "japanese";//デフォルト
-    let limit = 4;//デフォルト
+    let tag = "hive-161179";//デフォルト
+    let limit = 100;//デフォルト
     if(process.argv.length > 2){
         tag = process.argv[2];
     }
