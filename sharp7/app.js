@@ -38,19 +38,47 @@ async function main(){
 
 async function sub(tag, limit, urls){
   
+    // console.log("画像をダウンロードする。");
+    // for (let index = 0; index < urls.length; index++) {
+    //     let url = urls[index]; 
+    //     url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
+    //     //同期
+    //     console.log(`url=${url}`);
+    //     const res = request('GET', url, {});
+    //     if(res.statusCode === 200){
+    //         fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
+    //     }
+    // }
+    // console.log("画像をダウンロードする。完了");
+   
+
     console.log("画像をダウンロードする。");
-    for (let index = 0; index < urls.length; index++) {
-        let url = urls[index]; 
-        url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
-        //同期
-        console.log(`url=${url}`);
-        const res = request('GET', url, {});
-        if(res.statusCode === 200){
-            fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
-        }
-    }
+
+   
+
+    (async ()=>{
+        let index = 0;
+        const result = await Promise.all(urls.map(async (v)=>{
+            //const dummy = await funcPromise(true);
+            url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
+            //同期
+            console.log(`url=${url}`);
+            const res = request('GET', url, {});
+            if(res.statusCode === 200){
+                fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
+            }
+            index = index + 1;
+            return new Promise.resolve("ok");
+        }));
+    
+        console.log(result);    // ["OK", "OK", "OK"]
+    })();
+
     console.log("画像をダウンロードする。完了");
    
+
+
+
 
 
     const n = urls.length;
