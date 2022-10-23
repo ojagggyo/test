@@ -69,9 +69,11 @@ async function sub(tag, limit, urls){
             }
             index = index + 1;
             return new Promise.resolve("ok");
-        }));
+        })).then(
+            console.log(result) 
+        );
     
-        console.log(result);    // ["OK", "OK", "OK"]
+   
     })();
 
     console.log("画像をダウンロードする。完了");
