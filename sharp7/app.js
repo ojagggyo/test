@@ -65,7 +65,7 @@ async function sub(tag, limit, urls){
     console.log("画像をダウンロードする。完了");
 
 
-    sleep(2000);
+    sleep(10*1000);
 
     const n = urls.length;
     const image_width = 200;
