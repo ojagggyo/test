@@ -53,6 +53,7 @@ async function sub(tag, limit, urls){
    
 
     //非同期
+    console.log("画像をダウンロードする。");
     const resList = [];
     for (let index = 0; index < urls.length; index++) {
          let url = urls[index];
@@ -74,8 +75,9 @@ async function sub(tag, limit, urls){
             
         });
     }
+    console.log("画像をダウンロードする。for end");
     await Promise.all(resList)
-    // console.log("画像をダウンロードする。完了");
+    console.log("画像をダウンロードする。完了");
 
 
     const n = urls.length;
