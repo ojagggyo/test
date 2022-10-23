@@ -66,9 +66,11 @@ async function sub(tag, limit, urls){
                 }
             };
             console.log('start ', index);
-            return request(optionsStart).then((response) => {          
+            return request(optionsStart).then((body) => {          
                     console.log("画像をダウンロードする。then ", index); 
-                    fs.writeFileSync(`./images/${index + 1}.png`, response, 'binary');
+                    fs.writeFileSync(`./images/${index + 1}.png`, body, 'binary', function(err) {
+                        console.log("☆☆☆☆☆☆☆☆");    
+                    });
                 }).catch((err) => {     
                     console.log("★★★★★★★★★★★★★");    
                 })
