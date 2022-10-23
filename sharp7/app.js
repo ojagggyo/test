@@ -68,7 +68,7 @@ async function sub(tag, limit, urls){
                 fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
             }
             index = index + 1;
-            return new Promise.resolve("ok");
+            return "ok";
         })).then(
             console.log("all end") 
         );
