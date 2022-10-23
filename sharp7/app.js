@@ -57,6 +57,7 @@ async function sub(tag, limit, urls){
 
     console.log("画像をダウンロードする。");
     await Promise.all(urls.map((url, index) => {
+            url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
             const optionsStart = {
                 uri: url,
                 method: "GET",
