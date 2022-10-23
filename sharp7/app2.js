@@ -84,5 +84,6 @@ module.exports.getPosts = async (tag, limit) => {
     });
 
     console.log('*** getPosts終了 ***');
-    return resolve(urls);
+
+    return urls;
 };
