@@ -20,7 +20,6 @@ const muteList = [
 ];
 
 
-//filter change selection function
 module.exports.getPosts = async (tag, limit) => {
         
     console.log(`*** getPosts開始 ${tag} ${limit} ***`);
@@ -60,25 +59,25 @@ module.exports.getPosts = async (tag, limit) => {
 
         if(urls.length >= max){
             console.log('skip ', 'urls.length > max');
-            return;
+            return; //continue
         }
 
         //24時間以上前
         if(yesterday.getTime() > created.getTime()){
-            return;
+            return; //continue
         }
 
         //アカウント対象外
         if(-1 < muteList.indexOf(post.author)){
             console.log('skip ', post.author);
-            return;
+            return; //continue
         }
 
         console.log(json.image);
         if(json.image){
             urls.push(json.image[0]);
             }
-            else{
+            else{//画像がない場合は、プロフィール写真のURL
             urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
             }                    
     });
