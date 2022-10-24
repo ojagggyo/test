@@ -71,8 +71,7 @@ comment = async () => {
 
 
 
-    client.database.call(
-            "comment_options",
+    client.broadcast.comment_options (
             {
                 "author": account,
                 "permlink": permlink,
