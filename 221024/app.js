@@ -11,13 +11,13 @@ const authorAcount = {
     privateKey: dsteem.PrivateKey.fromString(config.posting_key)
 };
 
-// const permlink = Math.random()
-//     .toString(36)
-//     .substring(2);
+const permlink = Math.random()
+    .toString(36)
+    .substring(2);
 
-    const permlink = "z9a8y3to4t";
+    //const permlink = "z9a8y3to4t";
 
-createPost = async () => {
+commentWithOptions = async () => {
     //get private key
     const privateKey = authorAcount.privateKey;
     //get account name
@@ -39,7 +39,7 @@ createPost = async () => {
     //     .substring(2);
 
     client.broadcast
-        .comment(
+        .commentWithOptions(
             {
                 author: account,
                 body: body,
@@ -49,37 +49,14 @@ createPost = async () => {
                 permlink: permlink,
                 title: title,
             },
-            privateKey
-        )
-        .then(
-            function(result) {
-                console.log(result);
-            },
-            function(error) {
-                console.error(error);
-            }
-        );
-};
-
-
-
-comment = async () => {
-    //get private key
-    const privateKey = authorAcount.privateKey;
-    //get account name
-    const account = authorAcount.acountName;
-
-
-
-    client.broadcast.comment_options (
             {
-                "author": account,
-                "permlink": permlink,
-                "max_accepted_payout":"1000000.000 SBD",
-                "percent_steem_dollars":0,
-                "allow_votes":true,
-                "allow_curation_rewards":true,
-                "extensions":[]
+                author: account,
+                permlink: permlink,
+                max_accepted_payout: "1000000.000 SBD",
+                percent_steem_dollars: 0,
+                allow_votes: true,
+                allow_curation_rewards: true,
+                extensions: []
             },
             privateKey
         )
@@ -93,5 +70,37 @@ comment = async () => {
         );
 };
 
-//createPost();
-comment();
+
+
+// comment = async () => {
+//     //get private key
+//     const privateKey = authorAcount.privateKey;
+//     //get account name
+//     const account = authorAcount.acountName;
+
+
+
+//     client.broadcast.comment_options (
+//             {
+//                 author: account,
+//                 permlink: permlink,
+//                 max_accepted_payout:"1000000.000 SBD",
+//                 percent_steem_dollars:0,
+//                 allow_votes:true,
+//                 allow_curation_rewards:true,
+//                 extensions:[]
+//             },
+//             privateKey
+//         )
+//         .then(
+//             function(result) {
+//                 console.log(result);
+//             },
+//             function(error) {
+//                 console.error(error);
+//             }
+//         );
+// };
+
+commentWithOptions();
+//comment();
