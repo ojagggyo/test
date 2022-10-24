@@ -6,6 +6,8 @@
 オプション
 [comment_options](https://developers.steem.io/apidefinitions/#broadcast_ops_comment_options)
 
+# 参考
+https://github.com/jnordberg/dsteem/blob/master/dist/dsteem.d.ts
 
 ## 環境設定
 
