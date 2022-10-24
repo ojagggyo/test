@@ -11,9 +11,11 @@ const authorAcount = {
     privateKey: dsteem.PrivateKey.fromString(config.posting_key)
 };
 
-const permlink = Math.random()
-    .toString(36)
-    .substring(2);
+// const permlink = Math.random()
+//     .toString(36)
+//     .substring(2);
+
+    const permlink = "z9a8y3to4t";
 
 createPost = async () => {
     //get private key
@@ -67,9 +69,11 @@ comment = async () => {
     //get account name
     const account = authorAcount.acountName;
 
-    client.broadcast
-        .comment_options(
 
+
+    client.broadcast
+        .comment(
+            "comment_options",
             {
                 "author": account,
                 "permlink": permlink,
@@ -91,5 +95,5 @@ comment = async () => {
         );
 };
 
-createPost();
+//createPost();
 comment();
