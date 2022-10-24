@@ -71,8 +71,7 @@ comment = async () => {
 
 
 
-    client.broadcast
-        .comment(
+    client.database.call(
             "comment_options",
             {
                 "author": account,
