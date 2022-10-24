@@ -7,8 +7,10 @@
 [comment_options](https://developers.steem.io/apidefinitions/#broadcast_ops_comment_options)
 
 
-## 実行方法
+## 環境設定
 
 npm install dsteem
+
+## 実行方法
 
 node app.js

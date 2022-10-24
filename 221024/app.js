@@ -11,6 +11,10 @@ const authorAcount = {
     privateKey: dsteem.PrivateKey.fromString(config.posting_key)
 };
 
+const permlink = Math.random()
+    .toString(36)
+    .substring(2);
+
 createPost = async () => {
     //get private key
     const privateKey = authorAcount.privateKey;
@@ -28,9 +32,9 @@ createPost = async () => {
     //make simple json metadata including only tags
     const json_metadata = JSON.stringify({ tags: taglist });
     //generate random permanent link for post
-    const permlink = Math.random()
-        .toString(36)
-        .substring(2);
+    // const permlink = Math.random()
+    //     .toString(36)
+    //     .substring(2);
 
     client.broadcast
         .comment(
@@ -55,4 +59,37 @@ createPost = async () => {
         );
 };
 
+
+
+comment = async () => {
+    //get private key
+    const privateKey = authorAcount.privateKey;
+    //get account name
+    const account = authorAcount.acountName;
+
+    client.broadcast
+        .comment_options(
+
+            {
+                "author": account,
+                "permlink": permlink,
+                "max_accepted_payout":"1000000.000 SBD",
+                "percent_steem_dollars":0,
+                "allow_votes":true,
+                "allow_curation_rewards":true,
+                "extensions":[]
+            },
+            privateKey
+        )
+        .then(
+            function(result) {
+                console.log(result);
+            },
+            function(error) {
+                console.error(error);
+            }
+        );
+};
+
 createPost();
+comment();
