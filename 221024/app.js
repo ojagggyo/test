@@ -42,12 +42,8 @@ commentWithOptions = async () => {
             privateKey
         )
         .then(
-            function(result) {
-                console.log(result);
-            },
-            function(error) {
-                console.error(error);
-            }
+            function(result) {console.log(result);},
+            function(error) {console.error(error);}
         );
 };
 
