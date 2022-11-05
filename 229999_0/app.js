@@ -1,28 +1,19 @@
 const dsteem = require('dsteem');
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://home.steememory.com');
+const client = new dsteem.Client('http://127.0.0.1:8090');
 
-
-// 最新の記事を取得する。
-async function getLatestPost() {
-    
-    const query = {
-        tag: 'yasu.pal',
-        limit: '1',
-        truncate_body: 1//本文を1文字だけ取得
-    };
+get_accounts = async (accountName) => { 
 
     client.database
-        .call('get_discussions_by_blog', [query])
+    .call('get_accounts', [[accountName]])
         .then(result => {
-            result.forEach(post => {
-                console.log(post);
-            });
+            if(result.length > 0){
+                console.log(result[0]);
+                console.log("");
+            }
         })
-        .catch(err => {
-            console.log(err);
-        });
-}
 
-getLatestPost();
+};
+
+get_accounts("steemit");
