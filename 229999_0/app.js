@@ -1,6 +1,5 @@
 const dsteem = require('dsteem');
 
-//connect to server which is connected to the network/production
 const client = new dsteem.Client('http://127.0.0.1:8090');
 
 get_accounts = async (accountName) => { 
@@ -13,7 +12,9 @@ get_accounts = async (accountName) => {
                 console.log("");
             }
         })
-
+        .catch(err => {
+            console.log(err);
+        });        
 };
 
 get_accounts("steemit");
