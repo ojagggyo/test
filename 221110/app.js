@@ -10,7 +10,7 @@ var client = new Client({
 })
 
 insert_test = async () => { 
-
+    console.log("insert_test start")
     client.connect()
 
     const query = {
@@ -26,12 +26,13 @@ insert_test = async () => {
         .catch(e => {
             console.error(e.stack)
             console.log("error")
-            
         })
         
     client.end();
+    console.log("insert_test end")
 };
     
-
+console.log("start")
 insert_test()
+console.log("end")
 
