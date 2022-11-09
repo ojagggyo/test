@@ -14,6 +14,7 @@ insert_test = async () => {
     const insertdata =[
         ['太郎', 'tarou@samplel.com'],
         ['花子', 'hanako@samplel.com'],
+        ['三郎', 'saburou@samplel.com'],
     ] 
 
     let values_list =[]
