@@ -17,12 +17,16 @@ const query = {
 }
 
 client.query(query)
-  .then(res => {
+    .then(res => {
         console.log(res)
         console.log("succcess")
+        client.end();
     })
     .catch(e => {
         console.error(e.stack)
         console.log("error")
+        client.end();
     })
+
+
 
