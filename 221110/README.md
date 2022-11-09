@@ -14,3 +14,25 @@ sudo ufw status
 ## 実行方法
 
 node app.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------
+pythonの場合
+Ubuntu
+
+python3 -m pip install pypdf2
+
+
+windows
+py -m pip install pypdf2
