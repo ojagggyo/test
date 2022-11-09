@@ -12,8 +12,8 @@ var client = new Client({
 insert_test = async () => { 
     
     const query = {
-        text: 'INSERT INTO users(name, email) VALUES($1, $2)',
-        values: ['太郎', 'tarou@samplel.com'],
+        text: 'INSERT INTO users(name, email) VALUES($1, $2),($3, $4)',
+        values: ['太郎', 'tarou@samplel.com','花子', 'hanako@samplel.com'],
     }
 
     client.connect()
