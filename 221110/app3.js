@@ -22,7 +22,7 @@ insert_test = async () => {
     insertdata.forEach(
         function(element,index){
             console.log(`${index}`)
-            values_list.push(`($${index*2}, $${index*2+1})`)
+            values_list.push(`($${index*2+1}, $${index*2+2})`)
             values.push(element[0]);
             values.push(element[1]);
           }     
