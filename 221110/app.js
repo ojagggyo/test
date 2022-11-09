@@ -11,3 +11,12 @@ var client = new Client({
  
 client.connect()
 
+const query = {
+    text: 'INSERT INTO users(name, email) VALUES($1, $2)',
+    values: ['太郎', 'mytest@samplel.com'],
+}
+
+client.query(query)
+  .then(res => console.log(res.rows[0]))
+  .catch(e => console.error(e.stack))
+
