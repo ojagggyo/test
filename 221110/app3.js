@@ -39,7 +39,9 @@ insert_test = async () => {
 
     client.connect()
         .then(() => console.log("Connected successfuly"))
+        .then(() => client.query("BEGIN"))
         .then(() => client.query(query))
+        .then(() => client.query("COMMIT"))
         .then(results => {console.log("succcess")})
         .catch((e => {console.error(e.stack)}))
         .finally((() => client.end()))
