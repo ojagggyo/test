@@ -19,12 +19,14 @@ insert_test = async () => {
     let values_list =[]
     let values =[]
 
-    insertdata.forEach(element,index => {
-        console.log(`${index}`)
-        values_list.push(`(${(index-1)}, ${(index-1)+1})`)
-        values.push(element[0]);
-        values.push(element[1]);
-    });
+    insertdata.forEach(
+        function(element,index){
+            console.log(`${index}`)
+            values_list.push(`(${(index-1)}, ${(index-1)+1})`)
+            values.push(element[0]);
+            values.push(element[1]);
+          }     
+    );
     
     console.log(`${values_list.join(",")}`)
     console.log(`${values}`)
