@@ -17,6 +17,12 @@ const query = {
 }
 
 client.query(query)
-  .then(res => console.log(res.rows[0]))
-  .catch(e => console.error(e.stack))
+  .then(res => {
+        console.log(res.rows[0])
+        console.log("succcess")
+    })
+    .catch(e => {
+        console.error(e.stack)
+        console.log("error")
+    })
 
