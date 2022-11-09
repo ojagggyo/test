@@ -18,7 +18,7 @@ const query = {
 
 client.query(query)
   .then(res => {
-        console.log(res.rows[0])
+        console.log(res])
         console.log("succcess")
     })
     .catch(e => {
