@@ -9,27 +9,18 @@ var client = new Client({
     port: 5432
 })
 
-insert_test = async () => { 
-
-    const insertdata =[
-        ['太郎', 'tarou@samplel.com'],
-        ['花子', 'hanako@samplel.com'],
-        ['三郎', 'saburou@samplel.com'],
-    ] 
+insert_test = async (data) => { 
 
     let values_element =[]
     let values =[]
 
-    insertdata.forEach(
+    data.forEach(
         function(element,index){
             values_element.push(`($${index*2+1}, $${index*2+2})`)
             values.push(element[0]);
             values.push(element[1]);
           }     
-    );
-    
-    // console.log(`${values_list.join(",")}`)
-    // console.log(`${values}`)
+    );  
 
     const query = {
         text: `INSERT INTO users(name, email) VALUES ${values_element.join(",")}`,
@@ -43,5 +34,11 @@ insert_test = async () => {
         .catch((e => {console.error(e.stack)}))
         .finally((() => client.end()))
 };
-    
-insert_test()
+
+const insertdata =[
+    ['太郎', 'tarou@samplel.com'],
+    ['花子', 'hanako@samplel.com'],
+    ['三郎', 'saburou@samplel.com'],
+] 
+
+insert_test(insertdata)
