@@ -17,6 +17,7 @@ insert_test = async () => {
         values: ['太郎', 'tarou@samplel.com'],
     }
 
+    client.connect("BEGIN")
     await client.query(query)
         .then(res => {
             console.log(res)
@@ -27,6 +28,7 @@ insert_test = async () => {
             console.log("error")
         })
         
+    client.connect("COMMIT")
     client.end();
 };
     
