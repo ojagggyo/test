@@ -29,8 +29,8 @@ insert_test = async () => {
           }     
     );
     
-    console.log(`${values_list.join(",")}`)
-    console.log(`${values}`)
+    // console.log(`${values_list.join(",")}`)
+    // console.log(`${values}`)
 
     const query = {
         text: `INSERT INTO users(name, email) VALUES ${values_list.join(",")}`,
@@ -39,9 +39,7 @@ insert_test = async () => {
 
     client.connect()
         .then(() => console.log("Connected successfuly"))
-        .then(() => client.query("BEGIN"))
         .then(() => client.query(query))
-        .then(() => client.query("COMMIT"))
         .then(results => {console.log("succcess")})
         .catch((e => {console.error(e.stack)}))
         .finally((() => client.end()))
