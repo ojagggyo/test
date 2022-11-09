@@ -8,25 +8,30 @@ var client = new Client({
     password: 'yasuyasu',
     port: 5432
 })
- 
-client.connect()
 
-const query = {
-    text: 'INSERT INTO users(name, email) VALUES($1, $2)',
-    values: ['太郎', 'mytest@samplel.com'],
-}
+insert_test = async () => { 
 
-client.query(query)
-    .then(res => {
-        console.log(res)
-        console.log("succcess")
-        client.end();
-    })
-    .catch(e => {
-        console.error(e.stack)
-        console.log("error")
-        client.end();
-    })
+    client.connect()
 
+    const query = {
+        text: 'INSERT INTO users(name, email) VALUES($1, $2)',
+        values: ['太郎', 'mytest@samplel.com'],
+    }
 
+    await client.query(query)
+        .then(res => {
+            console.log(res)
+            console.log("succcess")
+        })
+        .catch(e => {
+            console.error(e.stack)
+            console.log("error")
+            
+        })
+        
+    client.end();
+};
+    
+
+insert_test()
 
