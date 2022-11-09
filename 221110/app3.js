@@ -17,13 +17,12 @@ insert_test = async () => {
         ['三郎', 'saburou@samplel.com'],
     ] 
 
-    let values_list =[]
+    let values_element =[]
     let values =[]
 
     insertdata.forEach(
         function(element,index){
-            console.log(`${index}`)
-            values_list.push(`($${index*2+1}, $${index*2+2})`)
+            values_element.push(`($${index*2+1}, $${index*2+2})`)
             values.push(element[0]);
             values.push(element[1]);
           }     
@@ -33,7 +32,7 @@ insert_test = async () => {
     // console.log(`${values}`)
 
     const query = {
-        text: `INSERT INTO users(name, email) VALUES ${values_list.join(",")}`,
+        text: `INSERT INTO users(name, email) VALUES ${values_element.join(",")}`,
         values: values
     }
 
