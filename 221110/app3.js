@@ -10,10 +10,24 @@ var client = new Client({
 })
 
 insert_test = async () => { 
+
+    const insertdata =[
+        ['太郎', 'tarou@samplel.com'],
+        ['花子', 'hanako@samplel.com'],
+    ] 
+
+    let values_list =[]
+    let values =[]
+
+    insertdata.forEach(element,index => {
+        values_list.push(`(${(index-1)}, ${(index-1)+1})`)
+        values.push(element[0]);
+        values.push(element[1]);
+    });
     
     const query = {
-        text: 'INSERT INTO users(name, email) VALUES($1, $2),($3, $4)',
-        values: ['太郎', 'tarou@samplel.com','花子', 'hanako@samplel.com'],
+        text: `INSERT INTO users(name, email) VALUES ${values_list.join(",")}`,
+        values: values
     }
 
     client.connect()
