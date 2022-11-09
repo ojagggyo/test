@@ -10,12 +10,13 @@ var client = new Client({
 })
 
 insert_test = async () => { 
-    console.log("insert_test start")
     client.connect()
 
     const query = {
         text: 'INSERT INTO users(name, email) VALUES($1, $2)',
-        values: ['太郎', 'mytest@samplel.com'],
+        values: 
+        ['太郎', 'tarou@samplel.com'],
+        ['花子', 'hanako@samplel.com'],
     }
 
     await client.query(query)
@@ -29,10 +30,6 @@ insert_test = async () => {
         })
         
     client.end();
-    console.log("insert_test end")
 };
     
-console.log("start")
 insert_test()
-console.log("end")
-
