@@ -25,6 +25,9 @@ insert_test = async () => {
         values.push(element[1]);
     });
     
+    console.log(`${values_list.join(",")}`)
+    console.log(`${values}`)
+
     const query = {
         text: `INSERT INTO users(name, email) VALUES ${values_list.join(",")}`,
         values: values
