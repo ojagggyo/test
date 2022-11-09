@@ -17,7 +17,7 @@ insert_test = async () => {
         values: [
             ['太郎', 'tarou@samplel.com'],
             ['花子', 'hanako@samplel.com'],
-        ,]
+        ],
     }
 
     await client.query(query)
