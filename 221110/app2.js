@@ -10,14 +10,14 @@ var client = new Client({
 })
 
 insert_test = async () => { 
-    client.connect()
+    await client.connect()
 
     const query = {
         text: 'INSERT INTO users(name, email) VALUES($1, $2)',
         values: ['太郎', 'tarou@samplel.com'],
     }
 
-    client.connect("BEGIN")
+    await client.connect("BEGIN")
     await client.query(query)
         .then(res => {
             console.log(res)
@@ -28,7 +28,7 @@ insert_test = async () => {
             console.log("error")
         })
         
-    client.connect("COMMIT")
+    await client.connect("COMMIT")
     client.end();
 };
     
