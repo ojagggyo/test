@@ -31,7 +31,7 @@ node app.js
 pythonの場合
 Ubuntu
 
-python3 -m pip install pypdf2
+pip install pypdf2
 
 
 windows
