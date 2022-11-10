@@ -1,4 +1,3 @@
-
 var { Client } = require('pg');
 
 var client = new Client({
