@@ -18,6 +18,7 @@ insert_test = async () => {
         values: ['太郎', 'tarou@samplel.com'],
     }
 
+    
     await client.query(query)
         .then(res => {
             console.log(res)
