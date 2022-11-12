@@ -1,0 +1,14 @@
+{
+  "name": "221111",
+  "version": "1.0.0",
+  "description": "[【Node.js入門】PostgreSQLに接続してデータを操作するためのチュートリアル！](https://www.sejuku.net/blog/81358)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
+}

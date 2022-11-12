@@ -19,7 +19,7 @@ window.getPosts = async () => {
     const filter = "created";
     const query = {
         tag: 'japanese',
-        limit: 30,
+        limit: 50,
     };
 
     client.database

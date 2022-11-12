@@ -11,6 +11,7 @@ sudo ufw allow 5432/tcp
 sudo ufw status
 
 
+sudo -u postgres psql
 createuser --interactive
 createdb yasudb
 
@@ -40,24 +41,3 @@ D:\Python39\python.exe -m pip install pg
 
 node app.js
 
-
-
-
-
-
-
-
-
-
-
-
-
-----------------
-pythonの場合
-Ubuntu
-
-pip install pypdf2
-
-
-windows
-py -m pip install pypdf2

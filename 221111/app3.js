@@ -1,9 +1,8 @@
-
 var { Client } = require('pg');
 
 var client = new Client({
     user: 'yasu',
-    host: '127.0.0.01',
+    host: '157.7.64.95',
     database: 'yasudb',
     password: 'yasuyasu',
     port: 5432
@@ -20,7 +19,10 @@ insert_test = async (data) => {
             values.push(element[0]);
             values.push(element[1]);
           }     
-    );  
+    ); 
+
+    console.log(values_element)
+    console.log(values)
 
     const query = {
         text: `INSERT INTO users(name, email) VALUES ${values_element.join(",")}`,
