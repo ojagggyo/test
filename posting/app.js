@@ -36,6 +36,10 @@ async function main(){
     console.log("sub call 開始");
     await sub(tag, limit, result);
     console.log("sub call 終了");
+
+
+    console.log("ほげほげ call 開始");
+    console.log("ほげほげ call 終了");
 }
 
 async function sub(tag, limit, urls){
@@ -129,5 +133,5 @@ execSync('rm -f ./resize/*.png')
 execSync('rm -f ./*.png')
 
 console.log("main call 開始");
-const ret = await main();
+await main();
 console.log("main call 終了");
