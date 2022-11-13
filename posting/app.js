@@ -32,8 +32,10 @@ async function main(){
     const result = await app.getPosts(tag, limit)//tagを指定する
     console.log(result);
 
-    sub(tag, limit, result);
 
+    console.log("sub call 開始");
+    await sub(tag, limit, result);
+    console.log("sub call 終了");
 }
 
 async function sub(tag, limit, urls){
@@ -126,6 +128,6 @@ execSync('rm -f ./images/*.png')
 execSync('rm -f ./resize/*.png')
 execSync('rm -f ./*.png')
 
-console.log("main開始");
-await main();
-console.log("main終了");
+console.log("main call 開始");
+main();
+console.log("main call 終了");
