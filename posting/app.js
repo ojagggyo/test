@@ -133,5 +133,5 @@ let tag = "hive-161179";//デフォルト
 let limit = 100;//デフォルト
 
 console.log("main call 開始");
-main(poster, key, tag, limit);
+main(poster, dsteem.PrivateKey.fromString(key), tag, limit);
 console.log("main call 終了");
