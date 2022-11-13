@@ -6,5 +6,5 @@
 npm install dsteem
 
 ## 実行
-node ap.js
+node app8.js 投票者　ポスティングキー
 
