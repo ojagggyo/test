@@ -22,42 +22,42 @@ const targetPost = {
 };
 
 
-let p = dsteem.PrivateKey.fromString(config.posting_key);
-console.log("---");
-console.log(p);
-console.log("---");
+// let p = dsteem.PrivateKey.fromString(config.posting_key);
+// console.log("---");
+// console.log(p);
+// console.log("---");
 
-// submitVote = async () => {
+submitVote = async () => {
     
-//     //get account name of voter
-//     const voter = voterAcount.acountName;
-//     //get private posting key
-//     const privateKey = voterAcount.privateKey;
-//     //get author of post/comment to vote
-//     const author = targetPost.author;
-//     //get post permalink to vote
-//     const permlink = targetPost.permlink;
-//     //get weight of vote
-//     const weight = parseInt("100",10);//100%=10000
+    //get account name of voter
+    const voter = voterAcount.acountName;
+    //get private posting key
+    const privateKey = voterAcount.privateKey;
+    //get author of post/comment to vote
+    const author = targetPost.author;
+    //get post permalink to vote
+    const permlink = targetPost.permlink;
+    //get weight of vote
+    const weight = parseInt("100",10);//100%=10000
 
-//     //create vote object
-//     const vote = {
-//         voter,
-//         author,
-//         permlink,
-//         weight, //needs to be an integer for the vote function
-//     };
+    //create vote object
+    const vote = {
+        voter,
+        author,
+        permlink,
+        weight, //needs to be an integer for the vote function
+    };
 
-//     //broadcast the vote
-//     client.broadcast.vote(vote, privateKey).then(
-//         function(result) {
-//             console.log('success:', result);
-//         },
-//         function(error) {
-//             console.log('error:', error);
-//         }
-//     );
-// };
+    //broadcast the vote
+    client.broadcast.vote(vote, privateKey).then(
+        function(result) {
+            console.log('success:', result);
+        },
+        function(error) {
+            console.log('error:', error);
+        }
+    );
+};
 
 
-//submitVote();
+submitVote();

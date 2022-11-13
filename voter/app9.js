@@ -1,10 +1,72 @@
 const dsteem = require('dsteem');
-
-//connect to server which is connected to the network/production
 const client = new dsteem.Client('https://api.steemit.com');
 
+const fs = require("fs");
+var config = JSON.parse(fs.readFileSync("config.json"));
+// const authorAcount = {
+//     acountName: config.acount_name,
+//     privateKey: dsteem.PrivateKey.fromString(config.posting_key),
+    
+// };
+const voterAcount = {
+    acountName: config.acount_name,
+    privateKey: dsteem.PrivateKey.fromString(config.posting_key)
+};
+
+const sleep = (m) => {
+    return new Promise((resolve) => setTimeout(resolve, m));
+  };
+
+
+// submitVote2 = async (voter, privateKey , author, permlink, weight) => {
+//     let ret = await submitVote(voterAcount.acountName, voterAcount.privateKey , author, permlink, 10*100);
+//     return ret;
+// }
+  
+
+
+submitVote = async (voter, privateKey , author, permlink, weight) => {
+
+    //create vote object
+    const vote = {
+        voter,
+        author,
+        permlink,
+        weight, //needs to be an integer for the vote function
+    };
+
+
+    //非同期
+    // //broadcast the vote
+    // client.broadcast.vote(vote, privateKey).then(
+    //     function(result) {
+    //         console.log('success:', result);
+    //     },
+    //     function(error) {
+    //         console.log('error:', error);
+    //     }
+    // );
+
+    //同期
+    const result = await client.broadcast.vote(vote, privateKey)
+    console.log("result 1")
+    console.log(result)
+    return result;
+
+};
+
+
+
+
+
+
+
+
+
+
+
 function getDateString(date){
-    return `${date.getMonth()+1}/${date.getDay()} ${date.getHours()}:${date.getMinutes()}`;
+    return `${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 }
 function log(msg) { 
     console.log(new Date().toString() + ' - ' + msg); 
@@ -13,8 +75,30 @@ function log(msg) {
 
 //ミュートしたいアカウント
 const muteList = ["yasu","yasu.witness"];
-const muteList2 = ["bukit"];//前方一致指せるキーワード
-
+//const bkackList = ["bukit"];//前方一致指せるキーワード
+const whiteList = [
+    "neko9",
+    "tamurt",
+    // "sakura-sakura",
+    "tomoyan",
+    "kyoto-toda",
+    "o5otaesik",
+    "jimae",
+    "yeyakang",
+    "bigbear34",
+    "poohoo11",
+    "smallcub50",
+    // "junichi",
+    // "itemere",
+    // "jobreyes24",
+    // "stikg",
+    // "kan6034",
+    "tama.arin",
+    "nell5630",
+    // "eunjjjjjjjj",
+    "ggagu",
+    "stikg",
+];
 
 //filter change selection function
 //window.getPosts = async () => {
@@ -28,7 +112,7 @@ getPosts = async (voter) => {
     client.database
         .getDiscussions(filter, query)
         .then(result => {
-            console.log('Response received:', result);
+           // console.log('Response received:', result);
 
 
             if (result) {
@@ -48,6 +132,7 @@ getPosts = async (voter) => {
                     const author = post.author;
                     const created = new Date(post.created + "z");
                     const url = post.url;
+                    const permlink = post.permlink;
 
 
 
@@ -56,18 +141,12 @@ getPosts = async (voter) => {
                         return;
                     }
 
-                    //アカウント対象外（前方一致）
-                    let muteUser = false; 
-                    muteList2.forEach(name => {
-                        if(author.startsWith(name)){
-                            muteUser = true;
-                            return;
-                        }
-                    })
-                    if(muteUser){
-                        return;
+                    let whiteList_umu = false;
+                    //アカウント対象外（完全一致）
+                    if(-1 < whiteList.indexOf(author)){
+                        whiteList_umu = true;
+                        //return;
                     }
-
 
 
                     //24時間以上前
@@ -108,8 +187,17 @@ getPosts = async (voter) => {
 //                     );
 
 
-                    console.log(`${author} \t\t ${getDateString(created)} `);
+                    console.log(`${getDateString(created)} ${author.padEnd(20, '_')} ${body.length} ${permlink} ${whiteList_umu}` );
 
+                    if(whiteList_umu){
+                        // console.log(`vote process start`);
+                        // let ret = submitVote(voterAcount.acountName, voterAcount.privateKey , author, permlink, 10*100);
+                        // console.log("result 2")
+                        // console.log(ret);
+
+                        // console.log(`vote process end`)
+                    }
+                    
                  });
                 //posts.push(`</table>`);
 
@@ -127,10 +215,10 @@ getPosts = async (voter) => {
 
 //コマンドパラメータ取得
 let voter = "yasu.pal";//デフォルト
-if(process.argv.length > 2){
-    voter = process.argv[2];
-}else{
-   console.log('node app.js accountName'); 
-   return;
-}
+// if(process.argv.length > 2){
+//     voter = process.argv[2];
+// }else{
+//    console.log('node app.js accountName'); 
+//    return;
+// }
 getPosts(voter);
