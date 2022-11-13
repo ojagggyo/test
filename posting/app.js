@@ -5,6 +5,7 @@ const fs = require('fs')
 const sharp = require('sharp')
 
 const app = require('./app2.js')
+const app_posting = require('./app_posting.js')
 
 // いい感じにPromiseでラップする
 const sleep = (m) => {
@@ -12,33 +13,18 @@ const sleep = (m) => {
   };
   
 //
-async function main(){
-    //コマンドマラメータ取得
-    for(var i = 0;i < process.argv.length; i++){
-        console.log("argv[" + i + "] = " + process.argv[i]);
-      }
-
-    let tag = "hive-161179";//デフォルト
-    let limit = 100;//デフォルト
-    if(process.argv.length > 2){
-        tag = process.argv[2];
-    }
-    if(process.argv.length > 3){
-        limit = process.argv[3];
-    }
-
+async function main(poster, key, tag, limit){
 
     //同期
     const result = await app.getPosts(tag, limit)//tagを指定する
     console.log(result);
 
-
     console.log("sub call 開始");
     await sub(tag, limit, result);
     console.log("sub call 終了");
 
-
     console.log("ほげほげ call 開始");
+    app_posting.createPost(poster, key,);
     console.log("ほげほげ call 終了");
 }
 
@@ -120,7 +106,8 @@ async function sub(tag, limit, urls){
             }
         })
         .composite(payload)
-        .toFile(`./${tag}_${limit}.png`);
+        //.toFile(`./${tag}_${limit}.png`);
+        .toFile(`./post.png`);
     console.log("完了");
 }
 
@@ -132,6 +119,21 @@ execSync('rm -f ./images/*.png')
 execSync('rm -f ./resize/*.png')
 execSync('rm -f ./*.png')
 
+
+//コマンドパラメータ取得
+let poster = "yasu.pal";//デフォルト
+let key = "5..."
+if(process.argv.length > 3){
+    poster = process.argv[2];//poster
+    key = process.argv[3];//private key
+}else{
+   console.log('node app.js accountName posting_key'); 
+   return;
+}
+
+let tag = "hive-161179";//デフォルト
+let limit = 100;//デフォルト
+
 console.log("main call 開始");
-main();
+main(poster, key, tag, limit);
 console.log("main call 終了");
