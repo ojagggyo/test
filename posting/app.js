@@ -1,3 +1,4 @@
+const dsteem = require('dsteem');
 const request = require('sync-request');//同期
 const fs = require('fs')
 const sharp = require('sharp')
