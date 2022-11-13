@@ -127,5 +127,5 @@ execSync('rm -f ./resize/*.png')
 execSync('rm -f ./*.png')
 
 console.log("main開始");
-main();
+await main();
 console.log("main終了");
