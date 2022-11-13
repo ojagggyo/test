@@ -19,5 +19,7 @@ npm install sharp@0.23.2
 npm install sync-request
 npm install dsteem
 
+mkdir images
+
 ## 実行
 node app.js japanese 20

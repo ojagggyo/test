@@ -126,4 +126,6 @@ execSync('rm -f ./images/*.png')
 execSync('rm -f ./resize/*.png')
 execSync('rm -f ./*.png')
 
+console.log("main開始");
 main();
+console.log("main終了");
