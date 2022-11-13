@@ -2,6 +2,7 @@ const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
 createPost = async (poster, posting_key) => {
+
     
     //for content
     const time = new Date().getTime();
