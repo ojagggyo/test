@@ -1,25 +1,9 @@
 const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
-const fs = require("fs");
-var config = JSON.parse(fs.readFileSync("config.json"));
-// const authorAcount = {
-//     acountName: config.acount_name,
-//     privateKey: dsteem.PrivateKey.fromString(config.posting_key),
-    
-// };
-const voterAcount = {
-    acountName: config.acount_name,
-    privateKey: dsteem.PrivateKey.fromString(config.posting_key)
-};
-
 const sleep = (m) => {
     return new Promise((resolve) => setTimeout(resolve, m));
   };
-
-
-
-  
 
 
 submitVote = async (voter, privateKey , author, permlink, weight) => {
@@ -32,33 +16,11 @@ submitVote = async (voter, privateKey , author, permlink, weight) => {
         weight, //needs to be an integer for the vote function
     };
 
-
-    //非同期
-    // //broadcast the vote
-    // client.broadcast.vote(vote, privateKey).then(
-    //     function(result) {
-    //         console.log('success:', result);
-    //     },
-    //     function(error) {
-    //         console.log('error:', error);
-    //     }
-    // );
-
     //同期
     const result = await client.broadcast.vote(vote, privateKey)
-    console.log("result 1")
-    console.log(result)
     return result;
 
 };
-
-
-
-
-
-
-
-
 
 
 
@@ -102,7 +64,7 @@ const whiteList = [
 
 //filter change selection function
 //window.getPosts = async () => {
-getPosts = async (voter) => {
+getPosts = async (voter, posting_key) => {
     const filter = "created";
     const query = {
         tag: 'japanese',
@@ -117,9 +79,12 @@ getPosts = async (voter) => {
         //var posts = [];
         
         var today = new Date();
-        console.log(today);
-        var yesterday = new Date(today.setDate(today.getDate() - 1) );
-        console.log(yesterday);
+        console.log(getDateString(today));
+        //var yesterday = new Date(today.setDate(today.getDate() - 1) );
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1)
+        console.log(getDateString(yesterday));
+        
 
         //posts.push(`<table><tr><td>タイトル</td><td>著者2</td><td>作成日時</td><td>文の長さ</td><td>写真</td><td>yasu</td><td>yasu.witness</td></tr>`);
 
@@ -135,8 +100,15 @@ getPosts = async (voter) => {
             const url = post.url;
             const permlink = post.permlink;
 
+            console.log(`${author}=${getDateString(created)}`)
+
             //24時間以上前
             if(yesterday.getTime() > created.getTime()){
+                continue;
+            } 
+
+            //5分以内
+            if(today.getTime() - created.getTime() < 5 * 1000 * 60){
                 continue;
             } 
 
@@ -185,15 +157,11 @@ getPosts = async (voter) => {
 //                     );
 
 
-            console.log(`${getDateString(created)} ${author.padEnd(20, '_')} ${body.length} ${permlink} ${whiteList_umu}` );
+            console.log(`${getDateString(created)} ${author.padEnd(20, '_')} ${body.length} permlink=${permlink} white=${whiteList_umu}` );
 
             if(whiteList_umu){
-               
-                //console.log(`vote process start`);
-                //let ret = await submitVote(voterAcount.acountName, voterAcount.privateKey , author, permlink, 10*100);
-                //console.log("result 2")
-                //console.log(ret);
-                //console.log(`vote process end`)
+                let result = await submitVote(voter, posting_key , author, permlink, 10*100);
+                console.log(result);
             }
              
         }
@@ -203,10 +171,12 @@ getPosts = async (voter) => {
 
 //コマンドパラメータ取得
 let voter = "yasu.pal";//デフォルト
-// if(process.argv.length > 2){
-//     voter = process.argv[2];
-// }else{
-//    console.log('node app.js accountName'); 
-//    return;
-// }
-getPosts(voter);
+let key = "5..."
+if(process.argv.length > 3){
+    voter = process.argv[2];
+    key = process.argv[3];
+}else{
+   console.log('node app.js accountName'); 
+   return;
+}
+getPosts(voter,dsteem.PrivateKey.fromString(key));
