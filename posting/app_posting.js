@@ -3,7 +3,8 @@ const client = new dsteem.Client('https://api.steemit.com');
 
 module.exports.createPost = async (poster, posting_key) => {
 
-
+    console.log(`*** createPost ${poster} ${posting_key} ***`);
+ 
     //for content
     const time = new Date().getTime();
 
@@ -31,6 +32,9 @@ module.exports.createPost = async (poster, posting_key) => {
                 console.error(error);
             }
         );
+
+
+    console.log('*** createPost終了 ***');
 };
 
 //createPost();
