@@ -78,9 +78,7 @@ getPosts = async (voter, posting_key) => {
         console.log("Today=%s",getDateString(today));
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1)
-        console.log("Yesterday=%s",getDateString(yesterday));
-        
-
+        console.log("Yesterday=%s",getDateString(yesterday));    
 
         for(i = 0; i < result.length; i++){
 
