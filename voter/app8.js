@@ -57,8 +57,8 @@ const whiteList = [
     "ggagu",
     "stikg",
     "maxinpower",
-
- 
+    "youngdeuk",
+    "lyh5926",
 
 ];
 
@@ -141,8 +141,9 @@ getPosts = async (voter, posting_key) => {
             console.log(`${author.padEnd(20, '_')} ${getDateString(created)} ${body.length}` );
 
             if(whiteList_umu){
-                let result = await submitVote(voter, posting_key , author, permlink, 10*100);
-                console.log(result);
+                console.log("アップボートする %s", author);
+                let res = await submitVote(voter, posting_key , author, permlink, 10*100);
+                console.log(res);
             }
              
         }

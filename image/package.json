@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dsteem": "^0.11.3",
+    "fs": "^0.0.1-security",
+    "request": "^2.88.2",
+    "sync-request": "^6.1.0"
+  }
+}

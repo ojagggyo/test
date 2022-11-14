@@ -1,4 +1,5 @@
-# 
+# データベースに接続する。
+
 ## 参考記事
 [【Node.js入門】PostgreSQLに接続してデータを操作するためのチュートリアル！](https://www.sejuku.net/blog/81358)
 
