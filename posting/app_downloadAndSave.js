@@ -1,42 +1,10 @@
-//const request = require('request')//非同期
-const request = require('sync-request');//同期
-//const request = require('request-promise');
+const request = require('sync-request')//同期
 const fs = require('fs')
 const sharp = require('sharp')
-
-const app = require('./app2.js')
-
-// いい感じにPromiseでラップする
-const sleep = (m) => {
-    return new Promise((resolve) => setTimeout(resolve, m));
-  };
-  
-//
-async function main(){
-    //コマンドマラメータ取得
-    for(var i = 0;i < process.argv.length; i++){
-        console.log("argv[" + i + "] = " + process.argv[i]);
-      }
-
-    let tag = "hive-161179";//デフォルト
-    let limit = 100;//デフォルト
-    if(process.argv.length > 2){
-        tag = process.argv[2];
-    }
-    if(process.argv.length > 3){
-        limit = process.argv[3];
-    }
+const path = require('path')
 
 
-    //同期
-    const result = await app.getPosts(tag, limit)//tagを指定する
-    console.log(result);
-
-    sub(tag, limit, result);
-
-}
-
-async function sub(tag, limit, urls){
+module.exports.downloadAndSave = async (tag, limit, urls, out_path) => {
   
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
@@ -50,8 +18,8 @@ async function sub(tag, limit, urls){
         }
     }
     console.log("画像をダウンロードする。完了");
+   
 
-    
     const n = urls.length;
     const image_width = 200;
     const image_height = 150;
@@ -104,7 +72,7 @@ async function sub(tag, limit, urls){
     }
 
     console.log("sharp");
-    sharp(
+    await sharp(
         {//背景
             create: {
                 width: x * image_width,
@@ -114,16 +82,9 @@ async function sub(tag, limit, urls){
             }
         })
         .composite(payload)
-        .toFile(`./${tag}_${limit}.png`);
+        //.toFile(`./${tag}_${limit}.png`);
+        //.toFile(`./post.png`);
+        .toFile(out_path);
+        
     console.log("完了");
 }
-
-
-
-console.log("ゴミ削除");
-const { execSync } = require('child_process')
-execSync('rm -f ./images/*.png')
-execSync('rm -f ./resize/*.png')
-execSync('rm -f ./*.png')
-
-main();

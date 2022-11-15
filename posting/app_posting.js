@@ -1,29 +1,31 @@
 const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
-module.exports.createPost = async (poster, posting_key) => {
+module.exports.createPost = async (username, key, title, body, imageurl) => {
 
-    console.log(`*** createPost ${poster} ${posting_key} ***`);
- 
-    //for content
-    const time = new Date().getTime();
+    console.log(`*** createPost ${username} ${key} ${title} ${body} ***`);
 
-    const tags = 'yasupal';
-    const taglist = tags.split(' ');
-    const json_metadata = JSON.stringify({ tags: taglist });
+    parent_permlink = 'yasupal';
+    const taglist = 'yasupal yasupal2 yasupal3'.split(' ');
+    const json_metadata = JSON.stringify(
+        { 
+            tags: taglist ,
+            image: [imageurl] 
+        }
+        );
 
     const post = {
-        author: poster,
-        body: `本文 ${time}`,
+        author: username,
+        body: body,
         json_metadata: json_metadata,
         parent_author: '',
-        parent_permlink: tags,
+        parent_permlink: parent_permlink,
         permlink: Math.random().toString(36).substring(2),
-        title: `テスト ${time}`,
+        title: title,
     };
 
     client.broadcast
-        .comment(post, posting_key)
+        .comment(post, key)
         .then(
             function(result) {
                 console.log(result);
@@ -36,5 +38,3 @@ module.exports.createPost = async (poster, posting_key) => {
 
     console.log('*** createPost終了 ***');
 };
-
-//createPost();

@@ -1,0 +1,19 @@
+{
+  "name": "posting",
+  "version": "1.0.0",
+  "description": "未完成\r # #############################################",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dsteem": "^0.11.3",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "sharp": "^0.31.2",
+    "sync-request": "^6.1.0"
+  },
+  "devDependencies": {}
+}

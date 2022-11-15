@@ -35,7 +35,6 @@ module.exports.getPosts = async (tag, limit) => {
     const urls = [];
     const filter = "created";
     const query = {
-        //tag: 'japanese',
         tag: tag,
         limit: limit,
         truncate_body: 1//本文を1文字だけ取得

@@ -25,8 +25,7 @@ function log(msg) {
     console.log(new Date().toString() + ' - ' + msg); 
 }
 
-
-//ミュートしたいアカウント
+let multipleList =[];
 const muteList = ["yasu","yasu.witness","tomoyan","tomoyan.witness"];
 const whiteList = [
     "neko9",
@@ -98,19 +97,15 @@ getPosts = async (voter, posting_key) => {
                 continue;
             } 
 
-            //アカウント対象外（完全一致）
-            if(-1 < muteList.indexOf(author)){
-                console.log(`${author.padEnd(20, '_')} ミュート`)
+            //２回目以降の投稿
+            if(-1 < multipleList.indexOf(author)){
+                console.log(`${author.padEnd(20, '_')} ２回目以降`)
                 continue;
             }
 
-            //自分voterがvote済みか確認する
-            const active_votes = post.active_votes;
-            var voter_voted = active_votes.some( function( value ) {
-                return value.voter ===  voter; 
-            });
-            if(voter_voted){
-                console.log(`${author.padEnd(20, '_')} upvote済み`)
+            //アカウント対象外（完全一致）
+            if(-1 < muteList.indexOf(author)){
+                console.log(`${author.padEnd(20, '_')} ミュート`)
                 continue;
             }
 
@@ -124,6 +119,19 @@ getPosts = async (voter, posting_key) => {
                 continue;
             }
 
+            //自分voterがvote済みか確認する
+            const active_votes = post.active_votes;
+            var voter_voted = active_votes.some( function( value ) {
+                return value.voter ===  voter; 
+            });
+            if(voter_voted){
+                console.log(`${author.padEnd(20, '_')} upvote済み`)
+                multipleList.push(author);
+                continue;
+            }
+
+
+
                
             var body = post.body;
             body = body.replace(/!\[.*\]\(.*\)/g, '画像削除');//画像削除
@@ -136,6 +144,7 @@ getPosts = async (voter, posting_key) => {
                 console.log("アップボートする %s", author);
                 let res = await submitVote(voter, posting_key , author, permlink, 10*100);
                 console.log(res);
+                multipleList.push(author);
             }
              
         }

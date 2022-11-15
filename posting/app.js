@@ -1,138 +1,50 @@
-const dsteem = require('dsteem');
-const request = require('sync-request');//同期
-const fs = require('fs')
-const sharp = require('sharp')
-
-const app = require('./app2.js')
+const dsteem = require('dsteem')
+const path = require('path')
+const app = require('./app_getDiscussions.js')
 const app_posting = require('./app_posting.js')
+const app_sign = require('./app_sign.js')
+const app_upload = require('./app_upload.js')
+const app_downloadAndSave = require('./app_downloadAndSave.js')
 
-// いい感じにPromiseでラップする
-const sleep = (m) => {
-    return new Promise((resolve) => setTimeout(resolve, m));
-  };
-  
-//
-async function main(poster, key, tag, limit){
 
-    //同期
+async function main(username, key, tag, limit){
+
+    const file_path = path.join(process.cwd(), "post.png");
+
+    //記事の最初の画像のurlを取得
     const result = await app.getPosts(tag, limit)//tagを指定する
     console.log(result);
 
+    //ダウンロードと画像の保存
     console.log("sub call 開始");
-    await sub(tag, limit, result);
+    await app_downloadAndSave.downloadAndSave(tag, limit, result, file_path);
     console.log("sub call 終了");
 
-    console.log("ほげほげ call 開始");
-    app_posting.createPost(poster, key,);
-    console.log("ほげほげ call 終了");
-}
-
-async function sub(tag, limit, urls){
-  
-    console.log("画像をダウンロードする。");
-    for (let index = 0; index < urls.length; index++) {
-        let url = urls[index]; 
-        url = url.replace(/(＿)/g, '%EF%BC%BF');//%EF%BC%BF 対応
-        //同期
-        console.log(`url=${url}`);
-        const res = request('GET', url, {});
-        if(res.statusCode === 200){
-            fs.writeFileSync(`./images/${index + 1}.png`, res.body, 'binary');
-        }
-    }
-    console.log("画像をダウンロードする。完了");
-   
-
-    const n = urls.length;
-    const image_width = 200;
-    const image_height = 150;
-    const x = parseInt(Math.sqrt(n - 1)) + 1;
-    const y = parseInt((n - 1) / x) + 1;
-    console.log(`n=${n}`);
-    console.log(`x=${x},y=${y}`);
+    //signature生成
+    const signature = app_sign.sign(key, file_path);
+    url = `https://steemitimages.com/${username}/${signature}`;
     
-    //
-    console.log("ダウンロードした画像をリサイズする。");
-    const imgBufferList = []
-    for (let index = 0; index < urls.length; index++) {
+    //steemitに画像をアップロードする
+    const ret = await app_upload.upload(url, file_path)
+    console.log(ret);
+    const imageurl = JSON.parse(ret).url;
 
-        //console.log("1");
-        try {
-            console.log(`./images/${index + 1}.png`);
-            //console.log("2");
-            imgBufferList.push(
-                await sharp(`./images/${index + 1}.png`)
-                .resize(
-                    {
-                        width: image_width, 
-                        height: image_height, 
-                    })
-                .toBuffer()
-            )
-            //console.log("3");
-            process.stdout.write(`${index + 1}.png `);
-    
-        } catch (error) {
-            console.log("catch");
-            console.log(error); 
-        }finally{
-        }
-    }
-
-    //
-    console.log("composite用のデータを作成する。");
-    let payload = []
-    for (let index = 0; index < urls.length; index++) {
-        const dx = index % x;
-        const dy = parseInt(index / x);
-        console.log(`dx=${dx},dy=${dy}`);
-        a = {
-            input: imgBufferList[index],
-            top: dy * image_height, 
-            left: dx * image_width,
-        };
-        payload.push(a);
-    }
-
-    console.log("sharp");
-    sharp(
-        {//背景
-            create: {
-                width: x * image_width,
-                height: y * image_height,
-                channels: 4,
-                background: { r: 100, g: 255, b: 100, alpha: 0.1 }//色を指定する。
-            }
-        })
-        .composite(payload)
-        //.toFile(`./${tag}_${limit}.png`);
-        .toFile(`./post.png`);
-    console.log("完了");
+    const title = `[今日も一日お疲れさまでした！] ${new Date().toLocaleDateString()}`;
+    const body = `この記事は自動的に投稿されました。<br/><br/>今日一日に投稿された記事の最初の写真を集めました。写真がないときはプロフィール写真を代用しています。<br/><br/>![](${imageurl}) `
+    app_posting.createPost(username, key, title, body, imageurl);
 }
-
-
-
-console.log("ゴミ削除");
-const { execSync } = require('child_process')
-execSync('rm -f ./images/*.png')
-execSync('rm -f ./resize/*.png')
-execSync('rm -f ./*.png')
 
 
 //コマンドパラメータ取得
-let poster = "yasu.pal";//デフォルト
-let key = "5..."
-if(process.argv.length > 3){
-    poster = process.argv[2];//poster
-    key = process.argv[3];//private key
-}else{
-   console.log('node app.js accountName posting_key'); 
-   return;
+const [username, posting_key] = process.argv.slice(2)
+if (!username || !posting_key) {
+    process.stderr.write(`Usage: ./app.js <username> <posting_key>\n`)
+    process.exit(1)
 }
 
 let tag = "hive-161179";//デフォルト
 let limit = 100;//デフォルト
 
 console.log("main call 開始");
-main(poster, dsteem.PrivateKey.fromString(key), tag, limit);
+main(username, dsteem.PrivateKey.fromString(posting_key), tag, limit);
 console.log("main call 終了");

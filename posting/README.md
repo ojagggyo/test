@@ -20,11 +20,12 @@ npm install sharp@0.23.2
 
 
 ## 環境設定
-npm install sharp@0.23.2 
-npm install sync-request
+npm install sharp 
 npm install dsteem
-
+npm install sync-request
+npm install request
 mkdir images
+
 
 ## 実行
 node app.js japanese 20
