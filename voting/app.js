@@ -153,10 +153,16 @@ getPosts = async (voter, posting_key) => {
 
 
 //コマンドパラメータ取得
-const [username, postingkey] = process.argv.slice(2)
-if (!username || !postingkey) {
-    process.stderr.write(`Usage: ./app.js <username> <postingkey>\n`)
-    process.exit(1)
+let [username, posting_key] = process.argv.slice(2)
+if (!username || !posting_key) {
+    try {
+        const config = JSON.parse(fs.readFileSync("config.json"));    
+        username = config.username;
+        posting_key = config.posting_key;
+    } catch (error) {
+        process.stderr.write(`Usage: ./app.js <username> <posting_key>\n`)
+        process.exit(1)
+    }   
 }
 
-getPosts(username, dsteem.PrivateKey.fromString(postingkey));
+getPosts(username, dsteem.PrivateKey.fromString(posting_key));

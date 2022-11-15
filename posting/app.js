@@ -39,8 +39,6 @@ async function main(username, key, tag, limit){
 //コマンドパラメータ取得
 let [category, username, posting_key] = process.argv.slice(2)
 if (!category|| !username || !posting_key) {
-    
-    //設定ファイル
     try {
         const config = JSON.parse(fs.readFileSync("config.json"));    
         category = config.category;

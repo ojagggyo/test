@@ -37,7 +37,8 @@ module.exports.getPosts = async (tag, limit) => {
     const query = {
         tag: tag,
         limit: limit,
-        truncate_body: 1//本文を1文字だけ取得
+        //truncate_body: 1//本文を1文字だけ取得
+        truncate_body: 0//すべて
     };
 
     const result = await client.database.getDiscussions(filter, query);
@@ -72,13 +73,39 @@ module.exports.getPosts = async (tag, limit) => {
             return; //continue
         }
 
+        //urlを抽出すする
         console.log(json.image);
         if(json.image){
             urls.push(json.image[0]);
+        }
+        else{
+            // //0: ![](http://aaa.bbb.png)
+            // //1: http://aaa.bbb.png
+            // let s = post.body.match(/!\[.*\]\((.*)\)/)
+            // if(s){
+            //     urls.push(s[1]);   
+            // }else{
+            //     //0: http://aaa.bbb.png
+            //     //1: png
+            //     s = post.body.match(/https:\/\/.*(jpg|gif)/);
+            //     if(s){
+            //         urls.push(s[0]);   
+            //     }
+            //     else{
+            //         urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
+            //     }
+            // }
+
+            //0: http://aaa.bbb.png
+            //1: png
+            s = post.body.match(/https:\/\/.*(jpg|gif)/);
+            if(s){
+                urls.push(s[0]);   
             }
-            else{//画像がない場合は、プロフィール写真のURL
-            urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
-            }                    
+            else{
+                urls.push(`https://steemitimages.com/u/${post.author}/avatar/`);                     
+            }        
+        }                   
     });
 
     console.log('*** getPosts終了 ***');
