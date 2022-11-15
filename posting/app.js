@@ -1,5 +1,6 @@
 const dsteem = require('dsteem')
 const path = require('path')
+const fs = require('fs');
 const app = require('./app_getDiscussions.js')
 const app_posting = require('./app_posting.js')
 const app_sign = require('./app_sign.js')
@@ -30,21 +31,42 @@ async function main(username, key, tag, limit){
     const imageurl = JSON.parse(ret).url;
 
     const title = `[今日も一日お疲れさまでした！] ${new Date().toLocaleDateString()}`;
-    const body = `この記事は自動的に投稿されました。<br/><br/>今日一日に投稿された記事の最初の写真を集めました。写真がないときはプロフィール写真を代用しています。<br/><br/>![](${imageurl}) `
+    const body = `この記事は自動的に投稿されました。<br/><br/>今日一日に投稿された記事の最初の写真を集めました。写真がないときはプロフィール写真を代用しています。<br/><br/>![](${imageurl}) <br/><br/>https://steemit.com/created/${tag}`
     app_posting.createPost(username, key, title, body, imageurl);
 }
 
 
 //コマンドパラメータ取得
-const [username, posting_key] = process.argv.slice(2)
-if (!username || !posting_key) {
-    process.stderr.write(`Usage: ./app.js <username> <posting_key>\n`)
-    process.exit(1)
+let [category, username, posting_key] = process.argv.slice(2)
+if (!category|| !username || !posting_key) {
+    
+    //設定ファイル
+    try {
+        const config = JSON.parse(fs.readFileSync("config.json"));    
+        category = config.category;
+        username = config.username;
+        posting_key = config.posting_key;
+    } catch (error) {
+        process.stderr.write(`Usage: ./app.js <category> <username> <posting_key>\n`)
+        process.exit(1)
+    }    
 }
 
-let tag = "hive-161179";//デフォルト
+
 let limit = 100;//デフォルト
 
-console.log("main call 開始");
-main(username, dsteem.PrivateKey.fromString(posting_key), tag, limit);
-console.log("main call 終了");
+console.log(`category=${category}`);
+console.log(`username=${username}`);
+console.log(`posting_key=非表示`);
+console.log(`tag=${category}`);
+console.log(`limit=${limit}`);
+
+
+main(username, dsteem.PrivateKey.fromString(posting_key), category, limit)
+
+setInterval(
+    function(){
+        main(username, dsteem.PrivateKey.fromString(posting_key), category, limit)
+    }, 
+    24 * 60 * 60 * 1000
+    );

@@ -19,13 +19,25 @@ npm install sharp@0.31.1
 npm install sharp@0.23.2 
 
 
-## 環境設定
+## 環境設定(開発)
 npm install sharp 
 npm install dsteem
 npm install sync-request
 npm install request
 mkdir images
 
+## 環境設定(本番)
+sudo apt install npm
+npm init
+npm i
+
+## 環境設定(PM2)
+config.jsonにcategory、username、ポスティングキーを設定する
+pm2 start app.js
+pm2 status
+pm2 log
 
 ## 実行
-node app.js japanese 20
+node app.js <username> <posting_key>
+
+
