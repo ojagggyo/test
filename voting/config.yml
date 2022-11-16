@@ -1,0 +1,4 @@
+name: voting                        # アプリ名
+script: app.js                        # スクリプトファイルパス
+watch: true                            # フォルダやサブフォルダ内のファイルが変更された場合、アプリは再読み込みされます
+log-date-format: "YYYY-MM-DD HH:mm Z"  # ログに日付を追加

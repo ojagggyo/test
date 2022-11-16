@@ -24,7 +24,7 @@ function getDateString(date){
     return `${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 }
 function log(msg) { 
-    console.log(new Date().toString() + ' - ' + msg); 
+    console.log(new Date().toLocaleString() + ' - ' + msg); 
 }
 
 let multipleList =[];
@@ -70,10 +70,10 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
     if (result.length > 0) {
 
         var today = new Date();
-        console.log("Today=%s",getDateString(today));
+        log("Today=%s",getDateString(today));
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1)
-        console.log("Yesterday=%s",getDateString(yesterday));    
+        log("Yesterday=%s",getDateString(yesterday));    
 
         for(i = 0; i < result.length; i++){
 
@@ -89,25 +89,25 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 
             //24時間以上前
             if(yesterday.getTime() > created.getTime()){
-                console.log(`${author.padEnd(20, '_')} 古い ${getDateString(created)}`)
+                log(`${author.padEnd(20, '_')} 古い ${getDateString(created)}`)
                 continue;
             } 
 
             //5分以内
             if(today.getTime() - created.getTime() < 5 * 1000 * 60){
-                console.log(`${author.padEnd(20, '_')} 5分未満 ${getDateString(created)}`)
+                log(`${author.padEnd(20, '_')} 5分未満 ${getDateString(created)}`)
                 continue;
             } 
 
             //２回目以降の投稿
             if(-1 < multipleList.indexOf(author)){
-                console.log(`${author.padEnd(20, '_')} ２回目以降`)
+                log(`${author.padEnd(20, '_')} ２回目以降`)
                 continue;
             }
 
             //アカウント対象外（完全一致）
             if(-1 < muteList.indexOf(author)){
-                console.log(`${author.padEnd(20, '_')} ミュート`)
+                log(`${author.padEnd(20, '_')} ミュート`)
                 continue;
             }
 
@@ -117,7 +117,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
                 whiteList_umu = true;
             }
             if(!whiteList_umu){
-                console.log(`${author.padEnd(20, '_')} ホワイトリストにない`)
+                log(`${author.padEnd(20, '_')} ホワイトリストにない`)
                 continue;
             }
 
@@ -127,7 +127,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
                 return value.voter ===  voter; 
             });
             if(voter_voted){
-                console.log(`${author.padEnd(20, '_')} upvote済み`)
+                log(`${author.padEnd(20, '_')} upvote済み`)
                 multipleList.push(author);
                 continue;
             }
@@ -143,9 +143,9 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
             console.log(`${author.padEnd(20, '_')} ${getDateString(created)} ${body.length}` );
 
             if(whiteList_umu){
-                console.log("アップボートする %s", author);
+                log("アップボートする %s", author);
                 let res = await submitVote(voter, posting_key , author, permlink, voting_weight);
-                console.log(res);
+                log(res);
                 multipleList.push(author);
             }
              
@@ -155,42 +155,41 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 
 
 //コマンドパラメータ取得
-let [category, voting_weight, limit, username, posting_key] = process.argv.slice(2)
-if (!category || !voting_weight || !limit || !username || !posting_key) {
+let [category, voting_weight, limit, acount_name, posting_key] = process.argv.slice(2)
+if (!category || !voting_weight || !limit || !acount_name || !posting_key) {
     try {
         const config = JSON.parse(fs.readFileSync("config.json"));    
         category = config.category;
         voting_weight = config.voting_weight;
         limit = config.limit;
-        username = config.username;
+        acount_name = config.acount_name;
         posting_key = config.posting_key;
     } catch (error) {
-        process.stderr.write(`Usage: ./app.js <category> <voting_weight> <limit> <username> <posting_key>\n`)
+        process.stderr.write(`Usage: ./app.js <category> <voting_weight> <limit> <acount_name> <posting_key>\n`)
         process.exit(1)
     }
 }
 
 async function main(){
-    const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(username, Number.parseInt(limit))
-    console.log(`isEnough=${isEnough}`);
+    const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(acount_name, Number.parseInt(limit))
     if(isEnough){
-        getPosts(category, voting_weight, username, dsteem.PrivateKey.fromString(posting_key));
+        getPosts(category, voting_weight, acount_name, dsteem.PrivateKey.fromString(posting_key));
     }
 }
 
 
-console.log(`category=${category}`);
-console.log(`voting_weight=${voting_weight}`);
-console.log(`username=${username}`);
-console.log(`posting_key=非表示`);
+log(`category=${category}`);
+log(`voting_weight=${voting_weight}`);
+log(`acount_name=${acount_name}`);
+log(`posting_key=非表示`);
 
-main();
+//main();
 
 setInterval(
     function(){
         main();
     }, 
     //24 * 60 * 60 * 1000
-    60 * 1000
+    10 * 60 * 1000
     );
 

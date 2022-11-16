@@ -37,29 +37,29 @@ async function main(username, key, category){
 
 
 //コマンドパラメータ取得
-let [category, username, posting_key] = process.argv.slice(2)
-if (!category|| !username || !posting_key) {
+let [category, acount_name, posting_key] = process.argv.slice(2)
+if (!category|| !acount_name || !posting_key) {
     try {
         const config = JSON.parse(fs.readFileSync("config.json"));    
         category = config.category;
-        username = config.username;
+        acount_name = config.username;
         posting_key = config.posting_key;
     } catch (error) {
-        process.stderr.write(`Usage: ./app.js <category> <username> <posting_key>\n`)
+        process.stderr.write(`Usage: ./app.js <category> <acount_name> <posting_key>\n`)
         process.exit(1)
     }    
 }
 
 
 console.log(`category=${category}`);
-console.log(`username=${username}`);
+console.log(`acount_name=${acount_name}`);
 console.log(`posting_key=非表示`);
 
-main(username, dsteem.PrivateKey.fromString(posting_key), category)
+main(acount_name, dsteem.PrivateKey.fromString(posting_key), category)
 
 setInterval(
     function(){
-        main(username, dsteem.PrivateKey.fromString(posting_key), category)
+        main(acount_name, dsteem.PrivateKey.fromString(posting_key), category)
     }, 
     24 * 60 * 60 * 1000
 );
