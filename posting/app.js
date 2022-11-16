@@ -8,17 +8,17 @@ const app_upload = require('./app_upload.js')
 const app_downloadAndSave = require('./app_downloadAndSave.js')
 
 
-async function main(username, key, tag, limit){
+async function main(username, key, category){
 
     const file_path = path.join(process.cwd(), "post.png");
 
     //記事の最初の画像のurlを取得
-    const result = await app.getPosts(tag, limit)//tagを指定する
+    const result = await app.getPosts(category)//tagを指定する
     console.log(result);
 
     //ダウンロードと画像の保存
     console.log("sub call 開始");
-    await app_downloadAndSave.downloadAndSave(tag, limit, result, file_path);
+    await app_downloadAndSave.downloadAndSave(result, file_path);
     console.log("sub call 終了");
 
     //signature生成
@@ -31,8 +31,8 @@ async function main(username, key, tag, limit){
     const imageurl = JSON.parse(ret).url;
 
     const title = `[今日も一日お疲れさまでした！] ${new Date().toLocaleDateString()}`;
-    const body = `この記事は自動的に投稿されました。<br/><br/>今日一日に投稿された記事の最初の写真を集めました。写真がないときはプロフィール写真を代用しています。<br/><br/>![](${imageurl}) <br/><br/>https://steemit.com/created/${tag}`
-    app_posting.createPost(username, key, title, body, imageurl);
+    const body = `あなたの写真は見つかりましたか？<br/><br/>今日一日に投稿された記事の最初の写真を集めました。写真がないときはプロフィール写真を代用しています。<br/><br/>![](${imageurl}) <br/><br/>https://steemit.com/created/${category}`
+    app_posting.createPost(username, key, category, title, body, imageurl);
 }
 
 
@@ -51,20 +51,15 @@ if (!category|| !username || !posting_key) {
 }
 
 
-let limit = 100;//デフォルト
-
 console.log(`category=${category}`);
 console.log(`username=${username}`);
 console.log(`posting_key=非表示`);
-console.log(`tag=${category}`);
-console.log(`limit=${limit}`);
 
-
-main(username, dsteem.PrivateKey.fromString(posting_key), category, limit)
+main(username, dsteem.PrivateKey.fromString(posting_key), category)
 
 setInterval(
     function(){
-        main(username, dsteem.PrivateKey.fromString(posting_key), category, limit)
+        main(username, dsteem.PrivateKey.fromString(posting_key), category)
     }, 
     24 * 60 * 60 * 1000
-    );
+);

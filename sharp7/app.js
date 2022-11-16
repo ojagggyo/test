@@ -120,10 +120,10 @@ async function sub(tag, limit, urls){
 
 
 
-console.log("ゴミ削除");
-const { execSync } = require('child_process')
-execSync('rm -f ./images/*.png')
-execSync('rm -f ./resize/*.png')
-execSync('rm -f ./*.png')
+// console.log("ゴミ削除");
+// const { execSync } = require('child_process')
+// execSync('rm -f ./images/*.png')
+// execSync('rm -f ./resize/*.png')
+// execSync('rm -f ./*.png')
 
 main();

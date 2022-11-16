@@ -1,17 +1,19 @@
 const dsteem = require('dsteem');
+const fs = require('fs');
+const app_isVotingPowerEnough = require('./app_isVotingPowerEnough.js')
 const client = new dsteem.Client('https://api.steemit.com');
 
 
-submitVote = async (voter, privateKey , author, permlink, weight) => {
+submitVote = async (voter, privateKey , author, permlink, voting_weight) => {
 
-    //create vote object
+    weight = Number.parseInt(voting_weight) * 100
     const vote = {
         voter,
         author,
         permlink,
         weight, //needs to be an integer for the vote function
     };
-
+    
     //同期
     const result = await client.broadcast.vote(vote, privateKey)
     return result;
@@ -55,11 +57,11 @@ const whiteList = [
 
 ];
 
-getPosts = async (voter, posting_key) => {
+getPosts = async (category, voting_weight, voter, posting_key ) => {
     const filter = "created";
     const query = {
-        tag: 'japanese',
-        limit: 50,
+        tag: category,
+        limit: 100,
     };
 
     //同期
@@ -142,7 +144,7 @@ getPosts = async (voter, posting_key) => {
 
             if(whiteList_umu){
                 console.log("アップボートする %s", author);
-                let res = await submitVote(voter, posting_key , author, permlink, 10*100);
+                let res = await submitVote(voter, posting_key , author, permlink, voting_weight);
                 console.log(res);
                 multipleList.push(author);
             }
@@ -153,16 +155,42 @@ getPosts = async (voter, posting_key) => {
 
 
 //コマンドパラメータ取得
-let [username, posting_key] = process.argv.slice(2)
-if (!username || !posting_key) {
+let [category, voting_weight, limit, username, posting_key] = process.argv.slice(2)
+if (!category || !voting_weight || !limit || !username || !posting_key) {
     try {
         const config = JSON.parse(fs.readFileSync("config.json"));    
+        category = config.category;
+        voting_weight = config.voting_weight;
+        limit = config.limit;
         username = config.username;
         posting_key = config.posting_key;
     } catch (error) {
-        process.stderr.write(`Usage: ./app.js <username> <posting_key>\n`)
+        process.stderr.write(`Usage: ./app.js <category> <voting_weight> <limit> <username> <posting_key>\n`)
         process.exit(1)
-    }   
+    }
 }
 
-getPosts(username, dsteem.PrivateKey.fromString(posting_key));
+async function main(){
+    const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(username, Number.parseInt(limit))
+    console.log(`isEnough=${isEnough}`);
+    if(isEnough){
+        getPosts(category, voting_weight, username, dsteem.PrivateKey.fromString(posting_key));
+    }
+}
+
+
+console.log(`category=${category}`);
+console.log(`voting_weight=${voting_weight}`);
+console.log(`username=${username}`);
+console.log(`posting_key=非表示`);
+
+main();
+
+setInterval(
+    function(){
+        main();
+    }, 
+    //24 * 60 * 60 * 1000
+    60 * 1000
+    );
+

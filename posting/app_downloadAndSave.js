@@ -4,7 +4,7 @@ const sharp = require('sharp')
 const path = require('path')
 
 
-module.exports.downloadAndSave = async (tag, limit, urls, out_path) => {
+module.exports.downloadAndSave = async (urls, out_path) => {
   
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
@@ -82,7 +82,7 @@ module.exports.downloadAndSave = async (tag, limit, urls, out_path) => {
             }
         })
         .composite(payload)
-        //.toFile(`./${tag}_${limit}.png`);
+        //.toFile(`./${tag}_${png`);
         //.toFile(`./post.png`);
         .toFile(out_path);
         

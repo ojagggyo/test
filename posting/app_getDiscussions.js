@@ -20,18 +20,11 @@ const muteList = [
 ];
 
 
-module.exports.getPosts = async (tag, limit) => {
+module.exports.getPosts = async (tag) => {
         
-    console.log(`*** getPosts開始 ${tag} ${limit} ***`);
+    console.log(`*** getPosts開始 ${tag} ***`);
 
-    let max = limit;
-    limit =  parseInt(limit) + 10;//スキップされる記事がありため。
-    if(limit > 100){
-        limit = 100;
-    }
-
-    console.log(`limit=${limit}`);
-
+    const limit = 100;
     const urls = [];
     const filter = "created";
     const query = {
@@ -47,7 +40,9 @@ module.exports.getPosts = async (tag, limit) => {
 
     var today = new Date();
     console.log(today);
-    var yesterday = new Date(today.setDate(today.getDate() - 1) );
+    var yesterday = new Date( );
+    yesterday.setDate(yesterday.getDate() - 1) ;
+    yesterday.setHours(yesterday.getHours() - 1); 
     console.log(yesterday);
 
                 
@@ -57,10 +52,10 @@ module.exports.getPosts = async (tag, limit) => {
         const created = new Date(post.created + "z");
 
 
-        if(urls.length >= max){
-            console.log('skip ', 'urls.length > max');
-            return; //continue
-        }
+        // if(urls.length >= max){
+        //     console.log('skip ', 'urls.length > max');
+        //     return; //continue
+        // }
 
         //24時間以上前
         if(yesterday.getTime() > created.getTime()){
@@ -98,7 +93,7 @@ module.exports.getPosts = async (tag, limit) => {
 
             //0: http://aaa.bbb.png
             //1: png
-            s = post.body.match(/https:\/\/.*(jpg|gif)/);
+            s = post.body.match(/https:\/\/.*(jpg|jpeg|gif|png)/);
             if(s){
                 urls.push(s[0]);   
             }

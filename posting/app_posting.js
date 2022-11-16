@@ -1,12 +1,12 @@
 const dsteem = require('dsteem');
 const client = new dsteem.Client('https://api.steemit.com');
 
-module.exports.createPost = async (username, key, title, body, imageurl) => {
+module.exports.createPost = async (username, key, category, title, body, imageurl) => {
 
-    console.log(`*** createPost ${username} ${key} ${title} ${body} ***`);
+    console.log(`*** createPost ${username} 非表示 ${category} ${title} ${body} ***`);
 
-    parent_permlink = 'yasupal';
-    const taglist = 'yasupal yasupal2 yasupal3'.split(' ');
+    parent_permlink = category;
+    const taglist = `${category} japanese`.split(' ');
     const json_metadata = JSON.stringify(
         { 
             tags: taglist ,
@@ -14,18 +14,31 @@ module.exports.createPost = async (username, key, title, body, imageurl) => {
         }
         );
 
+    const permlink = Math.random().toString(36).substring(2)
+
     const post = {
         author: username,
         body: body,
         json_metadata: json_metadata,
         parent_author: '',
         parent_permlink: parent_permlink,
-        permlink: Math.random().toString(36).substring(2),
+        permlink: permlink,
         title: title,
+    };
+    
+    const option = {
+        author: username,
+        permlink: permlink,
+        max_accepted_payout: "1000000.000 SBD",
+        percent_steem_dollars: 0,
+        allow_votes: true,
+        allow_curation_rewards: true,
+        extensions: []
     };
 
     client.broadcast
-        .comment(post, key)
+        //.comment(post, key)
+        .commentWithOptions(post, option, key)
         .then(
             function(result) {
                 console.log(result);
