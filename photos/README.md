@@ -18,5 +18,8 @@ npm install sharp@0.23.2 (or npm install sharp)
 npm install request (npm install sync-request)
 npm install dsteem
 
+## 環境設定（ubuntuマシン）
+npm i
+
 ## 実行
 node app.js japanese 20
