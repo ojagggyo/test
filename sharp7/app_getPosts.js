@@ -20,24 +20,16 @@ const muteList = [
 ];
 
 
-module.exports.getPosts = async (tag, limit) => {
+module.exports.getPosts = async (category) => {
         
-    console.log(`*** getPosts開始 ${tag} ${limit} ***`);
-
-    let max = limit;
-    limit =  parseInt(limit) + 10;//スキップされる記事がありため。
-    if(limit > 100){
-        limit = 100;
-    }
-
-    console.log(`limit=${limit}`);
+    console.log(`*** getPosts開始 ${category} ***`);
 
     const urls = [];
     const filter = "created";
     const query = {
         //tag: 'japanese',
-        tag: tag,
-        limit: limit,
+        tag: category,
+        limit: 100,
         truncate_body: 1//本文を1文字だけ取得
     };
 
@@ -56,11 +48,10 @@ module.exports.getPosts = async (tag, limit) => {
         const json = JSON.parse(post.json_metadata);
         const created = new Date(post.created + "z");
 
-
-        if(urls.length >= max){
-            console.log('skip ', 'urls.length > max');
-            return; //continue
-        }
+        // if(urls.length >= max){
+        //     console.log('skip ', 'urls.length > max');
+        //     return; //continue
+        // }
 
         //24時間以上前
         if(yesterday.getTime() > created.getTime()){

@@ -4,11 +4,11 @@ const app_isVotingPowerEnough = require('./app_isVotingPowerEnough.js')
 const client = new dsteem.Client('https://api.steemit.com');
 
 
-submitVote = async (voter, privateKey , author, permlink, voting_weight) => {
+submitVote = async (account_name, privateKey , author, permlink, voting_weight) => {
 
     weight = Number.parseInt(voting_weight) * 100
     const vote = {
-        voter,
+        voter: account_name,
         author,
         permlink,
         weight, //needs to be an integer for the vote function
@@ -27,37 +27,40 @@ function log(msg) {
     console.log(new Date().toLocaleString() + ' - ' + msg); 
 }
 
-let multipleList =[];
-const muteList = ["yasu","yasu.witness","tomoyan","tomoyan.witness"];
-const whiteList = [
-    "neko9",
-    "tamurt",
-    "sakura-sakura",
-    "tomoyan",
-    "kyoto-toda",
-    "o5otaesik",
-    "jimae",
-    "yeyakang",
-    "bigbear34",
-    "poohoo11",
-    "smallcub50",
-    "junichi",
-    "itemere",
-    "jobreyes24",
-    "stikg",
-    "kan6034",
-    "tama.arin",
-    "nell5630",
-    "eunjjjjjjjj",
-    "ggagu",
-    "stikg",
-    "maxinpower",
-    "youngdeuk",
-    "lyh5926",
 
-];
 
 getPosts = async (category, voting_weight, voter, posting_key ) => {
+
+    let multipleList =[];
+    const muteList = ["yasu","yasu.witness","tomoyan","tomoyan.witness"];
+    const whiteList = [
+        "neko9",
+        "tamurt",
+        "sakura-sakura",
+        "tomoyan",
+        "kyoto-toda",
+        "o5otaesik",
+        "jimae",
+        "yeyakang",
+        "bigbear34",
+        "poohoo11",
+        "smallcub50",
+        "junichi",
+        "itemere",
+        "jobreyes24",
+        "stikg",
+        "kan6034",
+        "tama.arin",
+        "nell5630",
+        "eunjjjjjjjj",
+        "ggagu",
+        "stikg",
+        "maxinpower",
+        "youngdeuk",
+        "lyh5926",
+    
+    ];
+
     const filter = "created";
     const query = {
         tag: category,
@@ -70,10 +73,10 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
     if (result.length > 0) {
 
         var today = new Date();
-        log("Today=%s",getDateString(today));
+        log(`Today=${getDateString(today)}`);
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1)
-        log("Yesterday=%s",getDateString(yesterday));    
+        log(`Yesterday=${getDateString(yesterday)}`,);    
 
         for(i = 0; i < result.length; i++){
 
@@ -124,7 +127,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
             //自分voterがvote済みか確認する
             const active_votes = post.active_votes;
             var voter_voted = active_votes.some( function( value ) {
-                return value.voter ===  voter; 
+                return value.voter ==  voter; 
             });
             if(voter_voted){
                 log(`${author.padEnd(20, '_')} upvote済み`)
@@ -155,14 +158,14 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
 
 
 //コマンドパラメータ取得
-let [category, voting_weight, limit, acount_name, posting_key] = process.argv.slice(2)
-if (!category || !voting_weight || !limit || !acount_name || !posting_key) {
+let [category, voting_weight, limit, account_name, posting_key] = process.argv.slice(2)
+if (!category || !voting_weight || !limit || !account_name || !posting_key) {
     try {
         const config = JSON.parse(fs.readFileSync("config.json"));    
         category = config.category;
         voting_weight = config.voting_weight;
         limit = config.limit;
-        acount_name = config.acount_name;
+        account_name = config.account_name;
         posting_key = config.posting_key;
     } catch (error) {
         process.stderr.write(`Usage: ./app.js <category> <voting_weight> <limit> <acount_name> <posting_key>\n`)
@@ -170,24 +173,32 @@ if (!category || !voting_weight || !limit || !acount_name || !posting_key) {
     }
 }
 
-async function main(){
-    const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(acount_name, Number.parseInt(limit))
-    if(isEnough){
-        getPosts(category, voting_weight, acount_name, dsteem.PrivateKey.fromString(posting_key));
-    }
-}
-
 
 log(`category=${category}`);
 log(`voting_weight=${voting_weight}`);
-log(`acount_name=${acount_name}`);
+log(`limit=${limit}`);
+log(`acount_name=${account_name}`);
 log(`posting_key=非表示`);
 
-//main();
+async function main(){
+    log(`main start`);
+    const isEnough = await app_isVotingPowerEnough.isVotingPowerEnough(account_name, Number.parseInt(limit))
+    log(`isEnough=${isEnough}`);
+    if(isEnough){
+        getPosts(category, voting_weight, account_name, dsteem.PrivateKey.fromString(posting_key));
+    }
+    log(`main end`);
+}
+
+log(`main call before`);
+main();
+log(`main call after`);
 
 setInterval(
     function(){
+        log(`setInterval start`);
         main();
+        log(`setInterval end`);
     }, 
     //24 * 60 * 60 * 1000
     10 * 60 * 1000

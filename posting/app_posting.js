@@ -6,7 +6,7 @@ module.exports.createPost = async (username, key, category, title, body, imageur
     console.log(`*** createPost ${username} 非表示 ${category} ${title} ${body} ***`);
 
     parent_permlink = category;
-    const taglist = `${category} japanese`.split(' ');
+    const taglist = `${category}`.split(' ');
     const json_metadata = JSON.stringify(
         { 
             tags: taglist ,

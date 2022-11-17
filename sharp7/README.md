@@ -13,7 +13,7 @@ npm install sharp@0.23.2
 
 
 ## 環境設定
-npm install sharp@0.23.2 
+npm install sharp@0.23.2 (or npm install sharp) 
 npm install sync-request
 npm install dsteem
 

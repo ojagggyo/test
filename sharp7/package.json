@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "dsteem": "^0.11.3",
-    "sharp": "^0.31.2",
-    "sync-request": "^6.1.0"
-  }
-}

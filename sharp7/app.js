@@ -4,7 +4,7 @@ const request = require('sync-request');//同期
 const fs = require('fs')
 const sharp = require('sharp')
 
-const app = require('./app2.js')
+const app = require('./app_getPosts.js')
 
 // いい感じにPromiseでラップする
 const sleep = (m) => {
@@ -12,31 +12,9 @@ const sleep = (m) => {
   };
   
 //
-async function main(){
-    //コマンドマラメータ取得
-    for(var i = 0;i < process.argv.length; i++){
-        console.log("argv[" + i + "] = " + process.argv[i]);
-      }
-
-    let tag = "hive-161179";//デフォルト
-    let limit = 100;//デフォルト
-    if(process.argv.length > 2){
-        tag = process.argv[2];
-    }
-    if(process.argv.length > 3){
-        limit = process.argv[3];
-    }
 
 
-    //同期
-    const result = await app.getPosts(tag, limit)//tagを指定する
-    console.log(result);
-
-    sub(tag, limit, result);
-
-}
-
-async function sub(tag, limit, urls){
+async function sub(tag, urls){
   
     console.log("画像をダウンロードする。");
     for (let index = 0; index < urls.length; index++) {
@@ -114,11 +92,32 @@ async function sub(tag, limit, urls){
             }
         })
         .composite(payload)
-        .toFile(`./${tag}_${limit}.png`);
+        .toFile(`./${tag}_.png`);
     console.log("完了");
 }
 
 
+
+
+//コマンドパラメータ取得
+let [category, voting_weight] = process.argv.slice(2)
+if (!category) {
+    // try {
+    // } catch (error) {
+        process.stderr.write(`Usage: ./app.js <category>\n`)
+        process.exit(1)
+    // }
+}
+
+async function main(){
+
+    //同期
+    const result = await app.getPosts(category)
+    console.log(result);
+
+    sub(category, result);
+
+}
 
 // console.log("ゴミ削除");
 // const { execSync } = require('child_process')
