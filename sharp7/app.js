@@ -92,7 +92,7 @@ async function sub(tag, urls){
             }
         })
         .composite(payload)
-        .toFile(`./${tag}_.png`);
+        .toFile(`./${tag}.png`);
     console.log("完了");
 }
 
