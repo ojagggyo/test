@@ -39,15 +39,15 @@ async function main(username, key, category){
 //コマンドパラメータ取得
 let [category, acount_name, posting_key] = process.argv.slice(2)
 if (!category|| !acount_name || !posting_key) {
-    try {
-        const config = JSON.parse(fs.readFileSync("config.json"));    
-        category = config.category;
-        acount_name = config.username;
-        posting_key = config.posting_key;
-    } catch (error) {
+    // try {
+    //     const config = JSON.parse(fs.readFileSync("config.json"));    
+    //     category = config.category;
+    //     acount_name = config.username;
+    //     posting_key = config.posting_key;
+    // } catch (error) {
         process.stderr.write(`Usage: ./app.js <category> <acount_name> <posting_key>\n`)
         process.exit(1)
-    }    
+    // }    
 }
 
 
