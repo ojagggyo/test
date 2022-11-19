@@ -1,6 +1,7 @@
 const dsteem = require('dsteem');
 
-const client = new dsteem.Client('https://steememory.com');
+// const client = new dsteem.Client('https://steememory.com');
+const client = new dsteem.Client('http://192.168.3.6:8080');
 
 
 get_accounts = async (accountName) => { 

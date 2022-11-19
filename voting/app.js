@@ -58,6 +58,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
         "maxinpower",
         "youngdeuk",
         "lyh5926",
+        "tomota",
     
     ];
 
@@ -143,7 +144,7 @@ getPosts = async (category, voting_weight, voter, posting_key ) => {
             body = body.replace(/([^!])\[(.*)\]\(.*\)/g, /$1$2/);//リンク削除
 
 
-            console.log(`${author.padEnd(20, '_')} ${getDateString(created)} ${body.length}` );
+            console.log(`${author.padEnd(20, '_')} created=${getDateString(created)} body.length=${body.length}` );
 
             if(whiteList_umu){
                 log("アップボートする %s", author);
